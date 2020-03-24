@@ -1,5 +1,5 @@
 # ITMO_FSPO_Web_Django_2020
-Репозиторий для хранения примеров для студентов ФСПО ИТМО
+Репозиторий для реализации дистанционного обучения по дисциплине "Учебная практика УП.11.01"
 
 ### [Учебный журнал](https://docs.google.com/spreadsheets/d/1Z2WDx_rLAXnr0oDNE-PchbE--xvl3lV1Px8lZUwdKfM/edit?usp=sharing)
 
