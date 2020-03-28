@@ -8,7 +8,3 @@ def OwnerInfo(request, owner_id):
     except Owner.DoesNotExist:
         raise Http404("Owner does not exist")
     return render(request, 'owner.html', {'owner': ow})
-
-
-
-
