@@ -23,7 +23,7 @@ class User(models.Model):
 
 
 class Auto(models.Model):
-    #driving = models.ManyToManyField(User, through="Usage")
+    driving = models.ManyToManyField(User, through="Usage")
     car_brand = models.CharField(max_length=30)
     car_model = models.CharField(max_length=30)
     car_year = models.DateField()
