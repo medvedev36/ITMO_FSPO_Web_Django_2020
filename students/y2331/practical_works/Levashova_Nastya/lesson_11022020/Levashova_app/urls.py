@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Levashova_app import views
+from .views import cars_list
+from .views import CarCreate
 
 urlpatterns = [
     path('date_app/', views.current_datetime),
-    path('user/<int:passport_ID>', views.user)
+    path('user/<int:passport_ID>', views.user),
+    path('users', views.list_view),
+    path('cars', cars_list.as_view()),
+    path('user_form', views.create_view),
+    path('car_form', CarCreate.as_view())
 ]
