@@ -11,8 +11,8 @@ class User(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     sex = [
-        ('M', 'Man'),
-        ('W', 'Women'),
+        ("M", "Man"),
+        ("W", "Women"),
     ]
     passportnum = models.IntegerField()
     dates = models.ManyToManyField(Avtom, through='Mej')
