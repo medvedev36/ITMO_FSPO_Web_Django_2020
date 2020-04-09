@@ -1,0 +1,3 @@
+[submodule "students/y2337/practical_works/Vorotynsky_Maxim/pycar"]
+	path = students/y2337/practical_works/Vorotynsky_Maxim/pycar
+	url = https://github.com/vorotynsky/pycar.git
