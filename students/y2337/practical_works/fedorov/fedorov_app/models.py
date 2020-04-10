@@ -3,6 +3,12 @@ from django.db import models
 # Create your models here.
 
 
+class Car(models.Model):
+    id = models.CharField(max_length=9, primary_key=True)
+    model = models.CharField(max_length=30)
+    provider = models.CharField(max_length=30)
+
+
 class Owner(models.Model):
     SEXES = [('M', "Male"), ('F', "Female")]
 
@@ -10,13 +16,7 @@ class Owner(models.Model):
     second_name = models.CharField(max_length=30)
     birthday = models.DateField()
     sex = models.CharField(max_length=1, choices = SEXES)
-
-
-class Car(models.Model):
-    id = models.CharField(max_length=9, primary_key=True)
-    model = models.CharField(max_length=30)
-    provider = models.CharField(max_length=30)
-    car = models.ManyToManyField(Owner, through='OwnerShip')
+    car = models.ManyToManyField(Car, through='OwnerShip')
 
 
 class CarLicense(models.Model):
