@@ -23,3 +23,14 @@ class Possession(models.Model):
 
     def __str__(self):
         return f'{self.owner.username} {self.auto}'
+    
+
+class License(models.Model):
+    type_choices = [('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+    ]
+    number = models.CharField(max_length=7)
+    date_of_issue = models.DateField()
+    type_of_license = models.CharField(max_length=1, choices=type_choices)
+    holder = models.ForeignKey(User, on_delete=models.CASCADE)
