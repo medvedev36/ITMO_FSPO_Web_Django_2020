@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project_Anisimov.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Lession_2_bond.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
