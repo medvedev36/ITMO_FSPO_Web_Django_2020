@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-class Auto(models.Model):
+class Vehicle(models.Model):
 
     model = models.CharField(max_length=100)
     brand = models.CharField(max_length=50)
@@ -17,7 +17,7 @@ class Auto(models.Model):
 class Possession(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    auto = models.ForeignKey(Auto, on_delete=models.CASCADE)
+    auto = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     start = models.DateTimeField(default=timezone.now)
     end = models.DateTimeField(default=timezone.now)
 
@@ -30,7 +30,7 @@ class License(models.Model):
         ('B', 'B'),
         ('C', 'C'),
     ]
-    number = models.CharField(max_length=7)
+    number = models.CharField(max_length=10)
     date_of_issue = models.DateField()
     type_of_license = models.CharField(max_length=1, choices=type_choices)
     holder = models.ForeignKey(User, on_delete=models.CASCADE)
