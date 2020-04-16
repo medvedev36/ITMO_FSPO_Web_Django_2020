@@ -8,14 +8,15 @@ class Auto(models.Model):
     gov_number = models.CharField(max_length=30)
 
 
-class Person(models.Model):
+class Owner(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     date = models.DateField()
+    cars = models.ManyToManyField(Auto, through='Ownership')
 
 
 class Ownership(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    person = models.ForeignKey(Owner, on_delete=models.CASCADE)
     auto = models.ForeignKey(Auto, on_delete=models.CASCADE)
     data_start = models.DateField()
     data_end = models.DateField()
@@ -29,8 +30,8 @@ TYPE = (('M', 'Minivan'),
 
 class DriverDoc(models.Model):
     number = models.CharField(max_length=10)
-    type = models.CharField(max_length=5, choices=TYPE)
     date = models.DateField()
-    driver = models.ForeignKey(Person, on_delete=models.CASCADE)
+    type = models.CharField(max_length=30, choices=TYPE)
+    driver = models.ForeignKey(Owner, on_delete=models.CASCADE)
 
 
