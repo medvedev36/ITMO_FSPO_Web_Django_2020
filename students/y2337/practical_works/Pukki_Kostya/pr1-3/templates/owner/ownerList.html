@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Владельцы{% endblock  %}
+
+{% block content %}
+
+  {% for owner in owners %}
+
+    <p>id: {{owner.id}}</p>
+    <p>Имя: {{owner.first_name}}</p>
+    <p>Фамилия: {{owner.last_name}}</p>
+    <p>Дата рождения: {{owner.birthday}}</p>
+    <hr>
+
+  {% endfor %}
+  
+
+{% endblock  %}
+  
