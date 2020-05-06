@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners Info</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td></td>
+        <td> Имя </td>
+        <td> Фамилия </td>
+        <td> День рождения </td>
+    </tr>
+    {% for owner in owners %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ owner.first_name }}</td>
+        <td>{{ owner.last_name }}</td>
+        <td>{{ owner.birthday }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
