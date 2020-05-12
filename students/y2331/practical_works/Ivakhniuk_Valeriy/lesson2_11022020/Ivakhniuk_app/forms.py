@@ -11,6 +11,7 @@ class UserForm(forms.ModelForm):
             "last_name",
             "gender_ch",
             "passport_id",
-            "drive_license_id"
+            "drive_license_id",
+            "newrow",
         ]
 
