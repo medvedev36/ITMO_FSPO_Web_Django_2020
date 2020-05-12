@@ -10,5 +10,6 @@ class UserForm(forms.ModelForm):
             "second_name",
             "license_number",
             "gender",
-            "passport_ID"
+            "passport_ID",
+            "server_user"
         ]
