@@ -4,7 +4,8 @@
 </head>
 <body>
     {% for owner in owners %}
-        {{ owner.firstName }} {{ owner.secondName }}<br><br>
+        {{ owner.firstName }} {{ owner.secondName }},
+        {{ owner.user.homeAddress }}, {{ owner.user.passport }}, {{ owner.user.nationality }}<br><br>
     {% endfor %}
 
 </body>

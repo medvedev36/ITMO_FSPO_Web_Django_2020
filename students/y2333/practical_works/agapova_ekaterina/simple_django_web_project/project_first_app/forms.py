@@ -12,5 +12,6 @@ class OwnersForm(forms.ModelForm):
         # specify fields to be used
         fields = [
             "firstName",
-            "secondName"
+            "secondName",
+            "user"
         ]
