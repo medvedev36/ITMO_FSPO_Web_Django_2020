@@ -14,4 +14,5 @@ class OwnerForm(forms.ModelForm):
             "first_name",
             "second_name",
             "born",
+            "owner_extension",
         ]

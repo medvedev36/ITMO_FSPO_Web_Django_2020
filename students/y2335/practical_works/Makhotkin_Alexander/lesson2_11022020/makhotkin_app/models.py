@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
 
 # Create your models here.
 
@@ -10,7 +13,14 @@ class Car(models.Model):
     state_number = models.CharField(max_length=9)
 
 
+class OwnerExtension(AbstractUser):
+    passport = models.CharField(max_length=6)
+    home_address = models.CharField(max_length=50)
+    nationality = models.CharField(max_length=20)
+
+
 class Owner(models.Model):
+    owner_extension = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)
     second_name = models.CharField(max_length=50)
     born = models.DateField()
