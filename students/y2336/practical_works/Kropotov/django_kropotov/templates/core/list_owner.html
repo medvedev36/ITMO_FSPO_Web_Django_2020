@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+    {% for user in users %}
+        <li>{{ user.username }}</li>
+        <p>{{ user.email }}</p>
+        {% if user != users.last %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock content %}
