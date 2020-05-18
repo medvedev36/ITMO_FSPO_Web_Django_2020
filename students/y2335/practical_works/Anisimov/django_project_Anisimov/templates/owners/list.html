@@ -6,7 +6,11 @@
  </head>
  <body>
      {% for owner in owners %}
-         {{ owner.firstName }} {{ owner.secondName }}<br>
+         {{ owner.firstName }}
+         {{ owner.secondName }}
+         {{ owner.user.address }}
+         {{ owner.user.nationality }}
+         {{ owner.user.passport }}
          <hr/>
      {% endfor %}
   </body>

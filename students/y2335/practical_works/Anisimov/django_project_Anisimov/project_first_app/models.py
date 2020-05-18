@@ -1,4 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
+
+class User(AbstractUser):
+    address = models.CharField(max_length=512)
+    nationality = models.CharField(max_length=50)
+    passport = models.CharField(max_length=10)
 
 class Car(models.Model):
     number = models.CharField(max_length = 10)
@@ -6,8 +14,8 @@ class Car(models.Model):
     model = models.CharField(max_length = 100)
     color = models.CharField(max_length = 100)
 
-
 class Owner(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     firstName = models.CharField(max_length = 50)
     secondName = models.CharField(max_length = 50)
     birthday = models.DateField

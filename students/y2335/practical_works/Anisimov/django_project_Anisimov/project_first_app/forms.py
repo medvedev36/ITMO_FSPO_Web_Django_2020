@@ -8,6 +8,7 @@ class OwnerForm(forms.ModelForm):
 
         # specify fields to be used
         fields = [
+            "user",
             "firstName",
             "secondName",
         ]
