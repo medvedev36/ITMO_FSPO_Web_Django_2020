@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autos Info</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td></td>
+        <td> Цвет </td>
+        <td> Марка </td>
+        <td> Модель </td>
+        <td> Номер </td>
+    </tr>
+    {% for auto in autos %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ auto.color }}</td>
+            <td>{{ auto.mark }}</td>
+            <td>{{ auto.model }}</td>
+            <td>{{ auto.number }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

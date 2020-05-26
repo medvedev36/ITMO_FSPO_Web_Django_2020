@@ -1,0 +1,16 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    </head>
+    <body>
+        <ol>
+            {% for object in object_list %}
+            <hr>
+                <li>{{object.mark}} {{object.model}} ({{object.year}} года выпуска)</li>
+            <hr>
+            {% empty %}
+            <li>Автомобили не добавлены</li>
+            {% endfor %}
+        </ol>
+    </body>
+</html>

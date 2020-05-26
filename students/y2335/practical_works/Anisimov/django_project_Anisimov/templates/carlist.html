@@ -1,0 +1,14 @@
+<!doctype html>
+ <html lang="en">
+ <head>
+     <title>Cars</title>
+ </head>
+ <body>
+     {% for object in object_list %}
+         {{ object.mark }}<br>
+         {{ object.model }}<br>
+         <hr/>
+     {% endfor %}
+
+  </body>
+ </html>
