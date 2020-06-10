@@ -1,0 +1,41 @@
+{% extends 'myapp/base_list.html' %}
+
+
+{% block title %}
+    Users list
+{% endblock %}
+
+{% block list %}
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Telephone_number</th>
+            <th>Cash information</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.address}}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.telephone_number }}</td>
+                <td>{{ user.cash_information }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Telephone_number</th>
+            <th>Cash information</th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

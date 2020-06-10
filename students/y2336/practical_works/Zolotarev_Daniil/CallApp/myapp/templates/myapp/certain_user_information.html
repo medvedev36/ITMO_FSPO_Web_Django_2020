@@ -1,0 +1,46 @@
+{% extends 'myapp/base_certain_list.html' %}
+
+{% block title %}
+    Certain user information
+{% endblock %}
+
+
+{% block list %}
+
+
+    <div class="col-sm-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">Name</div>
+            <div class="panel-body">
+                {{ user.name }}
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">City</div>
+            <div class="panel-body">
+                {{ user.city }}
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Address</div>
+            <div class="panel-body">
+                {{ user.address }}
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Telephone number</div>
+            <div class="panel-body">
+                {{ user.telephone_number }}
+            </div>
+        </div>
+
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">Main data</a></li>
+            <li role="presentation"><a href="{% url 'certain_user_binding_url' login %}">User binding</a></li>
+        </ul>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends 'myapp/base_certain_list.html' %}
+
+{% block title %}
+    Certain user information
+{% endblock %}
+
+{% block list %}
+
+
+    <div class="col-sm-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">Balance</div>
+            <div class="panel-body">
+                {{ certain_cash.balance }}
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Date addition</div>
+            <div class="panel-body">
+                {{ certain_cash.date_addition }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default" onclick="location.href='{% url 'pay_for_calls_url' login %}'">Pay
+            for calls
+        </button>
+    </div>
+{% endblock %}
