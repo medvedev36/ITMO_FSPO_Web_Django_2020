@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+    {% for vehicle in vehicles %}
+        <li>{{ vehicle.brand }} {{ vehicle.model }}[{{ vehicle.license_plate }}]</li>
+        {% if vehicle != vehicles.last %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endblock content %}
