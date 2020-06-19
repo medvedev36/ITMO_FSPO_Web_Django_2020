@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1 class="article-title">Поставщик топлива {{ provider.name }}</h1>
+    <p>Нас сегодняшний день у {{ provider.name }} доступно {{ stations|length}} 
+    {% if stations|length > 3 %}
+    заправок.
+    {% elif  stations|length > 1 %}
+    заправки.
+    {% else %}
+    заправка.
+    {% endif %}
+    </p>
+    <div class="content-section">
+        {% for station in stations %}
+            <div class="content-section row">
+                <div class="col-5">
+                    <h2 class="mar-aba"><a class="article-title" href="{% url 'fuelstation-detail' station.id %}">{{ station.name }}</a></h2>
+                </div>
+
+                <div class="col-7 info">
+                    <h4>Адрес: {{ provider.address }}, {{ station.address }}</h4>
+                    <h4>Время работы: {{ time }}</h4>
+
+                </div>
+
+            </div>
+        {% endfor %}
+
+        <div class="info">
+            <h4>Адрес: {{ provider.address }}</h4>
+            <h4>Телефон для справок: {{ provider.phone }}</h4>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
