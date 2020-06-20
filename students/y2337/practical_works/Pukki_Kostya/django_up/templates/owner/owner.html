@@ -8,6 +8,15 @@
   <p>Имя: {{owner.first_name}}</p>
   <p>Фамилия: {{owner.last_name}}</p>
   <p>Дата рождения: {{owner.birthday}}</p>
+  {% if owner.user != None %}
+    {% if owner.user.passport != None %}
+      <p>{{ owner }}</p>
+    {% else %}
+      <p> Passport isn't entered. </p>
+  {% endif %}
+    {% else %}
+      <p> User hasn't created. </p>
+  {% endif %}
 
 {% endblock  %}
   
