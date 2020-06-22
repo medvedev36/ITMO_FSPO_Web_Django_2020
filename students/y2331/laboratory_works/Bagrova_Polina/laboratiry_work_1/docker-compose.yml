@@ -1,0 +1,16 @@
+version: '3'
+services:
+  server:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    command: python manage.py runserver
+    ports:
+      - 8000:8000
+  web:
+    build:
+      context: ./my-project/
+      dockerfile: ./Dockerfile
+    command: npm run dev
+    ports:
+      - 8080:8081
