@@ -9,3 +9,5 @@ admin.site.register(Orders)
 admin.site.register(Table)
 admin.site.register(Reservation)
 admin.site.register(Client)
+admin.site.register(Support)
+

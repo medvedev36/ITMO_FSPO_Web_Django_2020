@@ -4,9 +4,11 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 import datetime
 
+
 class Client(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=15, blank=True, null=True, unique=True)
+    email = models.EmailField(blank=True)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -160,3 +162,7 @@ class Table(models.Model):
     def __str__(self):
         return str(self.table_number)
 
+
+class Support(models.Model):
+    email = models.EmailField(max_length=30)
+    review = models.TextField()

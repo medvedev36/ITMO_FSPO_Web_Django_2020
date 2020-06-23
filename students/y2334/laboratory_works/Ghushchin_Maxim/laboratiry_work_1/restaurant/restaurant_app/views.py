@@ -106,6 +106,7 @@ def view_menu(request):
     return render(request, 'accounts/menu.html', context)
 
 
+@login_required
 def add_order(request, pk):
     client = Client.objects.get(user=request.user)
     dish = Dishes.objects.get(pk=pk)
@@ -118,13 +119,45 @@ def add_order(request, pk):
         client_order.save()
         client_order.dishes.add(dish)
         client_order.save()
-    return redirect('view_menu')
+    return redirect('view_cart')
 
 
+@login_required
 def remove_order(request, pk):
     client = Client.objects.get(user=request.user)
     dish = Dishes.objects.get(pk=pk)
     client_order = Orders.objects.get(client=client)
     client_order.dishes.remove(dish)
     client_order.save()
-    return redirect('view_menu')
+    return redirect('view_cart')
+
+
+@login_required
+def view_cart(request):
+    client = Client.objects.get(user=request.user)
+    cart = Orders.objects.get(client=client)
+    total_price = 0
+    for dish in cart.dishes.all():
+        total_price += dish.price
+    context = {
+        'cart': cart,
+        'total_price': total_price,
+    }
+    return render(request, 'accounts/cart.html', context)
+
+
+@login_required
+def send_review(request):
+    if request.method == 'POST':
+        form = SupportForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('view_ty')
+    else:
+        form = SupportForm()
+    return render(request, 'accounts/support_form.html', {'form': form})
+
+
+@login_required
+def view_ty(request):
+    return render(request, 'accounts/ty.html')

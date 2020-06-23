@@ -15,5 +15,8 @@ urlpatterns = [
     path('menu/', view_menu, name='view_menu'),
     path('order/<int:pk>', add_order, name='add_order'),
     path('remove_order/<int:pk>', remove_order, name='remove_order'),
+    path('cart/', view_cart, name='view_cart'),
+    path('send_review/', send_review, name='send_review'),
+    path('ty/', view_ty, name='view_ty')
 
 ]

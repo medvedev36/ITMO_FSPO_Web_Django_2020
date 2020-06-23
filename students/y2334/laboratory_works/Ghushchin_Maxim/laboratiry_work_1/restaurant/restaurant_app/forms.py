@@ -19,3 +19,14 @@ class ClientForm(forms.ModelForm):
         model = Client
         fields = ['phone']
 
+
+class SupportForm(forms.ModelForm):
+    class Meta:
+        model = Support
+        fields = ['email', 'review']
+
+    def __init__(self, *args, **kwargs):
+        super(SupportForm, self).__init__(*args, **kwargs)
+        self.fields['email'].label = 'Укажите свою почту'
+        self.fields['review'].label = 'Отзыв'
+
