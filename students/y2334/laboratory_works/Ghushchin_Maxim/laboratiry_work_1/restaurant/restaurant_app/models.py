@@ -117,6 +117,7 @@ class Orders(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, blank=True, null=True)
     date_order = models.DateField(auto_now_add=True)
     dishes = models.ManyToManyField(Dishes, blank=True)
+    check = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Заказ'

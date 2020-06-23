@@ -2,6 +2,14 @@
 {% block body %}
 
  <div class="container">
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
 <div class="content-section">
     <h3> Ваш заказ:  </h3>
     <div class="border-top pt-3">
@@ -14,6 +22,10 @@
     <div class="border-top pt-3">
     </div>
     <h6>Итоговая сумма: {{total_price}}</h6>
+    <br>
+    <a href="{% url 'close_order' %}">
+        <button type="button" class="btn btn-warning">Подтвердить заказ</button>
+    </a>
     {% else %}
     Вы ничего не заказали!
     {% endif %}

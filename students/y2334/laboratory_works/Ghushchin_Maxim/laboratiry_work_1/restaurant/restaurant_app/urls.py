@@ -17,6 +17,9 @@ urlpatterns = [
     path('remove_order/<int:pk>', remove_order, name='remove_order'),
     path('cart/', view_cart, name='view_cart'),
     path('send_review/', send_review, name='send_review'),
-    path('ty/', view_ty, name='view_ty')
+    path('ty/', view_ty, name='view_ty'),
+    path('close_order/', close_order, name='close_order'),
+    path('confirmed_order/', confirmed_order, name='confirmed_order'),
+    path('cancel_order/', cancel_order, name='cancel_order'),
 
 ]

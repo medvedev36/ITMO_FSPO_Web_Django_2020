@@ -133,9 +133,27 @@ def remove_order(request, pk):
 
 
 @login_required
+def confirmed_order(request):
+    client = Client.objects.get(user=request.user)
+    cart = Orders.objects.get(client=client)
+    reservation = Reservation.objects.get(client=request.user)
+    total_price = 0
+    for dish in cart.dishes.all():
+        total_price += dish.price
+    context = {
+        'cart': cart,
+        'total_price': total_price,
+        'reservation': reservation,
+    }
+    return render(request, 'accounts/confirmed_order.html', context)
+
+
+@login_required
 def view_cart(request):
     client = Client.objects.get(user=request.user)
     cart = Orders.objects.get(client=client)
+    if cart.check == True:
+        return redirect('confirmed_order')
     total_price = 0
     for dish in cart.dishes.all():
         total_price += dish.price
@@ -161,3 +179,24 @@ def send_review(request):
 @login_required
 def view_ty(request):
     return render(request, 'accounts/ty.html')
+
+
+@login_required
+def close_order(request):
+    client = Client.objects.get(user=request.user)
+    order = Orders.objects.get(client=client)
+    order.check = True
+    order.save()
+    messages.success(request, "Вы успешно оформили заказ! ")
+    return redirect('view_cart')
+
+
+@login_required
+def cancel_order(request):
+    client = Client.objects.get(user=request.user)
+    order = Orders.objects.get(client=client)
+    order.check = False
+    order.save()
+    messages.error(request, "Вы отменили свой заказ! ")
+    return redirect('view_cart')
+
