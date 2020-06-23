@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.generic import TemplateView
 from rest_framework import routers
 from final_app import views
 from django.urls import path, include
@@ -28,10 +29,13 @@ router.register(r'sales', views.SaleViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='index.html')),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('store/', views.StoreList.as_view()),
+    path('user/sale/', views.UserSales.as_view()),
     url(r'^auth/', include('djoser.urls')),
     url(r'^auth/', include('djoser.urls.jwt')),
-    url(r'^users/register', views.create_auth),
+    url(r'^user/register', views.create_auth),
+    url(r'^user/', views.UserData.as_view()),
 ]

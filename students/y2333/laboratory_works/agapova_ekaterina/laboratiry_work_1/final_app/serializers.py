@@ -4,31 +4,31 @@ from final_app.models import Fabric, Product, Delivery, Sale
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ['id', 'date_of_birth', 'card', 'email', 'first_name', 'last_name']
+        fields = ['id', 'date_of_birth', 'card', 'email', 'first_name', 'last_name', 'is_superuser']
 
 
-class FabricSerializer(serializers.HyperlinkedModelSerializer):
+class FabricSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fabric
         fields = ['id', 'address', 'name', 'country']
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'price', 'name', 'vendor_code', 'fabric', 'image']
 
 
-class DeliverySerializer(serializers.HyperlinkedModelSerializer):
+class DeliverySerializer(serializers.ModelSerializer):
     class Meta:
         model = Delivery
         fields = ['id', 'delivery_date', 'quantity', 'product', 'price_for_sale']
 
 
-class SaleSerializer(serializers.HyperlinkedModelSerializer):
+class SaleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sale
         fields = ['id', 'date', 'quantity', 'user', 'delivery']
@@ -48,4 +48,19 @@ class StoreSerializer(serializers.Serializer):
     name = serializers.CharField()
     vendor_code = serializers.CharField()
     quantity = serializers.IntegerField()
+    image = serializers.CharField()
+
+
+class UserSalesSerializer(serializers.Serializer):
+    def create(self, validated_data):
+        pass
+
+    def update(self, instance, validated_data):
+        pass
+
+    id = serializers.IntegerField()
+    quantity = serializers.IntegerField()
+    name = serializers.CharField()
+    total = serializers.IntegerField()
+    date = serializers.DateTimeField()
 

@@ -1,0 +1,142 @@
+<template>
+  <div>
+    <b-table :items="sales" :fields="saleFields" small bordered responsive>
+      <template v-slot:cell(id)="data">
+        <b-button @click="edit(data.index)" size="sm">Изменить</b-button>
+      </template>
+      <template v-slot:cell(delivery)="data">
+        {{ products[data.value] }}
+      </template>
+      <template v-slot:cell(user)="data">
+        {{ users[data.value] }}
+      </template>
+    </b-table>
+    <b-modal id="modal-edit"
+             title="Изменить"
+             ok-title="Сохранить"
+             cancel-title="Удалить"
+             @ok="saveItem"
+             @cancel="deleteItem"
+    >
+      <b-form-group
+        label="Время:"
+      >
+        <b-form-input
+          required
+          v-model="editedItem.date"
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group
+        label="Товар:"
+      >
+        <b-form-select v-model="editedItem.delivery" :options="products"></b-form-select>
+      </b-form-group>
+      <b-form-group
+        label="Кол-во:"
+      >
+        <b-form-input
+          required
+          type="number"
+          v-model="editedItem.quantity"
+        ></b-form-input>
+      </b-form-group>
+      <b-form-group
+        label="Пользователь:"
+      >
+        <b-form-select v-model="editedItem.user" :options="users"></b-form-select>
+      </b-form-group>
+    </b-modal>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "sales",
+    data() {
+      return {
+        sales: [],
+        saleFields: [
+          {key: 'date', label: 'Время'},
+          {key: 'delivery', label: 'Товар'},
+          {key: 'quantity', label: 'Кол-во'},
+          {key: 'user', label: 'Пользователь'},
+          {key: 'id', label: ''},
+        ],
+        products: {},
+        deliveries: {},
+        users: {},
+        editedItem: {
+          'date': '',
+          'delivery': '',
+          'quantity': '',
+          'user': '',
+        },
+        defaultItem: {
+          'date': '',
+          'delivery': '',
+          'quantity': '',
+          'user': '',
+        },
+        editedIndex: -1,
+      };
+    },
+    methods: {
+      edit(id) {
+        this.editedIndex = id;
+        this.editedItem = this.sales[id];
+        this.$bvModal.show('modal-edit')
+      },
+      create() {
+        this.editedIndex = -1;
+        this.editedItem = {...this.defaultItem}
+        this.$bvModal.show('modal-edit')
+      },
+      saveItem() {
+        const data = new FormData();
+        for (let key in this.editedItem) {
+          data.append(key, this.editedItem[key]);
+        }
+        axios({
+          url: '/sales/' + this.sales[this.editedIndex].id + '/',
+          method: 'PUT',
+          data: data,
+          headers: {'Content-Type': 'multipart/form-data'}
+        }).then((response) => {
+          alert('Продажа изменена!')
+        }).catch(() => alert('Произошла ошибка!'))
+      },
+      deleteItem() {
+        axios.delete('/sales/' + this.sales[this.editedIndex].id + '/').then((response) => {
+          alert('Продажа удалена!')
+          this.sales.splice(this.editedIndex, 1)
+        }).catch(() => alert('Произошла ошибка!'))
+      }
+    },
+    created() {
+      axios.get('/sales/').then(response => this.sales = response.data)
+      axios.get('/users/').then(response => {
+        const users = response.data
+        users.forEach(value => {
+          this.$set(this.users, value.id, value.email)
+        })
+      })
+      axios.get('/products/').then(response => {
+        const products = response.data
+        products.forEach(value => {
+          this.$set(this.products, value.id, value.name)
+        })
+
+        axios.get('/deliveries/').then(response => {
+          const deliveries = response.data
+          deliveries.forEach(value => {
+            this.$set(this.deliveries, value.id, this.products[value.product])
+          })
+        })
+      })
+    }
+  }
+</script>
+
+<style scoped>
+
+</style>

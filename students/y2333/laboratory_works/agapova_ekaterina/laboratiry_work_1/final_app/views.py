@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.contrib.auth import get_user_model
@@ -8,8 +10,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from final_app.models import Fabric, Product, Delivery, Sale
-from final_app.serializers import UserSerializer, FabricSerializer, ProductSerializer, DeliverySerializer, SaleSerializer, StoreSerializer
-
+from final_app.serializers import UserSerializer, FabricSerializer, ProductSerializer, DeliverySerializer, \
+    SaleSerializer, StoreSerializer, UserSalesSerializer
 
 User = get_user_model()
 
@@ -57,7 +59,8 @@ def store():
                 'price_for_sale': delivery.price_for_sale,
                 'name': delivery.product.name,
                 'vendor_code': delivery.product.vendor_code,
-                'quantity': delivery.quantity - q_sum
+                'quantity': delivery.quantity - q_sum,
+                'image': delivery.product.image,
             })
     return store_result
 
@@ -72,8 +75,8 @@ class StoreList(APIView):
         return Response(serializer.data)
 
 
-@permission_classes([AllowAny, ])
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def create_auth(request):
     serialized = UserSerializer(data=request.data)
     User.objects.create_user(
@@ -90,3 +93,76 @@ def create_auth(request):
     else:
         return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@permission_classes([IsAuthenticated, ])
+class OwnUserViewSet(viewsets.ModelViewSet):
+    queryset = Sale.objects.all()
+    serializer_class = SaleSerializer
+
+
+@permission_classes([IsAuthenticated, ])
+class UserData(APIView):
+    def get(self, request):
+        user_data = {
+            'date_of_birth': request.user.date_of_birth,
+            'card': request.user.card,
+            'email': request.user.email,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'is_superuser': request.user.is_superuser,
+        }
+        serialized = UserSerializer(data=user_data)
+        if serialized.is_valid():
+            return Response(serialized.data)
+        else:
+            return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request):
+        serialized = UserSerializer(data=request.data)
+        if serialized.is_valid():
+            user = request.user
+            user.email = serialized.data['email']
+            user.date_of_birth = serialized.data['date_of_birth']
+            user.card = serialized.data['card']
+            user.first_name = serialized.data['first_name']
+            user.last_name = serialized.data['last_name']
+            user.save()
+            return Response(serialized.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def user_sales(user):
+    sales = Sale.objects.filter(user=user).all()
+    sales_result = []
+    for sale in sales:
+        sales_result.append({
+            'id': sale.id,
+            'quantity': sale.quantity,
+            'name': sale.delivery.product.name,
+            'total': sale.quantity * sale.delivery.price_for_sale,
+            'date': sale.date
+        })
+    return sales_result
+
+
+@permission_classes([IsAuthenticated, ])
+class UserSales(APIView):
+    def post(self, request):
+        sale = {
+            'user': request.user,
+            'quantity': request.data['quantity'],
+            'delivery': Delivery.objects.get(pk=request.data['id']),
+            'date': date.today()
+        }
+        new_sale = Sale(**sale)
+        new_sale.save()
+        return Response('OK', status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        sales = user_sales(request.user)
+        serialized = UserSalesSerializer(data=sales, many=True)
+        if serialized.is_valid():
+            return Response(serialized.data)
+        else:
+            return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
