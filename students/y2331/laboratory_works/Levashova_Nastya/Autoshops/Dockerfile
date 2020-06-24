@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN mkdir /code
 WORKDIR /code
-COPRY req.txt /code/
+COPY req.txt /code/
 RUN pip install -r req.txt
 
 COPY manage.py /code/
