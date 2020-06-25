@@ -5,7 +5,7 @@ WORKDIR /code
 COPY req.txt /code/
 RUN pip install -r req.txt
 COPY manage.py /code/
-COPY laboratiry_work_1 /code/laboratiry_work_1
+COPY gord_laba /code/gord_laba
 COPY db.sqlite3 /code/
 COPY autopark /code/autopark
 # CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
