@@ -12,6 +12,9 @@ class Motorship(models.Model):
     motorship_date_end = models.DateField()
     team = models.ManyToManyField(MotorshipTeam)
 
+    def __str__(self):
+        return  "%s" % self.motorship_name
+
 class Sailor(models.Model):
     sailor_id = models.IntegerField()
     sailor_name = models.CharField(max_length=45)

@@ -1,3 +1,6 @@
+<body background="https://www.ljplus.ru/img4/m/p/mp_cheaptrip/background-please-wait-page.jpg">
+</body>
+
 <h1>Предстоящие туры:</h1>
 {% for tour in tours %}
     <b>Тур #{{ tour.id }}</b> <br>
@@ -10,7 +13,10 @@
     <hr>
     <br><br><br>
 {% endfor %}
-
+<h3>Не знаете, какой тур выбрать?</h3> <br>
+<a href="http://127.0.0.1:8000/find">
+<button>Помочь выбрать</button>
+</a>
 
 <br><br><br><br>
 <h3>Взгляните на наши теплоходы, на которых вам предстоит путешествовать:</h3> <br>

@@ -1,0 +1,19 @@
+<body background="https://rebeccacampbell.me/wp-content/uploads/2018/05/order-links-background.jpg">
+</body>
+
+<h1>Подходящие туры:</h1>
+{% for tour in tours %}
+    <b>Тур #{{ tour.id }}</b> <br>
+    Время начала: {{ tour.tour_datetime }}<br>
+    Название теплохода:  {{ tour.motorship.motorship_name }}<br>
+    <br>
+    <a href="http://127.0.0.1:8000/buy/{{tour.tour_id}}">
+   <button>Купить билет</button>
+    </a>
+    <hr>
+    <br><br><br>
+{% endfor %}
+
+<a href = "http://127.0.0.1:8000">
+<button>Вернуться на главную</button>
+</a>
