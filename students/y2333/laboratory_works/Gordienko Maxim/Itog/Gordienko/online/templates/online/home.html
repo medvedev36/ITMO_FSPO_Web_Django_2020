@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="center-column">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Категории</h1>
+            <ul class="list-group">
+                {% for category in categories %}
+                    <li class="list-group-item"><a class="active" href="{% url 'category-detail' category.id %}">{{ category }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h1>Бренды</h1>
+            <ul class="list-group">
+                {% for brand in brands %}
+                    <li class="list-group-item"><a class="active" href="{% url 'brand-detail' brand.id %}">{{ brand }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h1>Товары</h1>
+            <ul class="list-group">
+                {% for product in products %}
+                    <li class="list-group-item"><a class="active" href="{% url 'product-detail' product.id %}">{{ product }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="center-column">
+        <div class="content-block-section">
+            <a href="{% url 'category-detail' object.category.id %}">{{ object.category }}</a>, <a href="{% url 'brand-detail' object.brand.id %}">{{ object.brand }}</a>
+            <h1 class="product-name">{{ object.name }}</h1>
+        </div>
+        <h2>Магазины:</h2>
+        {% for instock in available %}
+            <a class="" href="{% url 'store-detail' instock.id %}">{{ instock.store }}, {{ instock.store.address }}</a>
+            <p class="">Цена: {{ instock.price }} руб. <br>В наличии: {% if instock.quantity > 50 %}много{% elif instock.quantity > 0 %}мало {% else %}нет{% endif %}</p>
+            {% if instock.quantity > 0 %}
+                <a class="btn btn-outline-primary" href="{% url 'purchase-new' instock.id %}">Купить</a>
+            {% endif %}
+            <br>
+            <br>
+        {% empty %}
+            <h3>Похоже никто не продает этот товар</h3>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

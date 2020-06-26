@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="center-column">
+        <div class="content-block-section">
+            <h1 class="product-name">{{ object.name }}</h1>
+        </div>
+        <h3>Адрес: {{ object.address }}</h3>
+        <h3>Телефон: {{ object.phone }}</h3>
+    </div>
+</div>
+{% endblock content %}
