@@ -1,6 +1,8 @@
 <template>
   <div>
+<!--    Заголовок главной страницы магазина   -->
     <b-jumbotron header="Ювелирная фантазия" lead="Украшения, которые придутся по душе" />
+<!--    Меню для покупки   -->
     <b-modal id="modal-buy"
              title="Покупка"
              ok-title="Купить"
@@ -25,6 +27,7 @@
     <b-container>
       <b-row v-for="(chunkedProducts, i) in products" :key="i" class="mb-3">
         <b-col md="4" sm="12" v-for="(product, j) in chunkedProducts" :key="product.id">
+<!--          Данные о товарах    -->
           <b-card
             :title="product.name"
             :img-src="product.image"
@@ -47,7 +50,9 @@
     name: "Store",
     data() {
       return {
+        //Все товары
         products: [],
+        //Данные о процессе покупки
         toBuy: {
           name: '',
           quantity: 0,
@@ -57,6 +62,9 @@
         }
       };
     },
+    /**
+     * Получение продаваемых товаров
+     */
     created() {
       axios.get('/store/').then(response => {
         let products = response.data;
@@ -66,6 +74,11 @@
       })
     },
     methods: {
+      /**
+       * Открытие меню покупки
+       * @param i
+       * @param j
+       */
       openBuyMenu(i, j) {
         if (!this.$root.loggedIn) {
           alert('Сначала треубется зарегистрироваться и войти!')
@@ -77,10 +90,16 @@
         this.toBuy.price_for_sale = this.products[i][j].price_for_sale;
         this.$bvModal.show('modal-buy')
       },
+      /**
+       * Покупка товара
+       * @param id
+       * @param quantity
+       */
       buy(id, quantity) {
         let data = new FormData()
         data.set('id', id)
         data.set('quantity', quantity)
+        //Отправка запроса на покупку
         axios({
           url: '/user/sale/',
           method: 'POST',

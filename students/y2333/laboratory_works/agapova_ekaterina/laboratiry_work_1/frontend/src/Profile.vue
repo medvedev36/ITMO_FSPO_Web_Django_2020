@@ -3,6 +3,7 @@
     <b-row class="mt-3 justify-content-md-center">
       <b-col sm="12" md="6">
         <b-card title="Профиль">
+<!--          Форма с данными о пользователе и возможностью редактирования   -->
           <b-form @submit.prevent="update">
             <b-form-group
               label="Почта:"
@@ -59,6 +60,7 @@
     </b-row>
     <b-row class="mt-3 mb-3 justify-content-md-center">
       <b-col sm="12" md="6">
+<!--        Данные о покупках пользователя       -->
         <b-card title="Покупки">
           <b-table :items="sales" :fields="saleFields"></b-table>
         </b-card>
@@ -72,12 +74,14 @@
     name: "Profile",
     data() {
       return {
+        //Данные пользователя
         email: this.$root.user.email,
         date_of_birth: this.$root.user.date_of_birth,
         card: this.$root.user.card,
         first_name: this.$root.user.first_name,
         last_name: this.$root.user.last_name,
         sales: [],
+        //Поля таблицы с покупками
         saleFields: [
           {key: 'name', label: 'Изделие'},
           {key: 'quantity', label: 'Кол-во'},
@@ -86,6 +90,9 @@
       };
     },
     watch: {
+      /**
+       * Обновление значений в форме при изменении
+       */
       '$root.user'() {
         this.email = this.$root.user.email;
         this.date_of_birth = this.$root.user.date_of_birth;
@@ -94,12 +101,18 @@
         this.last_name = this.$root.user.last_name;
       }
     },
+    /**
+     * Получение данных о покупках
+     */
     created() {
       axios.get('/user/sale/').then(response => {
         this.sales = response.data
       })
     },
     methods: {
+      /**
+       * Обновление данных о пользователе
+       */
       update() {
         let bodyFormData = new FormData();
         bodyFormData.set('email', this.email);
@@ -107,6 +120,7 @@
         bodyFormData.set('card', this.card);
         bodyFormData.set('first_name', this.first_name);
         bodyFormData.set('last_name', this.last_name);
+        //Отправка запроса на обновление
         axios({
           method: 'put',
           url: '/user/',

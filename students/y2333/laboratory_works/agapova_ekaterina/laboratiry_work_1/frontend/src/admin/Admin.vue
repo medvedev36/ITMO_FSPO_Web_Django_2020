@@ -1,5 +1,6 @@
 <template>
   <b-container>
+<!--    Хлебные крошки    -->
     <b-breadcrumb class="mt-4" exact active-class="active">
       <b-breadcrumb-item to="/">Магазин</b-breadcrumb-item>
       <b-breadcrumb-item to="/adminpanel">Админ панель</b-breadcrumb-item>
@@ -20,6 +21,7 @@
       </b-breadcrumb-item>
     </b-breadcrumb>
     <div>
+<!--  Представление для текущего пути  -->
       <router-view></router-view>
     </div>
   </b-container>
@@ -34,6 +36,11 @@
       };
     },
     methods: {
+      /**
+       * Определение, является ли путь текущим
+       * @param path Путь
+       * @returns {boolean} Является/не является
+       */
       isActive(path) {
         return this.$route.fullPath === path;
       }

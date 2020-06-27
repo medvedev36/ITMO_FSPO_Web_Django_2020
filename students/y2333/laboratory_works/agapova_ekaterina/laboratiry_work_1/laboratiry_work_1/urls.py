@@ -20,6 +20,7 @@ from rest_framework import routers
 from final_app import views
 from django.urls import path, include
 
+"""Регситрация REST urls"""
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'fabrics', views.FabricViewSet)
@@ -27,6 +28,7 @@ router.register(r'products', views.ProductViewSet)
 router.register(r'deliveries', views.DeliveryViewSet)
 router.register(r'sales', views.SaleViewSet)
 
+"""Регистрация собственных view"""
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),

@@ -3,6 +3,7 @@
     <b-row class="mt-3 justify-content-md-center">
       <b-col sm="12" md="6">
         <b-card title="Вход">
+<!--          Форма для входа       -->
           <b-form @submit.prevent="login">
             <b-form-group
               label="Имя пользователя:"
@@ -36,21 +37,28 @@
     name: "Login",
     data() {
       return {
+        //логин
         username: '',
+        //пароль
         password: '',
       };
     },
     methods: {
+      /**
+       * Аутентификация пользователя
+       */
       login() {
         let bodyFormData = new FormData();
         bodyFormData.set('username', this.username);
         bodyFormData.set('password', this.password);
+        //Отправка запроса на получение JWT токена
         axios({
           method: 'post',
           url: '/auth/jwt/create',
           data: bodyFormData,
           headers: {'Content-Type': 'multipart/form-data'}
         }).then(response => {
+          //Сохранение токена при успехе
           window.localStorage.setItem('token', response.data.access);
           axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.access;
           axios.get('/user/').then(response => {

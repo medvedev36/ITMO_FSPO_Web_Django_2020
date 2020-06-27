@@ -2,6 +2,7 @@
   <b-container>
     <b-row class="mt-3 justify-content-md-center">
       <b-col sm="12" md="6">
+<!--        Форма для регистрации-->
         <b-card title="Регистрация">
           <b-form @submit.prevent="register">
             <b-form-group
@@ -83,6 +84,7 @@
     name: "Register",
     data() {
       return {
+        //Данные о регистрируемом пользователе
         username: '',
         password: '',
         email: '',
@@ -93,6 +95,9 @@
       };
     },
     methods: {
+      /**
+       * Регистрация пользователя
+       */
       register() {
         let bodyFormData = new FormData();
         bodyFormData.set('username', this.username);
@@ -102,12 +107,14 @@
         bodyFormData.set('card', this.card);
         bodyFormData.set('first_name', this.first_name);
         bodyFormData.set('last_name', this.last_name);
+        //Отправка запроса не регистрацию
         axios({
           method: 'post',
           url: '/user/register/',
           data: bodyFormData,
           headers: {'Content-Type': 'multipart/form-data'}
         }).then(response => {
+          //Переадресация на страницу входа в случае успеха
           this.$router.push('/login');
         }).catch(() => {
           alert('Что-то заполнено неверно, попробуйте еще раз!')

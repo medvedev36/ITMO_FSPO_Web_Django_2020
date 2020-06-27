@@ -1,4 +1,5 @@
 <template>
+<!--  Список всех данных  -->
     <div>
       <b-list-group>
       <b-list-group-item to="/adminpanel/users">Пользователи</b-list-group-item>

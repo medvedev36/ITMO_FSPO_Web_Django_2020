@@ -13,40 +13,47 @@ from final_app.models import Fabric, Product, Delivery, Sale
 from final_app.serializers import UserSerializer, FabricSerializer, ProductSerializer, DeliverySerializer, \
     SaleSerializer, StoreSerializer, UserSalesSerializer
 
+"""Получение модели пользователя"""
 User = get_user_model()
 
 
 @permission_classes([IsAdminUser, ])
 class UserViewSet(viewsets.ModelViewSet):
+    """REST пользователей для админки"""
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
 
 @permission_classes([IsAdminUser, ])
 class FabricViewSet(viewsets.ModelViewSet):
+    """REST производителей для админки"""
     queryset = Fabric.objects.all()
     serializer_class = FabricSerializer
 
 
 @permission_classes([IsAdminUser, ])
 class ProductViewSet(viewsets.ModelViewSet):
+    """REST продуктов для админки"""
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
 
 @permission_classes([IsAdminUser, ])
 class DeliveryViewSet(viewsets.ModelViewSet):
+    """REST поставок для админки"""
     queryset = Delivery.objects.all()
     serializer_class = DeliverySerializer
 
 
 @permission_classes([IsAdminUser, ])
 class SaleViewSet(viewsets.ModelViewSet):
+    """REST продаж для админки"""
     queryset = Sale.objects.all()
     serializer_class = SaleSerializer
 
 
 def store():
+    """Определение товаров для продажи"""
     deliveries = Delivery.objects.all()
     store_result = []
     for delivery in deliveries:
@@ -67,6 +74,7 @@ def store():
 
 @permission_classes([AllowAny, ])
 class StoreList(APIView):
+    """Получение данных о продаваемых товарах"""
     serializer_class = StoreSerializer
 
     def get(self, request):
@@ -78,6 +86,7 @@ class StoreList(APIView):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def create_auth(request):
+    """Регистрация пользователя"""
     serialized = UserSerializer(data=request.data)
     User.objects.create_user(
         serialized.initial_data['username'],
@@ -96,12 +105,14 @@ def create_auth(request):
 
 @permission_classes([IsAuthenticated, ])
 class OwnUserViewSet(viewsets.ModelViewSet):
+    """Получение продаж"""
     queryset = Sale.objects.all()
     serializer_class = SaleSerializer
 
 
 @permission_classes([IsAuthenticated, ])
 class UserData(APIView):
+    """Получение/обновление данных о своем аккаунте"""
     def get(self, request):
         user_data = {
             'date_of_birth': request.user.date_of_birth,
@@ -133,6 +144,7 @@ class UserData(APIView):
 
 
 def user_sales(user):
+    """Определение покупок пользователя"""
     sales = Sale.objects.filter(user=user).all()
     sales_result = []
     for sale in sales:
@@ -148,6 +160,7 @@ def user_sales(user):
 
 @permission_classes([IsAuthenticated, ])
 class UserSales(APIView):
+    """Получение и совершение покупок пользователя"""
     def post(self, request):
         sale = {
             'user': request.user,

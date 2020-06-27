@@ -10,6 +10,9 @@ import Products from "./admin/Products";
 import Deliveries from "./admin/Deliveries";
 import Sales from "./admin/Sales";
 
+/**
+ * Данные о всех маршрутах и их представлениях
+ */
 export default [
   {
     path: '/',

@@ -1,8 +1,10 @@
 <template>
   <div>
+<!--    Навигационная панель   -->
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand to="/">Ювелирный магазин</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <!--      Основные кнопки профиля    -->
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-navbar-nav>
@@ -15,7 +17,7 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-
+<!--    Представление для текущего пути    -->
     <router-view></router-view>
   </div>
 </template>
@@ -26,6 +28,9 @@
     data() {
       return {}
     },
+    /**
+     * Проверка наличия токена и его валидности
+     */
     created() {
       if (window.localStorage.getItem('token')) {
         const token = window.localStorage.getItem('token');
@@ -40,6 +45,9 @@
       }
     },
     methods: {
+      /**
+       * Выход, удаление токена
+       */
       logout() {
         window.localStorage.removeItem('token');
         axios.defaults.headers.common['Authorization'] = '';

@@ -126,11 +126,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+"""Настройка расположения статики"""
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'frontend/dist'),
 ]
 
+"""Настройка REST фреймворка"""
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -139,6 +141,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+"""Настройка JWT аутентификации"""
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -151,6 +154,7 @@ SIMPLE_JWT = {
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
 
+"""Настройка сборки фронтенда"""
 WEBPACK_LOADER = {
     'DEFAULT': {
         'CACHE': not DEBUG,

@@ -1,10 +1,13 @@
 <template>
   <div>
+    <!--Таблица с данными-->
     <b-table :items="users" :fields="userFields" small bordered responsive>
+      <!--      Дополнительная ячейка для кнопки "Изменить"    -->
       <template v-slot:cell(id)="data">
         <b-button @click="edit(data.index)" size="sm">Изменить</b-button>
       </template>
     </b-table>
+    <!--    Окно для создания/редактирования   -->
     <b-modal id="modal-edit"
              title="Изменить"
              ok-title="Сохранить"
@@ -68,7 +71,9 @@
     name: "Users",
     data() {
       return {
+        //Все пользователи
         users: [],
+        //Поля для таблицы
         userFields: [
           {key: 'first_name', label: 'Имя'},
           {key: 'last_name', label: 'Фамилия'},
@@ -78,6 +83,7 @@
           {key: 'is_superuser', label: 'Админ'},
           {key: 'id', label: ''},
         ],
+        //Изменяемая строка из таблицы
         editedItem: {
           'first_name': '',
           'last_name': '',
@@ -86,6 +92,7 @@
           'card': '',
           'is_superuser': false
         },
+        //Новая строка
         defaultItem: {
           'first_name': '',
           'last_name': '',
@@ -98,21 +105,32 @@
       };
     },
     methods: {
+      /**
+       * Изменение строки
+       * @param id строки
+       */
       edit(id) {
         this.editedIndex = id;
         this.editedItem = this.users[id];
         this.$bvModal.show('modal-edit')
       },
+      /**
+       * Создание строки
+       */
       create() {
         this.editedIndex = -1;
         this.editedItem = {...this.defaultItem}
         this.$bvModal.show('modal-edit')
       },
+      /**
+       * Сохранение
+       */
       saveItem() {
         const data = new FormData();
         for (let key in this.editedItem) {
           data.append(key, this.editedItem[key]);
         }
+        //Отправка запроса
         axios({
           url: '/users/' + this.users[this.editedIndex].id + '/',
           method: 'PUT',
@@ -122,13 +140,20 @@
           alert('Пользователь изменен!')
         }).catch(() => alert('Произошла ошибка!'))
       },
+      /**
+       * Удаление строки из таблицы
+       */
       deleteItem() {
+        //Отправка запроса на удаление
         axios.delete('/users/' + this.users[this.editedIndex].id + '/').then((response) => {
           alert('Пользователь удален!')
           this.users.splice(this.editedIndex, 1)
         }).catch(() => alert('Произошла ошибка!'))
       }
     },
+    /**
+     * Получение данных о пользователях
+     */
     created() {
       axios.get('/users/').then(response => this.users = response.data)
     }

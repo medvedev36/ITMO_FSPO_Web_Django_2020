@@ -1,14 +1,18 @@
 <template>
   <div>
+    <!--Таблица с данными-->
     <b-table :items="products" :fields="productFields" small bordered responsive>
+      <!--      Дополнительная ячейка для кнопки "Изменить"    -->
       <template v-slot:cell(id)="data">
         <b-button @click="edit(data.index)" size="sm">Изменить</b-button>
       </template>
+      <!--      Подставка названия производителя вместо его ID    -->
       <template v-slot:cell(fabric)="data">
         {{ fabrics[data.value] }}
       </template>
     </b-table>
     <b-button @click="create" size="sm">Создать</b-button>
+    <!--    Окно для создания/редактирования   -->
     <b-modal id="modal-edit"
              :title="editedIndex === -1 ? 'Создать' : 'Изменить'"
              ok-title="Сохранить"
@@ -63,8 +67,11 @@
     name: "Products",
     data() {
       return {
+        //Все товары
         products: [],
+        //Все производители
         fabrics: {},
+        //Поля для таблицы
         productFields: [
           {key: 'fabric', label: 'Фабрика'},
           {key: 'image', label: 'Фото'},
@@ -73,6 +80,7 @@
           {key: 'vendor_code', label: 'Код'},
           {key: 'id', label: ''},
         ],
+        //Изменяемая строка из таблицы
         editedItem: {
           'fabric': '',
           'image': '',
@@ -80,6 +88,7 @@
           'price': 0,
           'vendor_code': '',
         },
+        //Новая строка
         defaultItem: {
           'fabric': '',
           'image': '',
@@ -91,21 +100,32 @@
       };
     },
     methods: {
+      /**
+       * Изменение строки
+       * @param id строки
+       */
       edit(id) {
         this.editedIndex = id;
         this.editedItem = this.products[id];
         this.$bvModal.show('modal-edit')
       },
+      /**
+       * Создание строки
+       */
       create() {
         this.editedIndex = -1;
         this.editedItem = {...this.defaultItem}
         this.$bvModal.show('modal-edit')
       },
+      /**
+       * Сохранение
+       */
       saveItem() {
         const data = new FormData();
         for (let key in this.editedItem) {
           data.append(key, this.editedItem[key]);
         }
+        //Отправка запроса
         axios({
           url: this.editedIndex === -1 ? '/products/' : '/products/' + this.products[this.editedIndex].id + '/',
           method: this.editedIndex === -1 ? 'POST' : 'PUT',
@@ -118,6 +138,9 @@
           }
         }).catch(() => alert('Произошла ошибка!'))
       },
+      /**
+       * Удаление строки из таблицы
+       */
       deleteItem() {
         axios.delete('/products/' + this.products[this.editedIndex].id + '/').then((response) => {
           alert('Товар удален!')
@@ -125,6 +148,9 @@
         }).catch(() => alert('Произошла ошибка!'))
       }
     },
+    /**
+     * Получение данных о товарах и производителях
+     */
     created() {
       axios.get('/products/').then(response => this.products = response.data)
       axios.get('/fabrics/').then(response => {
