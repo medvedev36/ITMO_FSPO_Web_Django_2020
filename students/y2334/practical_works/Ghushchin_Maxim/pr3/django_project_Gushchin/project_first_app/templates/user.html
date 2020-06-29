@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>User: {{ user.first_name }}</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <h1>Имя: {{user.first_name}}</h1>
+    <h1>Фамилия: {{user.last_name}}</h1>
+
+    <h1>Паспорт: {{user.user.passport}}</h1>
+    <h1>Адрес: {{user.user.address}}</h1>
+    <h1>Национальность: {{user.user.nationality }}</h1>
+
+    <h1>Дата: {{user.date}}</h1>
+  </body>
+
+</html>
