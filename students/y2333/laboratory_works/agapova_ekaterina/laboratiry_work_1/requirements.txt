@@ -1,0 +1,6 @@
+Django==3.0.7
+djoser
+djangorestframework
+djangorestframework-jwt
+djangorestframework-simplejwt
+django-webpack-loader==0.6.0

@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+
+  web:
+    build:
+      context: ./frontend/
+      dockerfile: ./Dockerfile
+    command: npm run dev
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 8080:8080
+    depends_on:
+      - server
