@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+.results tr[visible='false'],
+.no-result {
+display: none;
+}
+.results tr[visible='true'] {
+display: table-row;
+}
+.searchCount {
+padding: 8px;
+color: #ccc;
+}
+</style>
+<table border="1" class="results">
+
+<tbody>
+{% for cassette in data_c %}
+<tr>
+<td><a class="btn btn-outline-secondary" href="{% url 'cassette_delete_url' cassette.id %}">Удалить</a> </td>
+  <td>{{cassette.name}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

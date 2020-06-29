@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block stile %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+   table {
+    border:25px solid white; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+   }
+   th {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center">Личный кабинет</h2>
+
+<div class="card">
+  <img src="https://img-s3.onedio.com/id-5a82e2917d83035710e766e5/rev-0/w-635/listing/f-jpg-webp/s-81908d5460a1d944d51765a0d75cd3cc526afb94.webp" alt="John" style="width:100%">
+  <h1>{{user.username}}</h1>
+  <p class="title">Идентификатор: {{user.id}}</p>
+  <p>{{user.id_first_name}}</p>
+    <p>{{user.id_last_name}}</p>
+ <p>{{user.email}}</p>
+</div>
+
+
+<h1 class="text-center">История заказов</h1>
+<table class="table table-dark table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Дата брони</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Пункт выдачи</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for cassette in data_c %} {% for selling in data_sg %}
+      {% if user.id == selling.id_profile and cassette.id == selling.id_cassette%}
+        <tr>
+              <td>{{cassette.name}}</td>
+              <td>{{selling.date}}</td>
+              <td>{{selling.price}}</td>
+                {% for seller in data_s %} {% if seller.id == selling.id_seller %}
+                        <td>{{seller.address}}</td>
+                {% endif %}{% endfor %}
+          {% endif %} {% endfor %}
+      </tr>
+      {% endfor %}
+<!--        <td>-->
+<!--            {% for selling in data_sg %}-->
+<!--            {% for seller in data_s %}-->
+<!--            {% if cassette.id == admission.id_cassette %}-->
+<!--            {% if seller.id == admission.id_seller %}-->
+<!--                    <p>{{seller.address}}</p>-->
+<!--            {% endif %} {% endif %}-->
+<!--        {% endfor %} {% endfor %}</td>-->
+  </tbody>
+</table
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table table-dark table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Информация о фильме</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Наличие в продаже</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cassette in data_c %}
+    <tr>
+      <td><img src="{{cassette.poster}}"> </td>
+      <td>{{cassette.name}}<p>{{cassette.year}}</p><p>{{cassette.theme}}</p><p>{{cassette.duration}}</p><p>{{cassette.film_studio}}</p><p>{{cassette.producer}}</p></td>
+      <td>{{cassette.price}} <p><a class="btn btn-outline-secondary" href="{% url 'selling_url' user.id cassette.id%}">Забронировать</a></p></td>
+        <td>
+            {% for admission in data_a %}
+            {% for seller in data_s %}
+            {% if cassette.id == admission.id_cassette %}
+            {% if seller.id == admission.id_seller %}
+                    <p>{{seller.address}}</p>
+            {% endif %} {% endif %}
+        {% endfor %} {% endfor %}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endblock %}
