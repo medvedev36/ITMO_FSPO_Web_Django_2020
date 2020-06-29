@@ -1,0 +1,28 @@
+<h1>Предстоящие туры:</h1>
+{% for tour in tours %}
+    <b>Тур #{{ tour.id }}</b> <br>
+    Время начала: {{ tour.tour_datetime }}<br>
+    Название теплохода:  {{ tour.motorship.motorship_name }}<br>
+    <br>
+    <a href="http://127.0.0.1:8000/buy/{{tour.tour_id}}">
+   <button>Купить билет</button>
+    </a>
+    <hr>
+    <br><br><br>
+{% endfor %}
+<h3>Не знаете, какой тур выбрать?</h3> <br>
+<a href="http://127.0.0.1:8000/find">
+<button>Помочь выбрать</button>
+</a>
+
+<br><br><br><br>
+<h3>Взгляните на наши теплоходы, на которых вам предстоит путешествовать:</h3> <br>
+<a href="http://127.0.0.1:8000/motorship_list">
+<button>Посмотреть</button>
+</a>
+<br><br><br><br>
+<h3>Взгляните на наших супер-моряков:</h3> <br>
+<a href="http://127.0.0.1:8000/sailor_list">
+<button>Посмотреть</button>
+</a>
+<br><br><br><br>
