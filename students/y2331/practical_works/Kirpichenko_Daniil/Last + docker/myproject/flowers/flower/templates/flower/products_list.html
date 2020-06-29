@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+{% block tittle %}
+    FlowersList
+{% endblock %}
+
+{%block content%}
+    <h1 class="mb-5">Flowers:</h1>
+    {% for flower in flowers%}
+        <div class="card mb-5">
+          <h5 class="card-header">{{flower.product_name}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{flower.product_count}}</h5>
+            <p class="card-text">{{flower.product_cost}}</p>
+            <a href="{{flower.get_absolute_url}}" class="btn btn-primary">Order</a>
+          </div>
+        </div>
+    {%endfor%}
+
+{% endblock %}
