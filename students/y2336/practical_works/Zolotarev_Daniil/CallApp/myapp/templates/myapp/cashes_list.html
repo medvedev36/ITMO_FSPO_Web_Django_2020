@@ -1,0 +1,32 @@
+{% extends 'myapp/base_list.html' %}
+
+
+{% block title %}
+    Cashes list
+{% endblock %}
+
+{% block list %}
+ <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Balance</th>
+            <th>Date addition</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cash in cashes %}
+            <tr>
+                <td>{{ cash.balance }}</td>
+                <td>{{ cash.date_addition }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Balance</th>
+            <th>Date addition</th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

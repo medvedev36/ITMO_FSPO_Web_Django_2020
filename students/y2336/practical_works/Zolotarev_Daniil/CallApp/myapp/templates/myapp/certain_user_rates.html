@@ -1,0 +1,42 @@
+{% extends 'myapp/base_certain_list.html' %}
+
+{% block title %}
+    Certain user rates
+{% endblock %}
+
+
+{% block list %}
+   <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>User zone code</th>
+            <th>Call zone code</th>
+            <th>Call price per minute</th>
+            <th>User zone name</th>
+            <th>Call zone name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rate in certain_user_rates %}
+            <tr>
+                <td>{{ rate.user_zone_code }}</td>
+                <td>{{ rate.call_zone_code }}</td>
+                <td>{{ rate.call_price_per_minute }}</td>
+                <td>{{ rate.user_zone_name }}</td>
+                <td>{{ rate.call_zone_name }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>User zone code</th>
+            <th>Call zone code</th>
+            <th>Call price per minute</th>
+            <th>User zone name</th>
+            <th>Call zone name</th>
+        </tr>
+        </tfoot>
+    </table>
+
+{% endblock %}
