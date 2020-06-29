@@ -1,4 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+from django.contrib.auth import get_user_model
+
+
+class User1(AbstractUser):
+    home_adress = models.CharField(max_length=30, null=True ,blank=True)
+    nationality = models.CharField(max_length=30, null=True, blank=True)
+    pasport = models.IntegerField(max_length=15, null = True, blank=True)
 
 
 class DriverLicense(models.Model):
@@ -19,7 +28,9 @@ class User(models.Model):
         ('F', 'Female'),
         ('U', 'Undefined'),
     ])
+    newrow = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     passport_id = models.IntegerField(max_length=10)
+
 
 
 class Auto(models.Model):
