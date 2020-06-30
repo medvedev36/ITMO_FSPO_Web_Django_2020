@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <link href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+
+        #m {
+            margin-top: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Setup - add a text input to each footer cell
+            $('#example tfoot th').each(function () {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            });
+
+            // DataTable
+            var table = $('#example').DataTable({
+                initComplete: function () {
+                    // Apply the search
+                    this.api().columns().every(function () {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change clear', function () {
+                            if (that.search() !== this.value) {
+                                that
+                                    .search(this.value)
+                                    .draw();
+                            }
+                        });
+                    });
+                }
+            });
+
+        });
+    </script>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <a class="navbar-brand" href="{% url 'login' %}">Sign In</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'competitions_list' %}">Competitions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sportsmen_list' %}">Sportsmen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'trainers_list' %}">Trainers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'traumas_list' %}">Traumas Log</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contest_list' %}">Contests` Rows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'workout_list' %}">Workouts List</a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="{% url 'logout' %}">Sign Out</a>
+    </nav>
+</head>
+<body>
+{% block body %}
+{% endblock %}
+</body>
+</html>

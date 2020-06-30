@@ -1,0 +1,18 @@
+{% extends "nav_base.html" %}
+{% block body %}
+    <div class="content-section">
+        <div class="media">
+            <div class="media-body">
+                <div class="content-block-section">
+                    <h2 class="account-heading ml-5">@{{ user.username }}</h2>
+                    <p class="profile-info ml-5">Электронная почта: {{ user.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-pills">
+        <li role="presentation"><a class="btn btn-warning ml-3" href="{% url 'binding' %}">Bind Sportsman</a></li>
+        <li><a class="btn btn-warning ml-3" href="{% url 'participation' %}">Participate in Competition</a></li>
+        <li><a class="btn btn-warning ml-3" href="{% url 'training' %}">Conduct a Training</a></li>
+    </ul>
+{% endblock body %}
