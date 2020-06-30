@@ -21,7 +21,7 @@ export const Car = (props) => {
         <div>
             <h1>{car.name}</h1>
             <p>Цена за минуту: {car.price}</p>
-            {car.found && <a href={"/request/repair/" + car.name}>Заметил поломку</a>}
+            {car.found && <a href={"/repair/" + car.pk}>Заметил поломку</a>}
         </div>
     )
 }

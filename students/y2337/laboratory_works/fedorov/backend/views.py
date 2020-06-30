@@ -60,3 +60,23 @@ class History(APIView):
         trips = Trip.objects.filter(transaction__in=transactions)
         result = TripSerializer(trips, many=True)
         return Response(result.data)
+
+
+class RepairView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk=None):
+        if request.user.user_type == 'R':
+            car = Car.objects.get(pk=pk)
+            serializer = CarSerializer(car)
+            return Response(serializer.data)
+        return Response(status=403)
+
+    def post(self, request, pk=None):
+        if request.user.user_type == 'R':
+            car = Car.objects.get(pk=pk)
+            repair = Repairs.objects.create(car=car, repairer=request.user)
+            repair.save()
+            return Response(status=200)
+
+        return Response(status=403)
