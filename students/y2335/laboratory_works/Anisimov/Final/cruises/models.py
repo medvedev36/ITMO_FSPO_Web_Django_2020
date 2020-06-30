@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -51,6 +52,7 @@ class TicketCategory(models.Model):
 
 class Ticket(models.Model):
     ticket_id = models.IntegerField()
+    user_id = models.IntegerField(default=0)
     ownername = models.CharField("Ваше имя", max_length=45, default=" ")
     category = models.ForeignKey(TicketCategory, on_delete=models.DO_NOTHING)
     tour = models.ForeignKey(Tour, on_delete=models.DO_NOTHING)

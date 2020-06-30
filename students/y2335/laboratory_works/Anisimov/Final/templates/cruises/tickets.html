@@ -1,0 +1,24 @@
+{% if user.is_authenticated %}
+{% else %}
+ <head>
+  <meta http-equiv='refresh' content='0; URL=http://127.0.0.1:8000/'>
+</head>
+  {% endif %}
+
+<h1>Ваши билеты:</h1>
+{% for ticket in tickets %}
+    <b>#{{  ticket.id }}</b> <br>
+    Категория: {{ ticket.category }} <br>
+    Дата: {{ ticket.tour.tour_datetime }} <br>
+
+
+    <a href = "http://127.0.0.1:8000/remove/{{ ticket.id }}">
+<button>Сдать</button>
+</a>
+    <br>
+    <br>
+{% endfor %}
+
+<a href = "http://127.0.0.1:8000">
+<button>Вернуться на главную</button>
+</a>

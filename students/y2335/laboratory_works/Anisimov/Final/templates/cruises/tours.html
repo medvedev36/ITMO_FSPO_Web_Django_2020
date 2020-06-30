@@ -1,12 +1,31 @@
+{% if user.is_authenticated %}
+     <a href="http://127.0.0.1:8000/tickets">
+   <button>Мои билеты</button>
+    </a>
+      <a href="http://127.0.0.1:8000/logout">
+   <button>Выйти</button>
+    </a>
+  {% else %}
+    <p>Для покупки билета нужно авторизоваться.</p>
+      <a href="http://127.0.0.1:8000/accounts/login/">
+   <button>Авторизоваться</button>
+    </a>
+  {% endif %}
+<br>
+<br>
+<br>
 <h1>Предстоящие туры:</h1>
 {% for tour in tours %}
     <b>Тур #{{ tour.id }}</b> <br>
     Время начала: {{ tour.tour_datetime }}<br>
     Название теплохода:  {{ tour.motorship.motorship_name }}<br>
     <br>
-    <a href="http://127.0.0.1:8000/buy/{{tour.tour_id}}">
+  {% if user.is_authenticated %}
+   <a href="http://127.0.0.1:8000/buy/{{tour.tour_id}}">
    <button>Купить билет</button>
     </a>
+  {% endif %}
+
     <hr>
     <br><br><br>
 {% endfor %}
