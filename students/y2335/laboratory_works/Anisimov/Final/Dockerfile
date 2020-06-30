@@ -1,15 +1,13 @@
-FROM python:3
+FROM python:3.6
+ ENV PYTHONUNBUFFERED 1
 
-ENV PYTHONUNBUFFERED 1
+  RUN mkdir /usr/src/app
+ WORKDIR /usr/src/app
+ RUN mkdir -p /var/log/platform_admin
 
-RUN mkdir /code
-WORKDIR /code
-COPY req.txt /code/
-RUN pip install -r req.txt
+  COPY . /usr/src/app/
 
-COPY manage.py /code/
-COPY Final /code/Final
-COPY db.sqlite3 /code/
-COPY cruises /code/cruises
-
-# CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+  RUN pip install -r req.txt
+ RUN pip install django-widget-tweaks
+ RUN python manage.py makemigrations
+ RUN python manage.py migrate 

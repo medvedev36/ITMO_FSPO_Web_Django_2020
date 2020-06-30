@@ -1,7 +1,7 @@
 {% if user.is_authenticated %}
 {% else %}
  <head>
-  <meta http-equiv='refresh' content='0; URL=http://127.0.0.1:8000/'>
+  <meta http-equiv='refresh' content='0; URL=/'>
 </head>
   {% endif %}
 
@@ -12,13 +12,13 @@
     Дата: {{ ticket.tour.tour_datetime }} <br>
 
 
-    <a href = "http://127.0.0.1:8000/remove/{{ ticket.id }}">
+    <a href = "/remove/{{ ticket.id }}">
 <button>Сдать</button>
 </a>
     <br>
     <br>
 {% endfor %}
 
-<a href = "http://127.0.0.1:8000">
+<a href = "/">
 <button>Вернуться на главную</button>
 </a>

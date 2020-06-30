@@ -1,13 +1,13 @@
 {% if user.is_authenticated %}
-     <a href="http://127.0.0.1:8000/tickets">
+     <a href="/tickets/">
    <button>Мои билеты</button>
     </a>
-      <a href="http://127.0.0.1:8000/logout">
+      <a href="/logout/">
    <button>Выйти</button>
     </a>
   {% else %}
     <p>Для покупки билета нужно авторизоваться.</p>
-      <a href="http://127.0.0.1:8000/accounts/login/">
+      <a href="/accounts/login/">
    <button>Авторизоваться</button>
     </a>
   {% endif %}
@@ -21,7 +21,7 @@
     Название теплохода:  {{ tour.motorship.motorship_name }}<br>
     <br>
   {% if user.is_authenticated %}
-   <a href="http://127.0.0.1:8000/buy/{{tour.tour_id}}">
+   <a href="/buy/{{tour.tour_id}}">
    <button>Купить билет</button>
     </a>
   {% endif %}
@@ -30,18 +30,18 @@
     <br><br><br>
 {% endfor %}
 <h3>Не знаете, какой тур выбрать?</h3> <br>
-<a href="http://127.0.0.1:8000/find">
+<a href="/find/">
 <button>Помочь выбрать</button>
 </a>
 
 <br><br><br><br>
 <h3>Взгляните на наши теплоходы, на которых вам предстоит путешествовать:</h3> <br>
-<a href="http://127.0.0.1:8000/motorship_list">
+<a href="/motorship_list/">
 <button>Посмотреть</button>
 </a>
 <br><br><br><br>
 <h3>Взгляните на наших супер-моряков:</h3> <br>
-<a href="http://127.0.0.1:8000/sailor_list">
+<a href="/sailor_list/">
 <button>Посмотреть</button>
 </a>
 <br><br><br><br>
