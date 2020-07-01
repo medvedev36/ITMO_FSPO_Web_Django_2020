@@ -1,0 +1,58 @@
+.createPanel {
+  min-width: 270px;
+  max-width: 270px;
+}
+.addPanel {
+  padding: 8px 12px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color .1s;
+} 
+
+.addPanel:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.inputValuePanel {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: inherit;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+}
+
+.btnAddPanel{
+  padding: 6px 10px 8px 10px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  background-color: #448532;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color .1s;
+}
+
+.btnAddPanel:hover {
+  background-color: #295e1b;
+}
+
+.btnClose{
+  height: 1.5em;
+  margin-left: 15px;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color .1s;
+}
+
+.btnClose:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
