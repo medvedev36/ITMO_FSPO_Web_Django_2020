@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  padding: 6px 10px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
