@@ -1,0 +1,42 @@
+{% extends 'nav_base.html' %}
+{% block title %}
+    Trainers List
+{% endblock %}
+{% block body %}
+    <div id="m">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Salary</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tr in trainers %}
+                <tr>
+                    <td>{{ tr.name }}</td>
+                    <td>{{ tr.phone }}</td>
+                    <td>{{ tr.category }}</td>
+                    <td>{{ tr.rating }}</td>
+                    <td>{{ tr.salary }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Salary</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <form action="/trainers_form/">
+        <button type="submit" class="btn btn-success btn-lg ml-3 mt-1 mb-3">Expand List</button>
+    </form>
+{% endblock %}

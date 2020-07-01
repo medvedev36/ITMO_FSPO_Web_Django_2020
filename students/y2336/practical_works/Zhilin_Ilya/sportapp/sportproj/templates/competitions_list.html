@@ -1,0 +1,39 @@
+{% extends 'nav_base.html' %}
+{% block title %}
+    Competitions List
+{% endblock %}
+{% block body %}
+    <div id="m">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Place</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for com in competitions %}
+                <tr>
+                    <td>{{ com.title }}</td>
+                    <td>{{ com.date }}</td>
+                    <td>{{ com.place }}</td>
+                    <td>{{ com.category }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Place</th>
+                <th>Category</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+    <form action="/competitions_form/">
+        <button type="submit" class="btn btn-success btn-lg ml-3 mt-1 mb-3">Expand List</button>
+    </form>
+{% endblock %}
