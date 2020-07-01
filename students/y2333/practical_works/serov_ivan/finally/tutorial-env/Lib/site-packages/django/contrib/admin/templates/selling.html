@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block stile %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://bootstraptema.ru/snippets/form/2017/styles.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!-- <div class="creditCardForm">-->
+<!-- <div class="heading">-->
+<!-- <h1>Форма для оплаты кретдитной картой</h1>-->
+<!-- </div>-->
+<!-- <div class="payment">-->
+<!--<form method="POST" enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+<!-- <input type="text" name="form.id_profile" hidden value="{{data_u.id}}"/>-->
+<!-- <label >Название фильма</label>-->
+<!-- {{data_c.name}}-->
+<!--<input name="form.id_cassette" hidden value="{{data_c.id}}"/>-->
+<!-- <label >Цена</label>-->
+<!-- {{data_c.price}}-->
+<!--<input name="form.price"  hidden value="{{data_c.price}}"/>-->
+<!--  <label >Адрес пункта выдачи</label>-->
+<!-- <select name="form.id_seller">-->
+<!--     <option value="" disabled selected>Выберите адрес</option>-->
+<!--     {% for admission in data_a %}-->
+<!--            {% for seller in data_s %}-->
+<!--            {% if data_c.id == admission.id_cassette and seller.id == admission.id_seller %}-->
+<!--     <option value="{{ seller.id }}" >{{ seller.address }}</option>-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+<!--  {% endfor %}-->
+<!-- </select>-->
+
+<!--&lt;!&ndash;    {{ form.as_p }}&ndash;&gt;-->
+
+<!--    <input type="submit" value="Submit">-->
+<!--</form>-->
+<!--   </form>-->
+<!-- </div>-->
+<!-- </div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div class="container">
+<div class="row">
+ <div class="creditCardForm">
+ <div class="heading">
+ <h1>Форма для оплаты кретдитной картой</h1>
+ </div>
+ <div class="payment">
+ <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+ <input type="text" name="id_profile" hidden value="{{data_u.id}}"/>
+
+  <p></p>
+ {{data_c.name}}
+  <p></p>
+<input name="id_cassette" hidden value="{{data_c.id}}"/>
+  <p >Адрес пункта выдачи</p>
+ <select name="id_seller">
+     <option value="" disabled selected>Выберите адрес</option>
+     {% for admission in data_a %}
+            {% for seller in data_s %}
+            {% if data_c.id == admission.id_cassette and seller.id == admission.id_seller %}
+     <option value="{{ seller.id }}" >{{ seller.address }}</option>
+            {% endif %}
+        {% endfor %}
+  {% endfor %}
+ </select>
+<label >Цена</label>
+<p> {{data_c.price}}</p>
+<input name="price"  hidden value="{{data_c.price}}"/>
+ <div class="form-group owner">
+ <label>Владелец</label>
+ <input type="text" class="form-control" id="owner">
+ </div>
+ <div class="form-group CVV">
+ <label>CVV</label>
+ <input type="text" class="form-control" id="cvv">
+ </div>
+ <div class="form-group" id="card-number-field">
+ <label for="cardNumber">Номер карты</label>
+ <input type="text" class="form-control" id="cardNumber">
+ </div>
+ <div class="form-group" id="expiration-date">
+ <label>Срок годности</label>
+ <select>
+ <option value="01">January</option>
+ <option value="02">February </option>
+ <option value="03">March</option>
+ <option value="04">April</option>
+ <option value="05">May</option>
+ <option value="06">June</option>
+ <option value="07">July</option>
+ <option value="08">August</option>
+ <option value="09">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+ </select>
+ <select>
+ <option value="21"> 2021</option>
+ <option value="22"> 2022</option>
+ <option value="23"> 2023</option>
+ <option value="24"> 2024</option>
+ <option value="25"> 2025</option>
+ </select>
+ </div>
+ <div class="form-group" id="pay-now">
+  <input type="submit" value="Оплатить" class="btn btn-primary" >
+<!--  <input type="submit" value="Submit" class="btn btn-outline-secondary" href="/account/{{data_u.id}}/">-->
+</div>
+ </form>
+ </div>
+ </div>
+
+</div>
+</div>
+{% endblock %}
