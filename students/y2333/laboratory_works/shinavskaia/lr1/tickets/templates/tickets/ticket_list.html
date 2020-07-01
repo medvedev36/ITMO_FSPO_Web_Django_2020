@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% load humanize %}
+{% block search %}
+    <div class="separate-line"></div>
+{% endblock search %}
+{% block content %}
+    <div class="menu">
+        <div class="left-block">
+            <div class="user-info">
+                <div class="user-email">{{ user.email }}</div>
+                <div class="profile-link"><a class="" href="#">посмотреть профиль</a></div>
+                <div class="user-bonus">{{ user.points }} баллов</div>
+            </div>
+            <hr>
+            <div class="purchases">Личные заказы</div>
+            <a class="" href="{% url 'ticket-list' %}">покупки</a>
+        </div>
+        <div class="main-block">
+            <div class="table-header row ticket-header">
+                <div class="column col-1 bus-number">Автобус</div>
+                <div class="column col-1 ride-number">Номер рейса</div>
+                <div class="column col-3">Отправление</div>
+                <div class="column col-3">Прибытие</div>
+                <div class="column col-1">В пути</div>
+                <div class="column col-1">Цена</div>
+            </div>
+            {% for ticket in tickets %}
+                <div class="ticket-item row">
+                    <div class="column col-1 bus-number">{{ ticket.ride.bus.number }}</div>
+                    <div class="column col-1 ride-number">{{ ticket.ride.id }}</div>
+                    <div class="column col-3"><div class="departure-time-ticket-list">{{ ticket.ride.departure_datetime|date:"H:i, d F Y" }}</div><div>из {{ ticket.ride.where_from }}</div></div>
+                    <div class="column col-3"><div class="arrival-time-ticket-list">{{ ticket.ride.arrival_datetime|date:"H:i, d F Y" }}</div><div>в {{ ticket.ride.where }}</div></div>
+                    <div class="column col-1">{{ ticket.ride.arrival_datetime|datetime_sub:ticket.ride.departure_datetime }}</div>
+                    <div class="column col-1">{{ ticket.ride.price|intcomma}}руб.</div>
+                    <div class="column col-1"><a class="btn btn-outline-primary" href="{% url 'ticket-info' ticket.id %}">Подробнее</a></div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

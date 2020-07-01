@@ -1,0 +1,17 @@
+{% extends 'tickets/base_search.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+    <div class="">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>К оплате {{ ride.price|intcomma }}руб.</h2>
+            <h2>Отправление в {{ ride.departure_datetime|date:"H:i, d F" }}</h2>
+            <h2>Прибытие в {{ ride.arrival_datetime|date:"H:i, d F" }}</h2>
+            <div class="payment-info">Выберите способ оплаты: {{ form.payment_type }}</div>
+            <br>
+            <button class="btn btn-outline-primary confirm-button" type="sumbit">Купить</button>
+            <a class="btn btn-outline-danger confirm-button" href="{% url 'ride-list' %}?from={{ ride.where_from }}&to={{ ride.where }}&date={{ ride.departure_datetime|date:"Y-m-d" }}">Отмена</a>
+        </form>
+    </div>
+{% endblock content %}
