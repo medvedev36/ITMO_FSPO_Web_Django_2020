@@ -1,0 +1,33 @@
+{% extends 'tickets/base_search.html' %}
+{% load poll_extras %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+    <h1 class="ticket-info"><span>Выберите поезд, чтобы заказать билеты онлайн</span>
+        <br>
+        <span id="ticket-info">{0} → {1}, {2}, {3}</span>
+        <script type="module" src="{% static 'js/ticket_info.js' %}"></script>
+    </h1>
+    <div class="table-header row">
+        <div class="column col-1">Автобус</div>
+        <div class="column col-2">Отправление</div>
+        <div class="column col-2">Прибытие</div>
+        <div class="column col-1">В пути</div>
+        <div class="column col-1">Места</div>
+        <div class="column col-2">Цена</div>
+        <div class="column col-2">Заказ билетов</div>
+    </div>
+    {% for ride in queryset.all %}
+        <div class="item row">
+            <div class="column col-1">{{ ride.bus.number }}</div>
+            <div class="column col-2"><div class="departure-time">{{ ride.departure_datetime|date:"H:i" }}</div><div>из {{ ride.where_from }}</div></div>
+            <div class="column col-2"><div class="arrival-time">{{ ride.arrival_datetime|date:"H:i" }}</div>{% if ride.departure_datetime|date:"j M" != ride.arrival_datetime|date:"j M" %}<div class="arrival-date">{{ ride.arrival_datetime|date:"j M" }}</div>{% endif %}<div>в {{ ride.where }}</div></div>
+            <div class="column col-1">{{ ride.arrival_datetime|datetime_sub:ride.departure_datetime }}</div>
+            <div class="column col-1">{{ ride.ticket_count }}</div>
+            <div class="column col-2">{{ ride.price|intcomma}}руб.</div>
+            {% if ride.ticket_count %}
+                <div class="column col-2"><a class="btn btn-outline-primary my-btn" href="{% url 'buy-ticket' ride.id %}?from={{ ride.where_from }}&to={{ ride.where }}&date={{ ride.departure_datetime|date:"Y-m-d" }}">Заказ билетов</a></div>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock content %}

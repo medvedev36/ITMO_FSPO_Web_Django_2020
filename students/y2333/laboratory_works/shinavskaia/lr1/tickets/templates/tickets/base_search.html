@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block search %}
+    <div class="search-form">
+        <form method="GET" action="{% url 'ride-list' %}">
+            <input type="text" id="from" name="from" placeholder="Откуда">
+            <input type="text" id="to" name="to" placeholder="Куда">
+            <input type="date" id="date" name="date" placeholder="Дата"> 
+            <button class="btn btn-outline-primary search-button" type="sumbit">Найти билеты</button>
+            <script type="module" src="{% static 'js/index.js' %}"></script>
+        </form>
+    </div>
+{% endblock search %}

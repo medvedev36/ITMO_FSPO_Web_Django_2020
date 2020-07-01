@@ -1,0 +1,209 @@
+.header {
+    color: black;
+    margin-left: 40px;
+    padding-top: 30px;
+    height: 120px;
+}
+
+.logo {
+    float: left;
+    width: 150px;
+    height: 70px;
+}
+.nav-link {
+    color: black;
+}
+
+.nav-list {
+    float: right;
+    text-align: right;
+    flex-direction: row;
+    display: flex;
+}
+
+.my-list-element {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+}
+
+.right-block {
+    float: right;
+    text-align: right;
+}
+
+input {
+    border: 1;
+    border-radius: 12px;
+    background: 0 0;
+    box-shadow: none;
+    padding: 0;
+    overflow: unset;
+    height: 40px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.search-button {
+    margin-top: -5px;
+}
+
+.search-form {
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-bottom: 10px;
+    border-bottom: #DDDDDD solid;
+    border-width: 1px;
+}
+
+.content {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.table-header {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: #DDDDDD solid;
+    border-width: 1px;
+}
+
+.item {
+    /* height: ; */
+    padding-top: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(70,117,150,.1), 0 5px 10px 0 rgba(145,178,201,.65);
+}
+.departure-time, .arrival-time {
+    font-weight: bold;
+    font-size: x-large;
+    position: relative;
+}
+
+.my-btn {
+    margin-top: -7px;
+}
+
+.confirm-button {
+    margin-top: 20px;
+}
+
+.payment-info {
+    font-size: larger;
+    margin-top: 20px;
+}
+.menu {
+    margin-top: 20px;
+}
+
+.separate-line {
+    border-bottom: #DDDDDD solid;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-width: 1px;
+}
+
+.left-block {
+    float: left;
+    border-radius: 4px;
+    border: #DDDDDD solid;
+    border-width: 1px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+    width: 220px;
+}
+
+.user-email {
+    font-weight: bold;
+    font-size: large;
+}
+.user-bonus {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.purchases {
+    font-weight: bold;
+    font-size: large;
+}
+
+.main-block {
+    float: left;
+    border-radius: 4px;
+    border: #DDDDDD solid;
+    width: calc(100% - 230px);
+    border-width: 1px;
+    padding: 15px;
+}
+
+.info {
+    padding: 15px;
+}
+
+.ticket-title {
+    border-bottom: #DDDDDD solid;
+    border-width: 1px;
+}
+
+.ticket-info {
+    margin-top: 20px;
+}
+
+.ticket-info-item {
+    font-size: larger;
+}
+
+.ticket-item {
+    padding: 15px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    box-shadow: 0 0 0 1px rgba(70,117,150,.1), 0 5px 10px 0 rgba(145,178,201,.65);
+    border-radius: 4px;
+    padding-top: 25px;
+}
+
+.ticket-header {
+    padding: 10px;
+
+}
+
+.arrival-time-ticket-list, .departure-time-ticket-list {
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+}
+
+.bus-number {
+    margin-right: 25px;
+}
+
+.login-form {
+    /* float: right; */
+}
+
+.user-img {
+    float: left;
+}
+
+.profile-info {
+    float: left;
+    margin-left: 15px;
+}
+
+.username {
+    font-size: 50px;
+}
+
+.email, .full-name, .points, .user-type {
+    font-size: xx-large;
+}
+.btn-confirm-delete {
+    margin-left: 10px;
+}
