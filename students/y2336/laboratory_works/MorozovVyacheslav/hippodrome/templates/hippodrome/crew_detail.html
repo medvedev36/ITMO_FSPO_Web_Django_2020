@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="content-list">
+        <h1><a class="article-title" href="{% url 'jockey-detail' object.jockey.id %}">{{ object.jockey }}</a> - <a class="article-title" href="{% url 'horse-detail' object.horse.id %}">{{ object.horse }}</a></h1>
+        <h2>Номер: {{ object.number }}</h2>
+        <ul class="list-group">
+            {% for race in competitions.all %}
+                <li class="list-group-item"><a class="article-title" href="{% url 'competition-detail' race.competition.id %}">{{ race.crew }} на "{{ race.competition }}" заняли {{ race.place }} место</a></li>
+            {% empty %}
+                <li class="list-group-item">Жокей не участвовал ни в одном соревновании</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

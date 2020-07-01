@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% for hip in object_list %}
+        <div class="content-list">
+            <a class="" href="http://{{ hip.website }}">{{ hip.website}}</a>
+            <h1><a class="article-title" href="{% url 'hippodrome-detail' hip.id %}">{{ hip.name }}</a></h1>
+        </div>
+    {% empty %}
+        <h1>Ни одной команды еще нет.</h1>
+    {% endfor %}
+{% endblock content %}

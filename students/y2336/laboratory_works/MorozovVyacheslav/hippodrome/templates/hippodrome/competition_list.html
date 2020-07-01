@@ -1,0 +1,11 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% for comp in object_list %}
+        <div class="content-list">
+            <a class="" href="{% url 'hippodrome-detail' comp.hippodrome.id %}">{{ comp.hippodrome }}</a>
+            <h1><a class="article-title" href="{% url 'competition-detail' comp.id %}">{{ comp.name }} - {{ comp.date|date }}</a></h1>
+        </div>
+    {% empty %}
+        <h1>Ни одного соревнования еще не проводили.</h1>
+    {% endfor %}
+{% endblock content %}

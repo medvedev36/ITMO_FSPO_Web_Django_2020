@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="content-list">
+        <h1>{{ object.name }}</h1>
+        <h3>Адрес: {{ object.address }}</h3>
+        <h3>Вместимость: {{ object.people_capacity }}</h3>
+        <h3>Проведено соревнований (всего {{ competitions.all|length }}):</h3>
+        <ul class="list-group">
+            {% for comp in competitions.all %}
+                <li class="list-group-item"><a class="article-title" href="{% url 'competition-detail' comp.id %}">{{ comp }} с призовым фондом: ${{ comp.fund }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
