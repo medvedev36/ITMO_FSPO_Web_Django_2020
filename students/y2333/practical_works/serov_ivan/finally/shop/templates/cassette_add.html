@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block stile %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+   table {
+    border:25px solid white; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+   }
+   th {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+</style>
+{% endblock %}
+{% block content %}
+
+
+     <div id="rectangle"></div>
+ </div>
+ <div class="payment">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="card">
+  <img src="https://bizlit.com.ua/image/cache/data/images9/kniga-byt-knigoljubom-600x800.png"  style="width:100%">
+        <p>Название книги: </p>{{ form.name}}
+        <p>Цена книги: </p>{{ form.price}}
+        <p>Год издания: </p>{{ form.year}}
+        <p>Жанр: </p>{{ form.theme}}
+        <p>Название издательства: </p>{{ form.film_studio}}
+        <p>Имя и фамилия автора</p>{{ form.producer}}
+        <p>Ссылка на обложку книги </p>{{ form.poster}}
+        <p></p>
+    <input type="submit" value="Создать" class="btn btn-outline-secondary" >
+    </div>
+</form>
+ </div>
+
+
+{% endblock %}
