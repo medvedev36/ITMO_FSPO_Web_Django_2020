@@ -10,7 +10,7 @@ const History = () => {
     useEffect(() => {
         request('/api/history/')
             .then(data => setHisory(data))
-            .catch(() => {})
+            .catch(() => {alert('Ошибка')})
     }, [request])
 
     const renderHistory = (item) => {
@@ -29,7 +29,6 @@ const History = () => {
         )
     }
 
-    console.log(history)
     return (
         <div className="conatier my-5">
             <h2 className="my-3">История поездок</h2>

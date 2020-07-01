@@ -12,7 +12,10 @@ export const Car = (props) => {
     useEffect(() => {
         http('/api/car/' + props.match.params.id)
             .then(data => setCar({...data, found: true}))
-            .catch(e => console.log(e))
+            .catch(e => {
+                alert('Ошибка')
+                console.log(e)
+            })
 
     }, [props.match.params.id, http, request])
 

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 from math import ceil
 
@@ -42,8 +42,8 @@ class EndTrip(APIView):
     def post(self, request):
         inTrips = InTripModel.objects.filter(user=request.user)
         for inTrip in inTrips:
-            begin = inTrip.begin.replace(tzinfo=None)
-            end = datetime.now().replace(tzinfo=None)
+            begin = inTrip.begin
+            end = datetime.utcnow().replace(tzinfo=timezone.utc)
             delta = ceil(((end - begin) / 60).total_seconds())
             price = delta * inTrip.car.price
             transaction = Transaction.objects.create(user=request.user, delta=-price)

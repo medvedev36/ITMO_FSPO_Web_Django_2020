@@ -28,6 +28,8 @@ SECRET_KEY = 'aibwwzfmfo-0(-(xugww9+$^r84g&h6&p23zs@5@4z1-x*53gs'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+TIME_ZONE = 'Universal'
+TIME_ZONE = 'UTC'
 
 
 # Application definition

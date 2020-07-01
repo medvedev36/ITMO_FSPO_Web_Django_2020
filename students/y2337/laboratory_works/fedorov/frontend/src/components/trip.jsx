@@ -3,11 +3,6 @@ import {useHistory} from 'react-router-dom';
 import {useAuth} from "../hooks/auth.hook";
 import {AuthContext} from "../context/auth";
 
-const BeginTrip = (props) => {
-    console.log(props.car)
-
-}
-
 const EndTrip = (props) => {
     return (
         <div>
@@ -28,19 +23,27 @@ const Trip = () => {
     useEffect(() => {
         request('/api/trip/start/')
             .then(data => setCar(data))
-            .catch((e) => console.log(e))
+            .catch((e) => {
+                console.log(e)
+            })
     }, [request])
 
     const gohandler = () => {
         request('/api/trip/start/', 'POST', car)
             .then(() => change(true))
-            .catch((e) => console.log(e))
+            .catch((e) => {
+                console.log(e)
+                alert('Ошибка')
+            })
     }
 
     const finishhandler = () => {
         request('/api/trip/finish/', 'POST')
             .then(() => change(false))
-            .catch((e) => console.log(e))
+            .catch((e) => {
+                console.log(e)
+                alert('Ошибка')
+            })
     }
 
     if (!inTrip) {

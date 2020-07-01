@@ -12,6 +12,7 @@ export const Login = () => {
             const token = await request('/auth/jwt/create/', 'POST', {...data})
             auth.login(token)
         } catch(e) {
+            alert('Ошибка авторизации')
             console.log(e)
         }
     }
@@ -20,7 +21,8 @@ export const Login = () => {
         try {
             await request('/auth/users/', 'POST', {...data})
         } catch (e) {
-           console.log(e)
+            alert('Ошибка авторизации')
+            console.log(e)
         }
     }
 
