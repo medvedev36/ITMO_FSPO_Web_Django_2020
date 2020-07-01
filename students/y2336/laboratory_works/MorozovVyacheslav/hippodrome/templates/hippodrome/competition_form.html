@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {{ form.as_p }}
+        <button class="btn btn-outline-primary" type="submit">Создать соревнование</button>
+    </form>
+    <a class="btn btn-outline-danger" href="{% url 'profile' %}">Отмена</a>
+{% endblock content %}

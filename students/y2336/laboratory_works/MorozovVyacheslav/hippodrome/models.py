@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Horse(models.Model):
-    image = models.ImageField(upload_to='horse_pics', default='default_horse.jpg')
+
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     experience = models.IntegerField()
@@ -52,7 +52,7 @@ class Competition(models.Model):
 class Race(models.Model):
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
     crew = models.ForeignKey(Crew, on_delete=models.CASCADE)
-    place = models.IntegerField()
+    place = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return '{} - {}'.format(self.crew, self.place)

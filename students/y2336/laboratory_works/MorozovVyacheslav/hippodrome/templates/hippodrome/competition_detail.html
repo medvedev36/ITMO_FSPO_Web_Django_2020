@@ -5,6 +5,7 @@
         <h1>{{ object.name }} - {{ object.date|date }}</h1>
         <h3>Призовой фонд: ${{ object.fund }}</h3>
         <h3>Участники (всего {{ object.participants.all|length }}): </h3>
+        <a class="btn btn-outline-primary" href="{% url 'race-new' object.id %}">Зарегистрироваться на соревнование</a>
         <ul class="list-group">
             {% for race in participants.all %}
                 <li class="list-group-item"><a class="article-title" href="{% url 'crew-detail' race.crew.id %}">{{ race }}</a></li>
