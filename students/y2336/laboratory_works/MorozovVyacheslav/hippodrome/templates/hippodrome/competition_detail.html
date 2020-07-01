@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="content-list">
+        <a class="" href="{% url 'hippodrome-detail' object.hippodrome.id %}">{{ object.hippodrome }}</a>
+        <h1>{{ object.name }} - {{ object.date|date }}</h1>
+        <h3>Призовой фонд: ${{ object.fund }}</h3>
+        <h3>Участники (всего {{ object.participants.all|length }}): </h3>
+        <a class="btn btn-outline-primary" href="{% url 'race-new' object.id %}">Зарегистрироваться на соревнование</a>
+        <ul class="list-group">
+            {% for race in participants.all %}
+                <li class="list-group-item"><a class="article-title" href="{% url 'crew-detail' race.crew.id %}">{{ race }}</a></li>
+            {% empty %}
+                <li class="list-group-item">Нет ни одного участника</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}

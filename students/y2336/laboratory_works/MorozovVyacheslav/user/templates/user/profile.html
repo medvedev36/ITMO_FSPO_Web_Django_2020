@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <div class="media-body">
+                <img class="rounded-circle account-img" src="{{ user.image.url }}" width=300 height=300>
+                <div class="content-block-section">
+                    <h2 class="account-heading">@{{ user.username }}</h2>
+                    <p class="profile-info">{{ user.first_name }} {{ user.last_name }}</p>
+                    <p class="profile-info">Электронная почта: {{ user.email }}</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-outline-primary" type="submit">Принять изменения</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

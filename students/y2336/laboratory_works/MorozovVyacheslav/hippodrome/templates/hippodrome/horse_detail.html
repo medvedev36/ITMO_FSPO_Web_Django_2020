@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="content-list">
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ object.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ object.username }}</h2>
+          <p class="text-secondary">Стаж: {{ object.experience }}</p>
+          <p class="text-secondary">Возраст: {{ object.age }}</p>
+          <p class="text-secondary">Владелец: {{ object.owner }}</p>
+          <p class="text-secondary">Цена: ${{ object.price }}</p>
+          <p class="text-secondary">Участвовал в {{ races|length }} скачках</p>
+          <p class="text-secondary">Побеждал в {{ wins|length }} скачках</p>
+          <p class="text-secondary">Доля побед: {% widthratio wins|length races|length 1 %} скачках</p>
+        </div>
+      </div>
+      <h2 class="account-heading">Скачки:</h2>
+        <ul class="list-group">
+            {% for race in races.all %}
+                <li class="list-group-item"><a class="article-title" href="{% url 'competition-detail' race.competition.id %}">{{ race.crew }} на "{{ race.competition }}" заняли {{ race.place }} место</a></li>
+            {% empty %}
+                <li class="list-group-item">Команда не участвовала ни в одном соревновании</li>
+            {% endfor %}
+        </ul>
+    </div>
+    </div>
+{% endblock content %}
