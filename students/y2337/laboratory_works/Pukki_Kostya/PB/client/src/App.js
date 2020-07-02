@@ -6,8 +6,6 @@ import { useAuth } from './hooks/auth.hook'
 import { AuthContext } from './context/AuthContext';
 import { useRoutes } from './routes'
 
-//! box-shadow последней карточки
-
 const App = () => {
 
   const { token, login, logout, ready } = useAuth();
