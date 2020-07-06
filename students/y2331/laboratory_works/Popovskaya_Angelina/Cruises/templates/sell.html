@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block stile %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<link href="https://bootstraptema.ru/snippets/form/2017/styles.css" rel="stylesheet">
+
+{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row">
+ <div class="creditCardForm">
+ <div class="heading">
+ <h1>Форма для оплаты кретдитной картой</h1>
+ </div>
+ <div class="payment">
+ <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+ <input type="text" name="id_profile" hidden value="{{data_u.id}}"/>
+
+  <p></p>
+ {{ cruise.name }}
+  <p></p>
+<input name="id_excursion" hidden value="{{data_e.id}}"/>
+  <label>Выберете класс каюты </label>
+     {% for cruise in data_c %}
+     {% if data_e.id_cruise == cruise.id %}
+ <select name="price">
+     <option value="" disabled selected>Выберите класс</option>
+     <option value="{{ cruise.price_1 }}" >Первый класс : {{ cruise.price_1 }}₽</option>
+     <option value="{{ cruise.price_2 }}" >Второй класс : {{ cruise.price_2 }}₽</option>
+     <option value="{{ cruise.price_3 }}" >Третий класс : {{ cruise.price_3 }}₽</option>
+ </select>
+     {% endif %}{% endfor %}
+ <div class="form-group owner">
+ <label>Владелец</label>
+ <input type="text" class="form-control" id="owner">
+ </div>
+ <div class="form-group CVV">
+ <label>CVV</label>
+ <input type="text" class="form-control" id="cvv">
+ </div>
+ <div class="form-group" id="card-number-field">
+ <label for="cardNumber">Номер карты</label>
+ <input type="text" class="form-control" id="cardNumber">
+ </div>
+ <div class="form-group" id="expiration-date">
+ <label>Срок годности</label>
+ <select>
+ <option value="01">January</option>
+ <option value="02">February </option>
+ <option value="03">March</option>
+ <option value="04">April</option>
+ <option value="05">May</option>
+ <option value="06">June</option>
+ <option value="07">July</option>
+ <option value="08">August</option>
+ <option value="09">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+ </select>
+ <select>
+ <option value="21"> 2021</option>
+ <option value="22"> 2022</option>
+ <option value="23"> 2023</option>
+ <option value="24"> 2024</option>
+ <option value="25"> 2025</option>
+ </select>
+ </div>
+ <div class="form-group" id="pay-now">
+  <input type="submit" value="Оплатить" class="btn btn-primary" >
+</div>
+ </form>
+ </div>
+ </div>
+
+</div>
+</div>
+{% endblock %}
