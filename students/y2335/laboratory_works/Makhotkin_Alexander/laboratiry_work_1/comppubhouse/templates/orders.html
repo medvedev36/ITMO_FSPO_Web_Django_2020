@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Заказы{% endblock %}
+{% block content %}
+    <div class="d-flex justify-content-center">
+            <h1>Заказы</h1>
+    </div>
+    {% for order in customer_orders %}
+        <div class="mt-2 mb-5">
+            <div class="d-flex justify-content-center mb-2">
+                <h3>Заказ от {{ order.date_order|date:"d-m-Y G:H:i" }}</h3>
+            </div>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Название книги</th>
+                    <th scope="col">Цена за экз.</th>
+                    <th scope="col">Количество</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in order.books %}
+                    <tr>
+                        <td>
+                            {{ book.title }}
+                        </td>
+                        <td >
+                            {{ book.bought_price|intcomma }} руб
+                        </td>
+                        <td>
+                            {{ book.selected_count }} шт.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            <div class="mt-3">
+            <h5>Всего экземпляров: {{ order.sum_count }} шт.</h5>
+            <h4>Стоимость заказа: {{ order.sum_price|intcomma }} руб</h4>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
