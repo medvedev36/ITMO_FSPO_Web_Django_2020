@@ -1,0 +1,2 @@
+Pillow
+django==3.0.7
