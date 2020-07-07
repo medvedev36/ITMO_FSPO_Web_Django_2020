@@ -10,7 +10,35 @@ from django.utils.html import strip_tags
 from .forms import *
 from .models import *
 
+
 # Create your views here.
+
+
+def orders(request):
+    customer_orders = Order.objects.filter(customer_id=request.user.id, bought=True).order_by('-date_order')
+
+    for order in customer_orders:
+        sum_price = 0
+        sum_count = 0
+        books_in_order = BooksInOrder.objects.filter(order=order).values('book')
+        books = Book.objects.filter(isbn__in=books_in_order)
+        order.books = books
+        for book in books:
+            try:
+                book_in_order = BooksInOrder.objects.get(order_id=order, book_id=book.isbn)
+                book.selected_count = book_in_order.count
+                book.bought_price = book_in_order.price
+                sum_price += book.selected_count * book.bought_price
+                sum_count += book.selected_count
+            except:
+                book.selected_count = 0
+        order.sum_price = sum_price
+        order.sum_count = sum_count
+
+    context = {
+        'customer_orders': customer_orders,
+    }
+    return render(request, 'orders.html', context)
 
 
 def feedback(request):
