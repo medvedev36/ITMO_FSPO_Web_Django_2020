@@ -1,4 +1,12 @@
 from django.db import models
+from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    passport_number = models.IntegerField(unique=True, null=True)
+    address = models.CharField(max_length=150, null=True)
+    nationality = models.CharField(max_length=30, null=True)
 
 
 class Car(models.Model):
@@ -7,11 +15,17 @@ class Car(models.Model):
     color = models.CharField(max_length=15)
     number = models.CharField(max_length=10)
 
+    def get_absolute_url(self):
+        return u'/car/%d' % self.id
+    # owners = models.ManyToManyField(Owner, through='Ownership')
+
 
 class Owner(models.Model):
     name = models.CharField(max_length=25)
     surname = models.CharField(max_length=25)
     birthday = models.DateField()
+    cars = models.ManyToManyField(Car, through='Ownership')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class Ownership(models.Model):

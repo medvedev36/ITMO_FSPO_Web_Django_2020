@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Owner List</title>
+</head>
+<body>
+    <h3>Owner List</h3>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">День Рождения</th>
+                <th scope="col">Номер Пользователя</th>
+                <th scope="col">Номер Паспорта Пользователя</th>
+                <th scope="col">Адрес Пользователя</th>
+                <th scope="col">Национальность Пользователя</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for owner in owners_list %}
+                <tr>
+                    <td>{{ owner.id }}</td>
+                    <td>{{ owner.name }}</td>
+                    <td>{{ owner.surname }}</td>
+                    <td>{{ owner.birthday }}</td>
+                    {% if owner.user != None %}
+                        <td>{{ owner.user.passport }}</td>
+                        <td>{{ owner.user.address }}</td>
+                        <td>{{ owner.user.nationality }}</td>
+                    {% else %}
+                        <td>-</td><td>-</td><td>-</td><td>-</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

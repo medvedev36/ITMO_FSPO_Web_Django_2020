@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Dossier</title>
+</head>
+<body>
+<h3>Владелец #{{owner.id}}</h3>
+Имя: {{owner.name}} <br>
+Фамилия: {{owner.surname}} <br>
+Дата Рождения: {{owner.birthday}} <br>
+{% if owner.user != None %}
+    Паспорт Пользователя: {{owner.user.passport}} <br>
+    Адрес Пользователя: {{owner.user.address}} <br>
+    Национальность Пользователя: {{owner.user.nationality}} <br>
+{% else %}
+    Данных по Пользователю нет.
+{% endif %}
+</body>
+</html>
