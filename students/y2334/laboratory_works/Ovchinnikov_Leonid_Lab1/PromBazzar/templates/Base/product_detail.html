@@ -1,0 +1,17 @@
+{% extends 'temp.html' %}
+{% block content %}
+    <div class="content-block-section">
+        <h1 class="product-name">{{ object.name_prod }}</h1>
+    </div>
+    <div class="center-column">
+            <p class="">Дата {{ object.exp_date }}  </p>
+            <p class="">О Продукте: {{ object.about_prod }}  </p>
+            {% for obj in suppliers %}
+                <div class = "border">
+                <a class="grid-container">{{ obj.prov_name }} | {{ obj.price_sold }} Руб.</a>
+                <a class="active" href="{% url 'deal-form' %}">Купить</a>
+                </div>
+            {% endfor %}
+
+    </div>
+{% endblock content %}
