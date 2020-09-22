@@ -8,7 +8,10 @@
     {% for owner in owners %}
         Имя: {{ owner.firstName }}<br>
         Фамилия: {{ owner.secondName }}<br>
-        Дата рождения: {{ owner.birthday }}<br><br>
+        Дата рождения: {{ owner.birthday }}<br>
+        Паспорт: {{ owner.userOwn.passport }} <br>
+        Домашний адресс: {{ owner.userOwn.address }} <br>
+        Национальность: {{ owner.userOwn.nationality }}<br><br>
     {% endfor %}
 </body>
 </html>

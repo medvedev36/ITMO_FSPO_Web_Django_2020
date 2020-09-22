@@ -6,4 +6,4 @@ class OwnerForm(forms.ModelForm):
     class Meta:
         model = Owner
 
-        fields = ['firstName', 'secondName', 'birthday']
+        fields = ['userOwn', 'firstName', 'secondName', 'birthday']

@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 class Auto(models.Model):
@@ -8,7 +10,14 @@ class Auto(models.Model):
     state_number = models.CharField(max_length=9)
 
 
+class userOwner(AbstractUser):
+    passport = models.CharField(max_length=10, blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True)
+    nationality = models.CharField(max_length=30, blank=True, null=True)
+
+
 class Owner(models.Model):
+    userOwn = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     firstName = models.CharField(max_length=30)
     secondName = models.CharField(max_length=30)
     birthday = models.DateField()
