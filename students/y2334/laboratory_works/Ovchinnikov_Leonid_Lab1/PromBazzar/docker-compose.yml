@@ -1,6 +1,11 @@
-version: '3'
+version: 3
+
 services:
-  app:
-    build: .
-    ports:
-    - 1234:8000
+    server:
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        command: py manage.py runserver 0.0.0.0:8000
+        ports:
+            -8000:8000
+    
