@@ -1,0 +1,16 @@
+{% extends 'base_main.html' %}
+
+{% block title %}
+    {{ disc.disc_name }}
+{% endblock %}
+
+{%  block content %}
+    <div class="card" style="width: 80rem;">
+        <img src="{{ disc.url }}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ disc.disc_name}}</h5>
+            <p class="card-text">{{ disc.description }}</p>
+            <a href="#" class="btn btn-primary">Заказать</a>
+        </div>
+    </div>
+{% endblock %}

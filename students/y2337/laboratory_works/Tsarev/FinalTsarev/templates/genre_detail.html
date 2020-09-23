@@ -1,0 +1,29 @@
+{% extends 'base_main.html' %}
+
+{% block title %}
+    {{ genre.genre_name }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-5">{{ genre.genre_name }}</h1>
+    <div class="row row-cols-1 row-cols-md-3">
+    {% for disc in genre.discs.all %}
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="{{ disc.url }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ disc.disc_name}}</h5>
+                        <p class="card-text">{{ disc.description| truncatewords:20 }}</p>
+                        <a href="{% url 'disc_detail_url' disc_id=disc.disc_id %}" class="btn btn-primary">Перейти</a>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    {% for genre in disc.genres.all %}
+                        <a href="{% url 'genre_detail_url' genre_id=genre.genre_id%}">{{ genre.genre_name }} </a> |
+                    {% endfor %}
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
