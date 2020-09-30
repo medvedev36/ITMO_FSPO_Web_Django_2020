@@ -10,10 +10,9 @@
 
 .cards {
   max-height: 80vh;
-  margin-bottom: 8px;
 }
 
-.cards > div:not(:last-child){
+.cards > div{
   margin-bottom: 8px;
 }
 
