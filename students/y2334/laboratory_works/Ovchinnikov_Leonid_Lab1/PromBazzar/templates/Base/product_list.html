@@ -1,0 +1,13 @@
+{% extends 'temp.html' %}
+{% block content %}
+<div class="center-column">
+        <h1>Продукты</h1>
+        <div class="content-block-sectio2n">
+            <div class="grid-container">
+                {% for obj in product_list %}
+                    <div class="grid-item"><a class="active" href="{% url 'product-detail' obj.id %}">{{ obj }}</a></div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock content %} 
