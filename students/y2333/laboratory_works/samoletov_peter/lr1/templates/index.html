@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<div class="container">
+	<section id="content">
+		<form action="" method="post">
+			<h1>Зарегистрироваться</h1>
+            {% csrf_token %} -
+			<div>
+				<input type="text" placeholder="Имя" required="" name="username" id="username" />
+			</div>
+			<div>
+				<input type="password" placeholder="Пароль" name="password1" required="" id="password" />
+			</div>
+            <div>
+				<input type="password" placeholder="Повторите пароль" name="password2" required="" id="password" />
+			</div>
+			<div>
+				<input type="submit" value="Создать" />
+				<a href="http://127.0.0.1:8000/accounts/login/">Войти</a>
+			</div>
+		</form><!-- form -->
+		
+	</section><!-- content -->
+</div><!-- container -->
+{% endblock %}

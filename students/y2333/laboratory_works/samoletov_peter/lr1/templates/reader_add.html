@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body%}
+<div class="container">
+	<section id="content">
+		<form method="post">
+            {% csrf_token %} -
+			<h1>Зарегистировать читателя</h1>
+			<div>
+				<input type="text" placeholder="ФИО читателья" name="name" required="" id="username" />
+			</div>
+			<div>
+				<input type="text" placeholder="Адресс проживания" name="address" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="Номер" name="phone_number" required="" id="username" />
+			</div>
+			<div>
+				<input type="submit" value="Добавить" />
+			</div>
+		</form><!-- form -->
+
+	</section><!-- content -->
+
+    <a href="{% url 'reader_all_url' %}" style="">Вернуться к списку всех читателей</a>
+</div><!-- container -->
+
+    {% endblock%}

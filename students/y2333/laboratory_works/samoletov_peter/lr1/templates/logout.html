@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body%}
+<div class="container">
+	<section id="content">
+		<form action="" method="post">
+			<h1>Вы вышли</h1>
+			<div>
+				<a href="{% url 'login' %}"> Войти снова</a>
+			</div>
+		</form><!-- form -->
+
+	</section><!-- content -->
+</div><!-- container -->
+
+    {% endblock%}
