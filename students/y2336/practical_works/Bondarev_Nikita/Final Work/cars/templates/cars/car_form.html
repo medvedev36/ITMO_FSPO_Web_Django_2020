@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-wrapper">
+        <h1>Добавить автомобиль</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="id_car_image">Изображение: </label>
+            {{ form.car_image }}
+            <br>
+            <label for="id_car_image">Бренд: </label>
+            {{ form.brand }}
+            <br>
+            <label for="id_car_image">Модель: </label>
+            {{ form.model }}
+            <br>
+            <label for="id_car_image">Цвет: </label>
+            {{ form.color }}
+            <br>
+            <label for="id_car_image">Номерной знак: </label>
+            {{ form.number_plate }}
+            <br>
+            <label for="id_car_image">Количество мест: </label>
+            {{ form.sits_number }}
+            <br>
+            <label for="id_car_image">Класс машины: </label>
+            {{ form.car_class }}
+            <br>
+            {#            <input type="datetime-local" id="id_issue_datetime" name="issue_datetime" placeholder="Время начала аренды" required>#}
+            {#            <br>#}
+            {#            {{ form.taken_from }}#}
+            {#            <br>#}
+            {#            {{ form.return_to }}#}
+            {#            <br>#}
+            <button class="btn btn-outline-primary search-button" type="sumbit">Добавить</button>
+        </form>
+    </div>
+{% endblock content %}

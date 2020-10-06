@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-wrapper">
+        <h1>Арендовать {{ car }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="datetime-local" id="id_issue_datetime" name="issue_datetime" placeholder="Время начала аренды" required>
+            <input type="datetime-local" id="id_return_datetime" name="return_datetime" placeholder="Время конца аренды" required>
+            <br>
+            {{ form.taken_from }}
+            <br>
+            {{ form.return_to }}
+            <br>
+            <button class="btn btn-outline-primary search-button" type="sumbit">Подтвердить аренду</button>
+        </form>
+    </div>
+{% endblock content %}

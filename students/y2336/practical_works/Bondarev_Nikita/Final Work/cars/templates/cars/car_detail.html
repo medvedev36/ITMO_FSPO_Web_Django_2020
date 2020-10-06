@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ car }}</h1>
+    <div class="row">
+        <img class="col-9 home-img" src="{{ car.car_image.url }}" width="80%" style="float: left;">
+        <a class="col-2s btn btn-outline-info" style="float: right; height: min-content" href="{% url 'rent-new' car.id %}">Арендовать</a>
+    </div>
+    <h4>Описание</h4>
+    <p>Стоимость: {{ car.car_class.rent_price }} руб./день</p>
+    <p>В машине оборудовано {{ car.sits_number }} мест.</p>
+    <p>{{ car.brand }} {{ car.model }} - это машина {{ car.car_class.name }} классса. </p>
+    <p>{{ car.car_class.description }}</p>
+{% endblock content %}
