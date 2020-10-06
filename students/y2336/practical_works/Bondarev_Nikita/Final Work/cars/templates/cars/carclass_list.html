@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for class in object_list %}
+        <div class="content-wrapper">
+            <h1 class="car-title">{{ class.name }}</h1>
+            <h2 class="car-price">В этот класс входят машины от {{ class.min_car_price}} рублей.</h2>
+            <h2 class="car-price">Цена аренды машин {{ class.rent_price }} руб./день.</h2>
+            <div class="my-btn-group">
+                <a class="btn btn-outline-info" href="{% url 'carclass-detail' class.id %}" style="float: right;">Подробнее</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

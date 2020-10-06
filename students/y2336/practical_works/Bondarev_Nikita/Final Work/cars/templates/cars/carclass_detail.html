@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ carclass }}</h1>
+    <p>{{ carclass.description }}</p>
+    <p>Машины данного класса стоят от {{ carclass.min_car_price }} руб.</p>
+    <p>В наших салонах их можно найти за {{ carclass.rent_price }} руб./день.</p>
+    <p>Доступные машины:</p>
+    <ul class="list-group">
+        {% for car in cars %}
+            <li class="list-group-item">{{ car }}<a class="btn btn-outline-info" style="float: right" href="{% url 'rent-new' car.id %}">Арендовать</a><a class="btn btn-outline-info" style="float: right" href="{% url 'car-detail' car.id %}">Подробнее</a></li>
+        {% empty %}
+            <li class="list-group-item">Похоже доступных машин нет</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
