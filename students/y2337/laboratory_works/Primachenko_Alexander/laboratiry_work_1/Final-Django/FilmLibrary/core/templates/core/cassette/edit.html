@@ -1,0 +1,32 @@
+{% extends 'core/edit_template.html' %}
+
+{% block title %}
+   Editing a Cassette
+{% endblock %}
+
+{% block page-title %}
+   Enter new info about a Cassette:
+{% endblock %}
+
+{% block in-the-table %}
+   <tr>
+      <th><label>Title:</label></th>
+      <td><input type="text" name="title" maxlength="60" value="{{ item.title }}"></td>
+   </tr>
+   <tr>
+      <th><label>Theme:</label></th>
+      <td><input type="text" name="theme" maxlength="45" value="{{ item.theme }}"></td>
+   </tr>
+   <tr>
+      <th><label>Director:</label></th>
+      <td><input type="text" name="director" maxlength="60" value="{{ item.director }}"></td>
+   </tr>
+   <tr>
+      <th><label>Release Date:</label></th>
+      <td><input type="date" name="release_date" value="{{ item.release_date }}"></td>
+   </tr>
+   <tr>
+      <th><label>Studio:</label></th>
+      <td><input type="text" name="studio" maxlength="60" value="{{ item.studio }}"></td>
+   </tr>
+{% endblock %}

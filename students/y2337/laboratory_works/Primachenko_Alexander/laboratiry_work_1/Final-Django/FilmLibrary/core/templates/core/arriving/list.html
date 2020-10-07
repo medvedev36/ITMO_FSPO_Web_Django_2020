@@ -1,0 +1,38 @@
+{% extends 'core/list_template.html' %}
+
+{% block title %}
+   Cassette Arrives List
+{% endblock %}
+
+{% block page-title %}
+   All Cassettes Arrives
+{% endblock %}
+
+{% block table-head %}
+   <th scope="col">#</th>
+   <th scope="col">Cassette ID</th>
+   <th scope="col">Seller ID</th>
+   <th scope="col">Provider ID</th>
+   <th scope="col">Price</th>
+   <th scope="col">Quantity</th>
+   <th scope="col">Date</th>
+   <th scope="col">Actions</th>
+{% endblock %}
+
+{% block table-body %}
+   {% for arriving in arriving_list %}
+       <tr>
+          <td>{{ arriving.id }}</td>
+          <td>{{ arriving.cassette }}</td>
+          <td>{{ arriving.seller }}</td>
+          <td>{{ arriving.provider }}</td>
+          <td>{{ arriving.price }}</td>
+          <td>{{ arriving.quantity }}</td>
+          <td>{{ arriving.date }}</td>
+          <td>
+             <a href="../edit/{{ arriving.id }}">Edit</a>
+             <a href="../delete/{{ arriving.id }}">Delete</a>
+          </td>
+       </tr>
+   {% endfor %}
+{% endblock %}
