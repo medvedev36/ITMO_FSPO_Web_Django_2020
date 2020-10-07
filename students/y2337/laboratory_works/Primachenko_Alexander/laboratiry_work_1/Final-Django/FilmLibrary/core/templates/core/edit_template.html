@@ -1,0 +1,12 @@
+{% extends 'core/base_template.html' %}
+
+{% block content %}
+    <form method="post" action="../update/{{item.id}}">
+        {% csrf_token %}
+        <table class="table">
+            {% block in-the-table %}
+            {% endblock %}
+        </table>
+        <button type="submit" class="btn btn-dark">Update</button>
+    </form>
+{% endblock %}

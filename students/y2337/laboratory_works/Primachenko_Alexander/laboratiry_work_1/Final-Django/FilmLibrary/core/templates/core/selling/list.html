@@ -1,0 +1,38 @@
+{% extends 'core/list_template.html' %}
+
+{% block title %}
+   Cassette Sells List
+{% endblock %}
+
+{% block page-title %}
+   All Cassette Sells
+{% endblock %}
+
+{% block table-head %}
+   <th scope="col">#</th>
+   <th scope="col">Cassette ID</th>
+   <th scope="col">Seller ID</th>
+   <th scope="col">Client Name</th>
+   <th scope="col">Price</th>
+   <th scope="col">Quantity</th>
+   <th scope="col">Date</th>
+   <th scope="col">Actions</th>
+{% endblock %}
+
+{% block table-body %}
+   {% for selling in selling_list %}
+       <tr>
+          <td>{{ selling.id }}</td>
+          <td>{{ selling.cassette }}</td>
+          <td>{{ selling.seller }}</td>
+          <td>{{ selling.client }}</td>
+          <td>{{ selling.price }}</td>
+          <td>{{ selling.quantity }}</td>
+          <td>{{ selling.date }}</td>
+          <td>
+             <a href="../edit/{{ selling.id }}">Edit</a>
+             <a href="../delete/{{ selling.id }}">Delete</a>
+          </td>
+       </tr>
+   {% endfor %}
+{% endblock %}

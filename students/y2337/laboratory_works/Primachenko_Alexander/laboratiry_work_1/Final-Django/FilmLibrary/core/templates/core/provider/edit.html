@@ -1,0 +1,20 @@
+{% extends 'core/edit_template.html' %}
+
+{% block title %}
+   Editing a Provider
+{% endblock %}
+
+{% block page-title %}
+   Enter new info about a Provider:
+{% endblock %}
+
+{% block in-the-table %}
+   <tr>
+      <th><label>Title:</label></th>
+      <td><input type="text" name="title" maxlength="60" value="{{ item.title }}"></td>
+   </tr>
+   <tr>
+      <th><label>Address:</label></th>
+      <td><input type="text" name="address" maxlength="160" value="{{ item.address }}"></td>
+   </tr>
+{% endblock %}
