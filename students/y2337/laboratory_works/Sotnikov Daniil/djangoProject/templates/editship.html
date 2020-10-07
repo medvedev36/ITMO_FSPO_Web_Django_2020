@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter Id</label><br>
+            <input type="number" name="ship_id" value="{{ ship.ship_id }}"/>
+        </p>
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name" value="{{ ship.name }}"/>
+        </p>
+        <p>
+            <label>Enter release</label><br>
+            <input type="date" name="release" value="{{ ship.release }}"/>
+        </p>
+        <p>
+            <label>Enter deadline</label><br>
+            <input type="date" name="deadline" value="{{ ship.deadline }}" />
+        </p>
+        <p>
+            <label>Enter team</label><br>
+            <input type="number" name="team" value="{{ ship.team }}"/>
+        </p>
+        <p>
+            <label>Enter economy_price</label><br>
+            <input type="number" name="economy_price" value="{{ ship.economy_price }}" step=".01"/>
+        </p>
+        <p>
+            <label>Enter business_price</label><br>
+            <input type="number" name="business_price" value="{{ ship.business_price }}" step=".01"/>
+        </p>
+        <p>
+            <label>Enter luxury_price</label><br>
+            <input type="number" name="luxury_price" value="{{ ship.luxury_price }}" step=".01"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}
