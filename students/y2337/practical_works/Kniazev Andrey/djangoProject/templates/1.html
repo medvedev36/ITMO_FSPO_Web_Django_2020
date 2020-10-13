@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out1{
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <p class = "out1">
+        {% for car in carlist %}
+        Id: {{ car.id }}
+        Модель: {{ car.model }}
+        Цвет: {{ car.color }}
+        Номер: {{ car.number }}
+        {% endfor %}
+
+    </p>
+</body>
+</html>
