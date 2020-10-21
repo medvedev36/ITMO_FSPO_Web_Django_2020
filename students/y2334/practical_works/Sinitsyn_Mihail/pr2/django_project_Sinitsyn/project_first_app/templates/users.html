@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Users</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+
+    <h1>All users</h1>
+
+    {% for user in users %}
+        <p>{{ user.first_name }}</p>
+        <p>{{ user.last_name }}</p>
+        <p>{{ user.date }}</p>
+        <hr/>
+    {% endfor %}
+
+  </body>
+
+</html>
+
+
+
