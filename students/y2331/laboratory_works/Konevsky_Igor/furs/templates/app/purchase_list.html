@@ -1,0 +1,43 @@
+<table border="1px">
+    <thead>
+    <tr>
+
+        <th>id</th>
+        <th>amount</th>
+        <th>buyer_id</th>
+        <th>fur_id</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for purchase in purchases %}
+        <tr>
+
+            <td >{{ purchase.purchase_id }}</td>
+            <td>{{ purchase.amount }}</td>
+            <td>{{ purchase.buyer.buyer_id }}</td>
+            <td>{{ purchase.fur.fur_id }}</td>
+            {% if user.is_authenticated %}
+            <td><a href="/purchase_update/{{purchase.purchase_id}}">
+                    <button>update purchase</button>
+                </a>
+            </td>
+            <td><a href="/purchase_delete/{{purchase.purchase_id}}">
+                    <button>delete purchase</button>
+                </a>
+            </td>
+            {% endif %}
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if user.is_authenticated %}
+<a href="/purchase_form/">
+<button>add purchase</button>
+</a>
+{% endif %}
+<a href = "/">
+<button>home page</button>
+</a>

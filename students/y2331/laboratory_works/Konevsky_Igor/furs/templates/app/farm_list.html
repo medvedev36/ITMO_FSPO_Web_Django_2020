@@ -1,0 +1,43 @@
+<table border="1px">
+    <thead>
+    <tr>
+
+        <th>id</th>
+        <th>adress</th>
+        <th>surname</th>
+        <th>phone</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for farm in farms %}
+        <tr>
+
+            <td >{{ farm.farm_id }}</td>
+            <td>{{ farm.adress }}</td>
+            <td>{{ farm.surname }}</td>
+            <td>{{ farm.phone }}</td>
+            {% if user.is_authenticated %}
+            <td><a href="/farm_update/{{farm.farm_id}}">
+                    <button>update farm</button>
+                </a>
+            </td>
+            <td><a href="/farm_delete/{{farm.farm_id}}">
+                    <button>delete farm</button>
+                </a>
+            </td>
+            {% endif %}
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if user.is_authenticated %}
+<a href="/farm_form/">
+<button>add farm</button>
+</a>
+{% endif %}
+<a href = "/">
+<button>home page</button>
+</a>
