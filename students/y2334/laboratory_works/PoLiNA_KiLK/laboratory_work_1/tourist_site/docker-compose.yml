@@ -1,0 +1,18 @@
+  
+version: '3'
+
+services:
+
+  gas:
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: Admin
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/final_lab
+    environment:
+      IN_DOCKER: 1
+    ports:
+      - "8000:8000"

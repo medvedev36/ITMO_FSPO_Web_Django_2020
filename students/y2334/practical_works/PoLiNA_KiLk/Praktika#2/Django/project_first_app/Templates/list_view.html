@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+</head>
+<body>
+<div class="main">
+
+    {% for data in dataset %}
+
+    {{ data.Name }} <br/>
+    {{ data.Surname }} <br/>
+    <hr/>
+
+    {% endfor %}
+
+</div>
+</body>
