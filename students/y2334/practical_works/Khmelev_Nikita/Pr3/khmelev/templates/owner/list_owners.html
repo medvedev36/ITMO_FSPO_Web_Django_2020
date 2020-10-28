@@ -14,7 +14,8 @@
     {{ data.extended }}<br/>
     {{ data.extended.nationality }}<br/>
         <hr/>
-
+    {% empty %}
+    No objects yet.<br/>
     {% endfor %}
 
 </div>

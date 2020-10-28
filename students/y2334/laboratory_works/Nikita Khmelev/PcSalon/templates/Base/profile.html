@@ -1,0 +1,28 @@
+{% extends 'temp.html' %}
+{% block content %}
+    <div class="center-column">
+        <h1 class="product-name">{{ user.username }}</h1>
+        <h1 class="product-name">{{ user.email }}</h1>
+        <h1 class="product-name">{{ user.phone_num }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <p>Новый ник:
+            {{ form.username }}</p>
+            <p>Новый имейл:
+            {{ form.email }}</p>
+            <p>Новый телефон:
+            {{ form.phone_num }}</p>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Изменить</button>
+            </div>
+        </form>
+    </div>
+        <div class="center-column">
+            <h1>Ваши покупки:</h1>
+        <h2>{% for obj in deals%}
+            {% if user.id == obj.client_id %}
+                <a class="grid-container">Дата: {{ obj.date_deal }} | Компакт-диск: {{ obj.cd_name }}</a>
+            {% endif %}
+        {% endfor %}</h2>
+    </div>
+{% endblock content %}
