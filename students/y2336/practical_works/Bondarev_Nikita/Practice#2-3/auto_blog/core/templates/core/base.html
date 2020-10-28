@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if user %}
+        <title>{{ user.username }}</title>
+    {% else %}
+        <title>Title</title>
+    {% endif %}
+</head>
+<body>
+    {% if user %}
+        <h1>{{ user.username }}</h1>
+        {% comment %} {% for %} {% endcomment %}
+    {% endif %}
+    {% for car in cars %}
+        <p>{{ car }}</p>
+    {% endfor %}
+</body>
+</html>
