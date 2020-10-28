@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Boat Number</th>
+            <th scope="col">Date</th>
+            <th scope="col">District</th>
+            <th scope="col">Intruders</th>
+            <th scope="col">Reward</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for patrol in patrollist %}
+            <tr>
+                <th scope="row">{{ patrol.patrol_id }}</th>
+                <td>{{ patrol.boat_number }}</td>
+                <td>{{ patrol.date }}</td>
+                <td>{{ patrol.district }}</td>
+                <td>{{ patrol.intruders }}</td>
+                <td>{{ patrol.reward }}</td>
+                <td><a href="editpatrol/{{patrol.patrol_id}}">change</a> | <a href="del/{{patrol.patrol_id}}">delete</a></td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

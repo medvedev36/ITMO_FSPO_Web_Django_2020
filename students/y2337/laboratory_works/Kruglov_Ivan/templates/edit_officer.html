@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter badge</label><br>
+            <input type="number" name="badge" value="{{ officer.badge }}"/>
+        </p>
+        <p>
+            <label>Enter surname</label><br>
+            <input type="text" name="surname" value="{{ officer.surname }}"/>
+        </p>
+        <p>
+            <label>Enter officer post</label><br>
+            <input type="text" name="post" value="{{ officer.post }}"/>
+        </p>
+        <p>
+            <label>Enter enrollment date</label><br>
+            <input type="date" name="enrollment" value="{{ officer.enrollment }}"/>
+        </p>
+        <p>
+            <label>Enter experience</label><br>
+            <input type="number" name="experience" value="{{ officer.experience }}"/>
+        </p>
+        <p>
+            <label>Enter officer birthday</label><br>
+            <input type="date" name="birthday" value="{{ officer.birthday }}">
+        </p>
+        <p>
+            <label>Enter boat number</label><br>
+            <input type="number" name="boat_number" value="{{ officer.boat_number }}">
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}
