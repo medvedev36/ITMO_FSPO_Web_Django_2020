@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>User: {{ user.first_name }}</title>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    {% for object in object_list %}
+      <li>{{ object.mark }}</li>
+      <li>{{ object.model }}</li>
+      <li>{{ object.color  }}</li>
+      <li>{{ object.gov_number }}</li>
+        <hr/>
+    {% endfor %}
+
+  </body>
+
+</html>
