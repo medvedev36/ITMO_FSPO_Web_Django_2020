@@ -1,0 +1,16 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+<h2 align="center">Регистрация</h2><h1 align="center">{{error}}</h1>
+<form method="post" style="margin: 10px 25%">
+    {% csrf_token %}
+    <h4>Дата заселения: </h4>
+    {{ form.date_entry }}
+    <h4>Дата выселения: </h4>
+    {{ form.date_exit }}
+    <h4>Номер комнаты: </h4>
+    {{ form.nomer }}
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Бронировать</button>
+    </div>
+ </form>
+{% endblock %}

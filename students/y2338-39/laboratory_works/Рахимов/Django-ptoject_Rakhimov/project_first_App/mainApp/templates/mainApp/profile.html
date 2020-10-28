@@ -1,0 +1,18 @@
+{% extends "mainApp/wrapper.html" %}
+{% block content %}
+    {% if profile.passport == 1 %}
+        <h2> Нет данных, пожалуйста зарегистрируйтесь или авторизуйтесь! </h2>
+        <li><a class="nav-link.btn-primary" href="autorisation">Авторизация</a></li>
+        <li><a class="nav-link.btn-success.ml-15" href="registration">Регистрация</a></li>
+    {% else %}
+        <div class="card" style="width: 18rem;position:relative; margin: 20px 40%; height:40px; width:300px">
+            <img class="card-img-top" src="https://delovoi-etiket.ru/wp-content/uploads/2012/11/my_foto_businessman2.png" alt="Card image cap">
+            <div class="card-body">
+                 <h2 class="card-title">{{profile.fio}}</h2>
+                <h5 class="card-text">Номер паспорта: {{profile.passport}}</h5>
+                <h5 class="card-text">Номер телефона: {{profile.phone}}</h5>
+                <a href="exit" class="btn btn-danger" style="position:relative; margin: 10px 0%; height:40px; width:300px">Выйти</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock%}
