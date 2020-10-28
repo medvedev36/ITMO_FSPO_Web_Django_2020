@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block body %}
+    <form method="post" xmlns="http://www.w3.org/1999/html">
+					<div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>Music<span>Shop</span></div>
+		</div>
+		<br>
+		<div class="login">
+            {% csrf_token%}
+                    <input type="text" placeholder="Название песни" name="name"><br>
+            <select placeholder="Исполнитель" name="singer" style="	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;">
+                            <option value="" disabled selected>Имя исполнителя</option>
+                            {% for singer in data_s %}
+                            <option value= "{{singer.name}}" > {{singer.name}} </option>
+                             {% endfor %}
+                        </select>
+            <br>
+            <input type="text" placeholder="Дата написания" name="date"><br>
+				<input type="text" placeholder="Жанр" name="type"><br>
+            <button style="background: #fff;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border:1px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #000000;
+">Добавить </button> <br>
+		</div>
+    <div class="w-full text-center">
+					</div>
+    </form>
+
+{% endblock %}

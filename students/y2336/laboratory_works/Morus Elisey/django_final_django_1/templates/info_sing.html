@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block body %}
+    <form action="{% url 'buy_url'%}">
+					<div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>Информация о<span> песне</span></div>
+		</div>
+		<br>
+		<div class="login">
+
+         <div class="content">
+        </div>
+            <h3 >Песня: {{ sing.name }}</h3> <br>
+            <h3 >Исполнитель: {{ sing.singer }}</h3> <br>
+            <h3 >Дата создания: {{ sing.date }}</h3> <br>
+            <h3 >Жанр: {{ sing.type }}</h3> <br>
+		</div>
+        </div>
+    <div class="w-full text-center">
+					</div>
+    </form>
+
+{% endblock %}

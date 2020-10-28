@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>owner_view</title>
+</head>
+<body>
+<div class="main">
+    {% for data in dataset %}
+
+        {{ data.first_name }} {{ data.last_name }} <br/>
+        {{ data.birth_date }} <br/>
+        {{ data.sex }} <br/>
+        {{ data.user.passport }} <br/>
+        {{ data.user.address }} <br/>
+        {{ data.user.nationality }} <br/>
+        <hr/>
+
+    {% endfor %}
+</div>
+</body>
+</html>

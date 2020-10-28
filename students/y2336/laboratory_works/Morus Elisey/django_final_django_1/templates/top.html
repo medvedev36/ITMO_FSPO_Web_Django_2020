@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+{% block body %}
+    <form action="{% url 'buy_url'%}">
+					<div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>Топ<span>Музыки</span></div>
+		</div>
+		<br>
+		<div class="login">
+            <a href="{% url 'info_sing_url' disc.disk %}" >{{ disc.disk }}</a>
+         <div class="content">
+        </div>
+            <button style="background: #fff;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border:1px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #000000;
+">Купить </button> <br>
+		</div>
+        </div>
+    <div class="w-full text-center">
+					</div>
+    </form>
+
+{% endblock %}
