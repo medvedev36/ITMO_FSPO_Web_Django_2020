@@ -1,0 +1,27 @@
+
+{% extends 'main.html' %}
+
+    {%  block content %}
+
+            <table border="1px", cellspacing="4px", cellpadding="4px" bgcolor="#f8f9fa" style="margin-left: 40px;margin-top: 40px">
+                <tr>
+                    <th>Номер диска</th>
+                    <th>Название композиции</th>
+                    <th>Производитель</th>
+                    <th>Автор</th>
+                    <th>Цена</th>
+                </tr>
+                {% for disk in disk_list %}
+                <tr>
+                    <td>{{ disk.id }}</td>
+                    <td><a href="editMusic/{{ disk.idMusic.id }}">{{ disk.idMusic.musicName }}</a></td>
+                    <td><a href="editPro/{{ disk.idProducer.id }}">{{ disk.idProducer.name }}</a></td>
+                    <td><a href="editAuthor/{{ disk.idMusic.idAuthor.id }}">{{ disk.idMusic.idAuthor.name }}</a></td>
+                    <td><a href="edit/{{disk.id}}">{{ disk.incomeCost }}</a></td>
+                    <td><a href="delete/{{disk.id}}">Удалить</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+
+    {% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out1{
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <p class = "out1">
+        {% for owner in object_list %}
+        Имя: {{ owner.first_name }}
+        Фамилия: {{ owner.last_name }}
+        Дата рождения: {{ owner.birthdate }}
+        User: {{ owner.user }}
+        Passport: {{ owner.user.passport }}
+        Address: {{ owner.user.address }}
+        Nationality: {{ owner.user.nationality }}
+        {% endfor %}
+
+    </p>
+</body>
+</html>
