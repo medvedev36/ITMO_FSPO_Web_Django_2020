@@ -1,0 +1,24 @@
+{% extends 'temp.html' %}
+{% block content %}
+    <div class="content-block-section">
+        <h1 class="cd-name">{{ object.name_cd }}</h1>
+    </div>
+    <div class="center-column">
+            <p class="">Дата {{ object.prod_date }}  </p>
+            <p class="">О Продукте: {{ object.descr }}  </p>
+            {% for obj in supplies%}
+                {% if obj.cd_name_id == object.id %}
+                <div class = "border">
+                <a class="grid-container">Фирма-разработчик: {{ obj.sup_name }}  |  Цена: {{ obj.price }} Руб.</a>
+                </div>
+                {% endif %}
+            {% endfor %}
+            {% for obj in games%}
+            {% if obj.cd_name_id == object.id %}
+                <a class="grid-container">{{ obj.name }} | Жанр: {{ obj.genre }} | Геймдизайнер: {{ obj.author }}</a>
+            {% endif %}
+            {% endfor %}
+            <a class="active" href="{% url 'deal-form' %}">Купить</a>
+
+    </div>
+{% endblock content %}
