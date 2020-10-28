@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1 class="article-title">Все участки</h1>
+    <p>На сегодняшний день развернуто {{ fuelstations|length}} участков и постов ГИБДД.</p>
+    {% for fuelstation in fuelstations %}
+        <div class="content-section row">
+            <div class="col-6">
+                <h2 class="mar-aba"><a class="article-title" href="{% url 'fuelstation-detail' fuelstation.id %}">{{ fuelstation.name }}</a></h2>
+            </div>
+
+            <div class="col-6 info">
+                <h4><a class="article-title" href="{% url 'fuelprovider-detail' fuelstation.provider.id %}">Инспектор ППС: {{ fuelstation.provider }}</a></h4>
+                <p>Адрес: {{ fuelstation.address }}</p>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+</div>
+{% endblock content %}

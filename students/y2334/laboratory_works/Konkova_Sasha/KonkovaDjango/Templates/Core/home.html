@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="article-title">Размер штрафа</h2>
+    {% for fuel in avg_prices %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h4><a class="article-title" href="{% url 'fuel-detail' fuel.fuel.id %}">{{ fuel.fuel }}</a> штраф {{ fuel.avg|floatformat:2 }} рублей</h4>
+        </div>
+    </article>
+    {% endfor %}
+{% endblock content %}
