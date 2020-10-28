@@ -1,0 +1,16 @@
+{% extends  'wrapper.html' %}
+{% block body %}
+{% load static %}
+<hr>
+{% for acc in client.contract_code.all %}
+
+    <p>Вклад контракта: {{ acc.id }}</p>
+
+    <p>{{ acc.deposit_code }}</p>
+    <p>{{ acc.deposit_date }}</p>
+    <p>{{ acc.depositAmount }}</p>
+
+    <hr>
+{% endfor %}
+<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'create_contract' %}">Создать вклад</a></button>
+{% endblock %}
