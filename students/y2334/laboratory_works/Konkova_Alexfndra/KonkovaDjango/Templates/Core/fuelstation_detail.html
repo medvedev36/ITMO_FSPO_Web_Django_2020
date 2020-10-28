@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1 class="article-title">Инспектор {{ station.name }}</h1>
+    <div class="info">
+        <h4>Адрес: {{ station.provider.address }}, {{ station.address }}</h4>
+        <h4>Телефон для справок: {{ station.provider.phone }}</h4>
+        <h5>На данном участке можно оплатить штраф:</h5>
+    </div>
+    <div class="content-section">
+        {% for fuel in fuels %}
+            <div class="content-section row">
+                <div class="col-7">
+                    <h2 class="mar-aba"><a class="article-title" href="{% url 'fuel-detail' fuel.fuel.id %}">{{ fuel.fuel }}</a></h2>
+                    <h4>Цена: {{ fuel.price }}</h4>
+                </div>
+                <div class="col-5">
+                    <a class="btn btn-dark btn-right" href="{% url 'purchase-new' station.id fuel.fuel.id %}">Оплатить</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="btn btn-light" href="{% url 'fuelinstation-new' station.id %}">Оплатить штраф?</a>
+
+
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <div class="media-body">
+                <img class="rounded-circle account-img" src="{{ user.img.url }}" width=300 height=300>
+                <div class="content-block-section">
+                    <h2 class="account-heading">@{{ user.username }}</h2>
+                    <p class="profile-info">Электронная почта: {{ user.email }}</p>
+                    <p class="profile-info">Баланс: {{ user.balance }}руб.</p>
+                    <a class="btn btn-light" href="{% url 'fuelstation-new' %}">Открыть участок</a>
+                </div>
+                <a class="btn btn-primary btn-lg" href="{% url 'add-balance' %}">Пополнить баланс</a>
+                <a class="btn btn-danger btn-lg btn-right" href="{% url 'user-delete' user.id %}">Удалить аккаунт</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
