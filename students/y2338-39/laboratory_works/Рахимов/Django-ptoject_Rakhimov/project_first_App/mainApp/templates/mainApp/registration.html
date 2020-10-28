@@ -1,0 +1,18 @@
+{% extends "mainApp/wrapper.html" %}
+
+{% block content %}
+<h2 align="center">Регистрация</h2><h1 align="center">{{error}}</h1>
+<form method="post" style="margin: 0 25%">
+    {% csrf_token %}
+    <h4>Введите ФИО:</h4>
+    {{ form.fio }}
+    <h4>Введите номер телефона:</h4>
+    {{ form.number_phone_cus }}
+    <h4>Введите номер паспорта:</h4>
+    {{ form.number_passport_customer }}
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Регистрация</button>
+    </div>
+
+</form>
+{% endblock%}
