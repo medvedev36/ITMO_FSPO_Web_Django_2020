@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic.base import View
 from django.http import HttpResponseRedirect
@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import *
+from .forms import *
 
 
 class LogoutView(View):
@@ -44,14 +45,14 @@ def furlist(request):
     return render(request, "app/fur_list.html", {"furs": furs})
 
 
-def buyerlist(request):
-    buyers = Buyer.object.all()
-    return render(request, "app/buyer_list.html", {"buyers": buyers})
+def coatlist(request):
+    coats = Coat.object.all()
+    return render(request, "app/coat_list.html", {"coats": coats})
 
 
 def purchaselist(request):
-    purchases = Purchase.object.all()
-    return render(request, "app/purchase_list.html", {"purchases": purchases})
+    purchases = Purchase.object.all().filter(user_id=request.user.id)
+    return render(request, "app/profile.html", {"purchases": purchases})
 
 
 class FarmCreate(CreateView):
@@ -64,14 +65,14 @@ class FurCreate(CreateView):
     fields = ['name', 'sort', 'farm']
 
 
-class BuyerCreate(CreateView):
-    model = Buyer
-    fields = ['name', 'category']
+class CoatCreate(CreateView):
+    model = Coat
+    fields = ['name', 'price', 'fur']
 
 
 class PurchaseCreate(CreateView):
     model = Purchase
-    fields = ['amount', 'buyer', 'fur']
+    fields = ['coat']
 
 
 class FarmUpdate(UpdateView):
@@ -88,18 +89,11 @@ class FurUpdate(UpdateView):
     success_url = '/fur_list/'
 
 
-class BuyerUpdate(UpdateView):
-    model = Buyer
-    fields = ['name', 'category']
+class CoatUpdate(UpdateView):
+    model = Coat
+    fields = ['name', 'price', 'fur']
     template_name_suffix = '_update'
-    success_url = '/buyer_list/'
-
-
-class PurchaseUpdate(UpdateView):
-    model = Purchase
-    fields = ['amount', 'buyer', 'fur']
-    template_name_suffix = '_update'
-    success_url = '/purchase_list/'
+    success_url = '/coat_list/'
 
 
 # class FarmDelete(DeleteView):
@@ -118,13 +112,49 @@ def furdelete(request, pk):
     return render(request, "app/fur_delete.html", {"fur": fur})
 
 
-def buyerdelete(request, pk):
-    buyer = get_object_or_404(Buyer, buyer_id=pk)
-    buyer.delete()
-    return render(request, "app/buyer_delete.html", {"buyer": buyer})
+def coatdelete(request, pk):
+    coat = get_object_or_404(Coat, coat_id=pk)
+    coat.delete()
+    return render(request, "app/coat_delete.html", {"coat": coat})
 
 
 def purchasedelete(request, pk):
     purchase = get_object_or_404(Purchase, purchase_id=pk)
     purchase.delete()
     return render(request, "app/purchase_delete.html", {"purchase": purchase})
+
+
+def buy(request, pk):
+    coat = get_object_or_404(Coat, coat_id=pk)
+    if request.method == "POST":
+        form = PurchaseForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user_id = request.user.id
+            form.coat = coat
+            form.save()
+            return redirect("/")
+    else:
+        form = PurchaseForm()
+    return render(request, "app/coat_buy.html", {"coat": coat, "form": form})
+
+
+def addreview(request, pk):
+    coat = get_object_or_404(Coat, coat_id=pk)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.text = form.text
+            form.coat = coat
+            form.save()
+            return redirect("/")
+    else:
+        form = ReviewForm()
+    return render(request, "app/review_form.html", {"coat": coat, "form": form})
+
+
+def reviewlist(request, pk):
+
+    reviews = Review.object.all().filter(coat_id = pk)
+    return render(request, "app/reviews.html", {"reviews": reviews})

@@ -10,9 +10,6 @@ class Farm(models.Model):
 
     object = models.Manager()
 
-    #def get_absolute_url(self):
-     #   return reverse('', args=[str(self.farm_id)])
-
 
 class Fur(models.Model):
     fur_id = models.IntegerField(primary_key=True)
@@ -22,22 +19,28 @@ class Fur(models.Model):
 
     object = models.Manager()
 
-class Buyer(models.Model):
-    CATEG = [
-        ('Factory', 'Factory'),
-        ('Studio', 'Studio'),
-        ('Person', 'Person')
-    ]
-    buyer_id = models.IntegerField(primary_key=True)
+
+class Coat(models.Model):
+    coat_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=50)
-    category = models.CharField(max_length=50, choices=CATEG)
-
-    object = models.Manager()
-
-class Purchase(models.Model):
-    purchase_id = models.IntegerField(primary_key=True)
-    amount = models.IntegerField()
-    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    price = models.IntegerField()
     fur = models.ForeignKey(Fur, on_delete=models.CASCADE)
 
     object = models.Manager()
+
+
+class Purchase(models.Model):
+    purchase_id = models.AutoField(primary_key=True)
+    user_id = models.IntegerField(default=0)
+    coat = models.ForeignKey(Coat, on_delete=models.CASCADE)
+
+    object = models.Manager()
+
+
+class Review(models.Model):
+    review_id = models.AutoField(primary_key=True)
+    coat = models.ForeignKey(Coat, on_delete=models.CASCADE)
+    text = models.CharField(max_length=300)
+
+    object = models.Manager()
+

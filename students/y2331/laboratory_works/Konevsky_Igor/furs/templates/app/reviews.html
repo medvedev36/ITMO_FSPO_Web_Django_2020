@@ -1,0 +1,26 @@
+<table border="1px">
+    <thead>
+    <tr>
+
+        <th>text</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for review in reviews %}
+        <tr>
+
+            <td >{{ review.text }}</td>
+
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href = "/">
+<button>home page</button>
+</a>
