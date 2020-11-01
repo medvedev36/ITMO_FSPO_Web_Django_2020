@@ -1,0 +1,35 @@
+{% if user.is_authenticated %}
+      <a href="/logout/">
+   <button>Logout</button>
+    </a>
+    <a href="/profile/">
+<button>Profile</button>
+</a>
+
+
+
+  {% else %}
+      <a href="/accounts/login/">
+   <button>Log in</button>
+    </a>
+  {% endif %}
+
+
+
+<br>
+<br>
+<a href="/farm_list/">
+<button>List of farms</button>
+</a>
+<a href="/fur_list/">
+<button>List of furs</button>
+</a>
+<a href="/coat_list/">
+<button>List of coats</button>
+</a>
+
+
+
+
+<br>
+<br>
