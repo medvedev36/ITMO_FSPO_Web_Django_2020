@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>
+        {% block title %}
+            Perfume
+        {% endblock %}
+    </title>
+    <style>
+        a{
+            color: #1c1c1c;
+            font-size: 15pt;
+        }
+        a:hover{
+            color: #909394;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url "prod_list-url" %}">Список Товаров</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url "add_comp-url" %}">Добавить Компанию</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url "add_mack-url" %}">Добавить Маклера</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="{% url "add_prod-url" %}">Добавить Товаров</a>
+  </li>
+</ul>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

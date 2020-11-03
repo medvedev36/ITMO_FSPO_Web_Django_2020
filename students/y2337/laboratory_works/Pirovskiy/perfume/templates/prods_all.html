@@ -1,0 +1,25 @@
+
+{% extends 'main.html' %}
+
+    {%  block content %}
+
+            <table border="1px", cellspacing="4px", cellpadding="4px" bgcolor="#f8f9fa" style="margin-left: 40px;margin-top: 40px">
+                <tr>
+                    <th>ID товара</th>
+                    <th>Название Товара</th>
+                    <th>Название компании</th>
+                    <th>Цена товара</th>
+                </tr>
+                {% for Product in prods %}
+                <tr>
+                    <td>{{ Product.id }}</td>
+                    <td><a href="editProdName/{{ Product.id }}">{{ Product.nameProd }}</a></td>
+                    <td><a href="editCompany/{{ Product.idComp.id }}">{{ Product.idComp.name }}</a></td>
+                    <td><a href="editProdCost/{{ Product.id }}">{{ Product.priceProd }}</a></td>
+                    <td><a href="delete/{{Product.id}}">Удалить</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+
+    {% endblock %}
