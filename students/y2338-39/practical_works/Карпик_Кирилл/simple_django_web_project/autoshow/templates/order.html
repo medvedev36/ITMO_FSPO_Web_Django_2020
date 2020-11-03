@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Регистрация - Автосервис</title>
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+</head>
+<body>
+  <div class="header">
+    <a href="/">
+      <div class="header__logo">
+        <img class="header__icon" src="{% static 'img/logo.png' %}">
+        <div class="header__name">Автосервис</div>
+      </div>
+    </a>
+    <div class="header__profile">
+      {% if authenticated %}
+        <div class="header__user">{{ username }}</div>
+        <a class="header__link" href="/logout"><div>Выйти</div></a>
+      {% else %}
+        <a class="header__link" href="/login"><div>Логин</div></a>
+        <a class="header__link" href="/signup"><div>Регистрация</div></a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="content">
+    <div class="form">
+      <form class="form__tag" action="{% url 'ordered' %}" method="POST">
+        {% csrf_token %}
+        <div class="form__title">Заказ в {{data.workshop.workshop_name}}</div>
+        {% if data.success %}
+          <div class="form__message form__message--success">{{message}}</div>
+        {% elif data.error %}
+          <div class="form__message form__message--error">{{message}}</div>
+        {% endif %}
+        <select class="form__input form__input--field" name="brand_id">
+          {% for brand in data.brands %}
+            <option value="{{brand.brand_id}}">{{brand.brand_name}}</option>
+          {% endfor %}
+        </select>
+        <input type="hidden" name="slug_id" value="{{data.workshop.workshop_id}}">
+        <input class="form__input form__input--field" required type="text" name="passport" placeholder="Номер тех пасспорта">
+        <input class="form__input form__input--field" required type="text" name="gov_number" placeholder="Гос номер">
+        <input class="form__input form__input--field" required type="text" pattern="[0-9]{4,4}" name="car_year" placeholder="Год выпуска (Например, 1999)">
+        <input class="form__input form__input--field" required type="text" name="owner_name" placeholder="ФИО владельца">
+        <input class="form__input form__input--field" required type="text" name="address" placeholder="Адресс Проживания">
+        <p class="form__works">Выберите, что вам надо сделать из доступных работ:
+        {% for work in data.pricelist %}
+          <br><label>
+            <input type="checkbox" name="works" value="{{work.worktype_id}}">{{work.worktype_name}}: {{work.worktype_price}} рублей
+          </label>
+        {% endfor %}
+        </p>
+        <button class="form__input form__input--submit">Сделать заказ</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
