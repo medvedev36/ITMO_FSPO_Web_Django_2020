@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Регистрация - Автосервис</title>
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+</head>
+<body>
+  <div class="header">
+    <a href="/">
+      <div class="header__logo">
+        <img class="header__icon" src="{% static 'img/logo.png' %}">
+        <div class="header__name">Автосервис</div>
+      </div>
+    </a>
+    <div class="header__profile">
+      <a class="header__link" href="/login"><div>Логин</div></a>
+      <div class="header__link header__link--active">Регистрация</div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="form">
+      <form class="form__tag" action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        <div class="form__title">Регистрация</div>
+        <input class="form__input form__input--field" required type="text" name="username" placeholder="Логин">
+        <input class="form__input form__input--field" required type="password" name="password" placeholder="Пароль">
+        <input class="form__input form__input--field" required type="text" name="email" placeholder="Email">
+        <input class="form__input form__input--field" required type="text" name="first_name" placeholder="Имя">
+        <input class="form__input form__input--field" required type="text" name="last_name" placeholder="Фамилия">
+        <!-- {{ form|crispy }} -->
+        <button class="form__input form__input--submit">Зарегестрироваться</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

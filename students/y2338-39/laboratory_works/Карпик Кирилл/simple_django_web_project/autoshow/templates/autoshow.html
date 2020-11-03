@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Автосервис</title>
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/autoshow.css' %}">
+</head>
+<body>
+  <div class="header">
+    <a href="/">
+      <div class="header__logo">
+        <img class="header__icon" src="{% static 'img/logo.png' %}">
+        <div class="header__name">Автосервис</div>
+      </div>
+    </a>
+    <div class="header__profile">
+      {% if authenticated %}
+        <div class="header__user">{{ username }}</div>
+        <a class="header__link" href="/logout"><div>Выйти</div></a>
+      {% else %}
+        <a class="header__link" href="/login"><div>Логин</div></a>
+        <a class="header__link" href="/signup"><div>Регистрация</div></a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="content">
+    <div class="autoshow">
+      <div class="autoshow__header">
+        <div class="autoshow__back" style="background-color: {{data.color}}"></div>
+        <div class="autoshow__name">{{data.workshop_name}}</div>
+      </div>
+      <div class="autoshow__content">
+        <div class="autoshow__info">
+          <div class="autoshow__hours">С {{data.workshop_opentime}} до {{data.workshop_closetime}}</div>
+          {% if data.isopen %}
+            <div class="autoshow__isopen autoshow__isopen--true">Сейчас: Открыто</div>
+          {% else %}
+            <div class="autoshow__isopen autoshow__isopen--false">Сейчас: Закрыто</div>
+          {% endif %}
+        </div>
+        <a href="/order/{{data.workshop_id}}"><div class="autoshow__order">Записаться</div></a>
+      </div>
+  </div>
+</body>
+</html>
