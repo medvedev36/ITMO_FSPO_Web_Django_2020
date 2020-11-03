@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block style %}
+.category-list * {transition: .4s linear;}
+.category-list {
+  background: white;
+  list-style-type: circle;
+  list-style-position: inside;
+  padding: 0 10px;
+  margin: 0;
+}
+.category-list li {
+  font-family: "Trebuchet MS", "Lucida Sans";
+  border-bottom: 1px solid #efefef;
+  padding: 10px 0;
+}
+.category-list a {
+  text-decoration: none;
+  color: #555;
+}
+.category-list li span {
+  float: right;
+  display: inline-block;
+  border: 1px solid #efefef;
+  padding: 0 5px;
+  font-size: 13px;
+  color: #999;
+}
+.category-list li:hover a {color: #c93961;}
+.category-list li:hover span {
+  color: #c93961;
+  border: 1px solid #c93961;
+}
+{% endblock %}
+{% block body %}
+    <div class="content">
+    <ul class="category-list">
+        {% for sing in data_s %}
+            <li><a style="text-align: center; right: 50%" href="{% url 'info_sing_url' sing.name %}">{{ sing.name }}<br>{{ sing.type }}<br>{{ sing.date }}<br>{{ sing.singer }}</a></li>
+        {% endfor %}
+    <li> <span> <a href="{% url 'sing_add_url' %}"> Добавить песню </a></span></li>
+</ul>
+    </div>
+
+{% endblock %}
