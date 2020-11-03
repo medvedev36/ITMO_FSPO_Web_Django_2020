@@ -1,0 +1,12 @@
+
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите новое название</label><br>
+            <input name="nameProd" value="{{Product.nameProd}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+{% endblock %}
