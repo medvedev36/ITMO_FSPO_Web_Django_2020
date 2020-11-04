@@ -1,0 +1,16 @@
+{% extends 'temp.html' %}
+{% block content %}
+<div class="center-column mt-5">
+        <h1>Площадки</h1>
+        <div class="content-block-section-">
+            <div class="column-left">
+                {% for obj in platform_list %}
+                    <div class="border">
+                        <p class="brk">Имя: {{ obj.fio_ceo }}  </p>
+                        <p class="brk">Адрес:  {{ obj.address }}  </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock content %} 

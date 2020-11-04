@@ -1,0 +1,39 @@
+{% extends 'temp.html' %}
+{% block content %}
+    <div class="content-block-section mt-5">
+        <h1 class="product-name">{{ object.name }}</h1>
+    </div>
+    <div class="center-column">
+
+            <p class="">Дата получения: {{ object.start_year}}  </p>
+            <p class="">Срок службы: {{ object.lifetime }} </p>
+            {% for pri in Price%}
+                 {% for rel in Relationship%}
+                     {% for pla in Platform %}
+                     {% if rel.pk == pri.Relationship_id.pk and object.pk == rel.attraction_id.pk and rel.platform_id.pk == pla.pk%}
+                        <div class = "border">
+                             <a class="grid-container">Цены
+                                <ul>
+                                 <li>
+                                        Детский: {{ pri.price_kids }}
+                                    </li>
+                                     <li>
+                                         Взрослый: {{ pri.price_adult }}
+                                     </li>
+                                     <li>
+                                         Льготный: {{ pri.price_privilege }}
+                                     </li>
+                                 </ul>
+
+                             </a>
+                        </div>
+                         <div class = "border mt-5">
+                         Адрес : {{ pla.address }}
+                         </div>
+                     {% endif %}
+                     {% endfor %}
+                {% endfor %}
+            {% endfor %}
+
+    </div>
+{% endblock content %}

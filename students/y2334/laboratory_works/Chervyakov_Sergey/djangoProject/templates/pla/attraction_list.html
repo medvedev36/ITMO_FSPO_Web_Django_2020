@@ -1,0 +1,13 @@
+{% extends 'temp.html' %}
+{% block content %}
+<div class="center-column mt-5">
+        <h1>Аттракционы</h1>
+        <div class="content-block-section">
+            <div class="grid-container">
+                {% for obj in attraction_list %}
+                    <div class="grid-item"><a class="active" href="{% url 'attraction_detail' obj.pk %}">{{ obj }}</a></div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock content %} 

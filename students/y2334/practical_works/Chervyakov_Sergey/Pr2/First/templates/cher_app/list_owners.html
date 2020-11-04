@@ -1,0 +1,17 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="main">
+            <ol>
+                {% for object in objects %}
+                <hr>
+                <li> Имя: {{object.first_name}} <br>
+                Фамилия: {{object.second_name}} </li>
+                <hr>
+                {% endfor %}
+            </ol>
+        </div>
+    </body>
+</html>
