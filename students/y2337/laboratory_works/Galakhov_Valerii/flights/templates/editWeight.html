@@ -1,0 +1,12 @@
+
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите новую массу</label><br>
+            <input type="number" name="cargoWeight" value="{{flight.cargoWeight}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+{% endblock %}

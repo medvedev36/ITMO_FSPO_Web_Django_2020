@@ -1,0 +1,12 @@
+
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите новую дату</label><br>
+            <input type="date" name="dateOfFlight" value="{{flight.dateOfFlight}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+{% endblock %}

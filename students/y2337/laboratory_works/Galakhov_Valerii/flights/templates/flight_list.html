@@ -1,0 +1,29 @@
+
+{% extends 'main.html' %}
+
+    {%  block content %}
+
+            <table border="1px", cellspacing="4px", cellpadding="4px" bgcolor="#f8f9fa" style="margin-left: 40px;margin-top: 40px">
+                <tr>
+                    <th>Номер рейса</th>
+                    <th>Вертолёт</th>
+                    <th>Дата рейса</th>
+                    <th>Масса перевезённого груза</th>
+                    <th>Длительность полёта</th>
+                    <th>Стоимость рейса</th>
+                </tr>
+                {% for flight in flight_list %}
+                <tr>
+                    <td>{{ flight.id }}</td>
+                    <td><a href="editHelicopter/{{ flight.idHelicopter.id }}">{{ flight.idHelicopter.name }}</a></td>
+                    <td><a href="editDate/{{ flight.id }}">{{ flight.dateOfFlight }}</a></td>
+                    <td><a href="editWeight/{{ flight.id }}">{{ flight.cargoWeight }}</a></td>
+                    <td><a href="editDuration/{{ flight.id }}">{{ flight.flightDuration }}</a></td>
+                    <td><a href="editCost/{{ flight.id }}">{{ flight.flightCost }}</a></td>
+                    <td><a href="delete/{{flight.id}}">Удалить</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+
+    {% endblock %}

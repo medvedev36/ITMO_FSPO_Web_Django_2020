@@ -1,0 +1,12 @@
+
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите новый вертолёт</label><br>
+            <input name="name" value="{{Helicopter.name}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+{% endblock %}
