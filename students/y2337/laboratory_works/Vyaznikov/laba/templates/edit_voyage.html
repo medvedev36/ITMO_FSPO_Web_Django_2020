@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter voyage id</label><br>
+            <input type="number" name="voyage_id" value="{{ voyage.voyage_id }}"/>
+        </p>
+        <p>
+            <label>Enter trawler id</label><br>
+            <input type="number" name="trawler_id" value="{{ voyage.trawler_id }}"/>
+        </p>
+        <p>
+            <label>Enter start date</label><br>
+            <input type="date" name="start_date" value="{{ voyage.start_date }}"/>
+        </p>
+ <p>
+            <label>Enter voyage end date</label><br>
+            <input type="date" name="end_date" value="{{ voyage.end_date }}"/>
+        </p>
+        <p>
+            <label>Enter bank name</label><br>
+            <input type="text" name="bank_name" value="{{ voyage.bank_name }}"/>
+        </p>
+        <p>
+            <label>Enter fish name</label><br>
+            <input type="text" name="fish_name" value="{{ voyage.fish_name }}"/>
+        </p>
+        <p>
+            <label>Enter fish quantity</label><br>
+            <input type="number" name="fish_quantity" value="{{ voyage.fish_quantity }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

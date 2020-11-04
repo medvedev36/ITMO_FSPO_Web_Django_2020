@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter trawler id</label><br>
+            <input type="number" name="trawler_id" value="{{ trawler.trawler_id }}"/>
+        </p>
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="tname" value="{{ trawler.tname }}"/>
+        </p>
+        <p>
+            <label>Enter trawler displacement</label><br>
+            <input type="number" name="displacement" value="{{ trawler.displacement }}"/>
+        </p>
+        <p>
+            <label>Enter prod date</label><br>
+            <input type="date" name="prod_date" value="{{ trawler.prod_date }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}
