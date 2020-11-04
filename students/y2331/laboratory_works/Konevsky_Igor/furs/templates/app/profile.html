@@ -1,0 +1,47 @@
+{% if user.is_authenticated %}
+{% else %}
+ <head>
+  <meta http-equiv='refresh' content='0; URL=/'>
+</head>
+  {% endif %}
+
+<table border="1px">
+    <thead>
+    <tr>
+
+        <th>id</th>
+        <th>coat name</th>
+        <th>price</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for purchase in purchases %}
+        <tr>
+
+            <td >{{ purchase.purchase_id }}</td>
+            <td>{{ purchase.coat.name }}</td>
+            <td>{{ purchase.coat.price }}</td>
+
+
+
+            <td><a href="/purchase_delete/{{purchase.purchase_id}}">
+                    <button>return purchase</button>
+                </a>
+            </td>
+            <td><a href="/review_form/{{purchase.coat.coat_id}}">
+                    <button>add review</button>
+                </a>
+            </td>
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href = "/">
+<button>home page</button>
+</a>

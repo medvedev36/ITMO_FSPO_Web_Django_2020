@@ -1,0 +1,43 @@
+<table border="1px">
+    <thead>
+    <tr>
+
+        <th>id</th>
+        <th>name</th>
+        <th>sort</th>
+        <th>farm_id</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for fur in furs %}
+        <tr>
+
+            <td >{{ fur.fur_id }}</td>
+            <td>{{ fur.name }}</td>
+            <td>{{ fur.sort }}</td>
+            <td>{{ fur.farm.farm_id }}</td>
+            {% if user.is_authenticated %}
+            <td><a href="/fur_update/{{fur.fur_id}}">
+                    <button>update fur</button>
+                </a>
+            </td>
+            <td><a href="/fur_delete/{{fur.fur_id}}">
+                    <button>delete fur</button>
+                </a>
+            </td>
+            {% endif %}
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if user.is_authenticated %}
+<a href="/fur_form/">
+<button>add fur</button>
+</a>
+{% endif %}
+<a href = "/">
+<button>home page</button>
+</a>

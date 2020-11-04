@@ -1,0 +1,52 @@
+<table border="1px" >
+    <thead>
+    <tr>
+
+        <th>id</th>
+        <th>name</th>
+        <th>price</th>
+        <th>fur name</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for coat in coats %}
+        <tr>
+
+            <td >{{ coat.coat_id }}</td>
+            <td>{{ coat.name }}</td>
+            <td>{{ coat.price }}</td>
+            <td>{{ coat.fur.name }}</td>
+            {% if user.is_authenticated %}
+            <td><a href="/coat_update/{{coat.coat_id}}">
+                    <button>update coat</button>
+                </a>
+            </td>
+            <td><a href="/coat_delete/{{coat.coat_id}}">
+                    <button>delete coat</button>
+                </a>
+            </td>
+            <td><a href="/coat_buy/{{coat.coat_id}}">
+                    <button>Buy coat</button>
+                </a>
+            </td>
+            <td><a href="/reviews/{{coat.coat_id}}">
+                    <button>watch reviews</button>
+                </a>
+            </td>
+            {% endif %}
+
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% if user.is_authenticated %}
+<a href="/coat_form/">
+<button>add coat</button>
+</a>
+{% endif %}
+<a href = "/">
+<button>home page</button>
+</a>
