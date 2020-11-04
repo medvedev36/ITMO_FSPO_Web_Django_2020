@@ -1,0 +1,12 @@
+
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите новую стоимость</label><br>
+            <input type="number" name="flightCost" value="{{flight.flightCost}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+{% endblock %}
