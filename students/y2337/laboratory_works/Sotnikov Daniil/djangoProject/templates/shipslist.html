@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Release</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Team</th>
+            <th scope="col">Economy_price</th>
+            <th scope="col">Business_price</th>
+            <th scope="col">Luxury_price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ship in shipslist %}
+        <tr>
+            <th scope="row">{{ ship.ship_id }}</th>
+            <td>{{ ship.name }}</td>
+            <td>{{ ship.release }}</td>
+            <td>{{ ship.deadline }}</td>
+            <td>{{ ship.team }}</td>
+            <td>{{ ship.economy_price }}</td>
+            <td>{{ ship.business_price }}</td>
+            <td>{{ ship.luxury_price }}</td>
+            <td><a href="editship/{{ship.ship_id}}">change</a> | <a href="del/{{ship.ship_id}}">delete</a> </td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

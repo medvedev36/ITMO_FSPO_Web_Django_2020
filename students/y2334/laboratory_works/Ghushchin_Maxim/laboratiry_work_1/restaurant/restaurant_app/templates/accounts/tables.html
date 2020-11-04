@@ -1,0 +1,52 @@
+{% extends 'wrapper.html' %}
+{% block body %}
+
+
+
+
+<div class="container">
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-с" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+<div class="row">
+
+{% for table in tables %}
+
+     <div class="col-md-6">
+     <div class="content-section">
+    <h2> Стол: {{ table.table_number }} </h2>
+    <h2> Официант: {{ table.waiter_id.first_name }} {{ table.waiter_id.last_name }}</h2>
+    {% for time in table.reservation_time.all %}
+         Время: {{ time.time }}
+         {% if time.available == True %}
+                <a href="{% url 'operation_with_reservation' pk=time.pk %}">
+                    <button type="button" class="btn btn-success">Забронировать</button>
+                </a>
+         {% elif time.client == current_user %}
+         <div class="green-text">
+             Ваш забронированный столик!
+         </div>
+         {% else %}
+         <div class="red-text">
+            Этот столик уже забронирован на сегодня!
+         </div>
+         {% endif %}
+         <br>
+         <br>
+    {% endfor %}
+
+    <br><br>
+     </div>
+ </div>
+
+
+{% endfor %}
+     </div>
+ </div>
+
+
+{% endblock %}

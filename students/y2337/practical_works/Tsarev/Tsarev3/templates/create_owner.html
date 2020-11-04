@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Create Owner</title>
+</head>
+<body>
+    <h3>Создание Владельца</h3>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Создать</button>
+    </form>
+
+</body>
+</html>

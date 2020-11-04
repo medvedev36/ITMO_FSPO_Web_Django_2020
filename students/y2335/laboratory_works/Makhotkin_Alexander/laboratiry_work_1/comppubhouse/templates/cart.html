@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load humanize %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+    <div class="">
+        <div class="d-flex justify-content-center">
+            <h1>Корзина</h1>
+        </div>
+        <div class="">
+            <h5>Всего экземпляров: {{ sum_count }} шт.</h5>
+        </div>
+        <div class="mt-3">
+            <h4>Итоговая стоимость: {{ sum_price|intcomma }} руб</h4>
+        </div>
+        {% if sum_count != 0 %}
+
+            <form class="mt-3" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.address|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6 mb-0">
+                        {{ form.phone|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Заказать</button>
+            </form>
+            <div class="d-flex justify-content-end">
+                Поля обязательные для заполнения отмечены *
+            </div>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="content-section">
+        <div class="row mt-4">
+        {% for book in books %}
+            <div class="col-md-6">
+                <h4>{{ book.title }}</h4>
+                <h6>Год публикации: {{ book.published.year }}</h6>
+                <h5>{{ book.price|intcomma }} руб</h5>
+                <div class="mr-3 mt-3 mb-2">
+                    Доступно {{ book.count }} шт.
+                </div>
+                <form class="form-inline my-2 my-lg-0" method="post">
+                    {% csrf_token %}
+                    <input hidden="hidden" value="{{ book.isbn }}" name="isbn">
+                    <input class="form-control mr-1" type="number" min="1" max="{{ book.count }}" value="{{ book.selected_count }}" name="count">
+                    <div class="mr-3">шт.</div>
+                    <button class="btn btn-success mr-3" type="submit" name="btn_edit">Изменить</button>
+                    <button class="btn btn-danger" type="submit" name="btn_remove">Удалить</button>
+                </form>
+            <hr>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

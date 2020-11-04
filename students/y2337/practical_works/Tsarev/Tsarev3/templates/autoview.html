@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Модель</th>
+                <th scope="col">Цвет</th>
+                <th scope="col">Номер</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for auto in auto_list %}
+                <tr>
+                    <td>{{ auto.auto_id }}</td>
+                    <td>{{ auto.model }}</td>
+                    <td>{{ auto.color }}</td>
+                    <td>{{ auto.license_plate}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

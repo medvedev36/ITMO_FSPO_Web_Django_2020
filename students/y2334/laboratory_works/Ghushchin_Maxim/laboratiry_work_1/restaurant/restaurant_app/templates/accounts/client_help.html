@@ -1,0 +1,45 @@
+ {% extends 'wrapper.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+<div class="container">
+      <div class="content-section">
+        <h5>
+            Наши контактные данные:
+        </h5>
+         <small>
+            Телефон: 89007863232
+        <br>
+            Почта: restaurant@gmail.com
+        <br>
+        <br>
+        </small>
+         <br>
+        <h5>
+            Техподдержка:
+        </h5>
+        <small>
+            <a href="{% url 'send_review' %}">Тут</a>
+                вы можете отправить жалобу и рекомендации касательно ресторанa.
+        </small>
+          <br>
+        <br>
+        <h5>
+            Смена данных:
+        </h5>
+        <small>
+            Сменить или добавить свой номер  <a href="{% url 'client_order' %}">телефона.</a>
+        </small>
+       <br>
+        <br>
+        <h5>
+            Время работы ресторана:
+        </h5>
+        <small>
+            Ежедневно с 12:00 до 24:00.
+        </small>
+
+ </div>
+  </div>
+ {% endblock %}

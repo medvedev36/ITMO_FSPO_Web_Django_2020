@@ -1,0 +1,25 @@
+{% extends 'myapp/base_certain_list.html' %}
+
+{% block title %}
+    User binding
+{% endblock %}
+
+{% block list %}
+    <div class="col-sm-2">
+        <form method="POST" role="form" class="form-group">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="w-100">
+                    {{ form.label }}
+                    {{ form }}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">Bind</button>
+        </form>
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="{% url 'certain_user_information_url' login %}">Main data</a></li>
+            <li role="presentation" class="active"><a href="#">User binding</a></li>
+        </ul>
+    </div>
+
+{% endblock %}

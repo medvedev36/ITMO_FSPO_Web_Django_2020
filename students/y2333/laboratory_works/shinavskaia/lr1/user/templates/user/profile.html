@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% block search %}
+    <div class="separate-line"></div>
+{% endblock search %}
+{% block content %}
+    <div class="menu">
+        <div class="left-block">
+            <div class="user-info">
+                <div class="user-email">{{ user.email }}</div>
+                <div class="profile-link"><a class="" href="{% url 'profile' %}">посмотреть профиль</a></div>
+                <div class="user-bonus">{{ user.points }} баллов</div>
+            </div>
+            <hr>
+            <div class="purchases">Личные заказы</div>
+            <a class="" href="{% url 'ticket-list' %}">покупки</a>
+        </div>
+        <div class="main-block">
+            <img src="{{ user.image.url }}" class="account-img user-img" width=300 height=300>
+            <div class="profile-info">
+                <div class="username">{{ user.username }}</div>
+                <div class="email">{{ user.email }}</div>
+                <div class="full-name">{{ user.first_name }} {{ user.last_name }}</div>
+                <div class="points">{{ user.points }} баллов</div>
+                <div class="user-type">{{ user.user_type|user_type_converter }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

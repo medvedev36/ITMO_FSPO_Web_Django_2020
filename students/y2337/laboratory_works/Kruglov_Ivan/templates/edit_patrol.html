@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter Id</label><br>
+            <input type="number" name="patrol_id" value="{{ patrol.patrol_id }}"/>
+        </p>
+        <p>
+            <label>Enter boat number</label><br>
+            <input type="number" name="boat_number" value="{{ patrol.boat_number }}"/>
+        </p>
+        <p>
+            <label>Enter date</label><br>
+            <input type="date" name="date" value="{{ patrol.date }}"/>
+        </p>
+        <p>
+            <label>Enter district</label><br>
+            <input type="number" name="district" value="{{ patrol.district }}" />
+        </p>
+        <p>
+            <label>Enter intruders</label><br>
+            <input type="number" name="intruders" value="{{ patrol.intruders }}"/>
+        </p>
+        <p>
+            <label>Enter reward</label><br>
+            <input type="number" name="reward" value="{{ patrol.reward }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

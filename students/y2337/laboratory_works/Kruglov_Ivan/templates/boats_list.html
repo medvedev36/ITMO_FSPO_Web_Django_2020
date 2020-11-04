@@ -1,0 +1,25 @@
+
+
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Boat Number</th>
+            <th scope="col">Mark</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for boat in boatlist %}
+            <tr>
+                <th scope="row">{{ boat.boat_number }}</th>
+                <td>{{ boat.mark }}</td>
+                <td><a href="editboat/{{ boat.boat_number }}">change</a> | <a href="del/{{ boat.boat_number }}">delete</a></td>
+
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

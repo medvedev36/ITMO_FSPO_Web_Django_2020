@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/CSS/Alltheme.css" rel="stylesheet" type="text/css">
+    <title>Staff</title>
+</head>
+<body>
+{% for f in staff %}
+    ФИО: {{f.Second_name}} <br>
+    Адрес: {{f.Address}} <br>
+    Водительское удостоверение: {{f.Category}} <br>
+    Дата рождения: {{f.Birth_year}} <br>
+{% endfor %}
+</body>
+</html>

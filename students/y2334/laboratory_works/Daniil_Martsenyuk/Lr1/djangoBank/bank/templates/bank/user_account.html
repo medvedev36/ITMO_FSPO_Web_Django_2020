@@ -1,0 +1,14 @@
+{% extends  'wrapper.html' %}
+{% block body %}
+{% load static %}
+<hr>
+{% for acc in client.account.all %}
+    <p>Вклад номер: {{ acc.id }}</p>
+    <p>{{ acc.currency }}</p>
+    <p>Кол-во: {{ acc.amount }}</p>
+    <hr>
+{% endfor %}
+
+<p></p>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'create_account' %}">Создать счет</a></button>
+{% endblock %}

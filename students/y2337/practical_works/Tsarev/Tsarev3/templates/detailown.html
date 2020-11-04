@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+Имя: {{owner.first_name}}, Фамилия: {{owner.last_name}} <br />
+Дата Рождения: {{owner.birthday}} <br />
+{% if owner.user != Null %}
+    Паспорт Пользователя: {{owner.user.passport}} <br>
+    Адрес Пользователя: {{owner.user.address}} <br>
+    Национальность Пользователя: {{owner.user.nationality}} <br>
+{% else %}
+    нема данных
+{% endif %}
+</body>
+</html>

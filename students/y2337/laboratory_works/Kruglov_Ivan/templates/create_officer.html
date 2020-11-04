@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+    <h3>Create an officer </h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit" >Create</button>
+    </form>
+{% endblock %}

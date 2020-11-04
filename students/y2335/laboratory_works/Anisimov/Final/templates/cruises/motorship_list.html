@@ -1,0 +1,13 @@
+<h1>Наши теплоходы</h1> <br>
+
+{% for motorship in motorships %}
+    <b> Теплоход#{{ motorship.id }} </b> <br>
+    <b>Название: {{ motorship.motorship_name }}</b> <br>
+    <p>Дата изготовления: {{ motorship.motorship_date_start }}</p>
+    <p>Конец срока годности: {{ motorship.motorship_date_end }}</p>
+<br><br><br>
+{% endfor %}
+
+<a href = "/">
+<button>Вернуться на главную</button>
+</a>

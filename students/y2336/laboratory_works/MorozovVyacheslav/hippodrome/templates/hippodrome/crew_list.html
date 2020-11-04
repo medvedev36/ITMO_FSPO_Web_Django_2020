@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% for crew in object_list %}
+        <div class="content-list">
+            <h1><a class="article-title" href="{% url 'crew-detail' crew.id %}">№{{ crew.number }}. {{ crew.jockey }} - {{ crew.horse }}</a></h1>
+        </div>
+    {% empty %}
+        <h1>Ни одной команды еще нет.</h1>
+    {% endfor %}
+{% endblock content %}

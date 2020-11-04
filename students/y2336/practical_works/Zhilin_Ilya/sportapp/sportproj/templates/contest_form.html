@@ -1,0 +1,41 @@
+{% extends 'nav_base.html' %}
+{% block title %}
+    Contest Creation
+{% endblock %}
+{% block body %}
+    <form action="{{ contest.get_absolute_url }}" method="post">
+        {% csrf_token %}
+        <div class="form-group mt-3 ml-5 mr-5">
+            <p><label for="id_competition_0">Competition:</label></p>
+            <div class="custom-control mb-2 c">
+                {% for f in form.competition %}
+                    <label class="mr-4">{{ f }}</label>
+                {% endfor %}
+            </div>
+            <p><label for="id_sportsman_0">Sportsman:</label></p>
+            <div class="custom-control mb-2 c">
+                {% for g in form.sportsman %}
+                    <label class="mr-4">{{ g }}</label>
+                {% endfor %}
+            </div>
+            <p><label for="id_trainer_0">Trainer:</label></p>
+            <div class="custom-control mb-2 c">
+                {% for h in form.trainer %}
+                    <label class="mr-4">{{ h }}</label>
+                {% endfor %}
+            </div>
+            <p><label for="id_sportsman_position">Sportsman position:</label> <input type="number"
+                                                                                     name="sportsman_position"
+                                                                                     value="0" class="form-control"
+                                                                                     required
+                                                                                     id="id_sportsman_position"></p>
+            <p><label for="id_sportsman_score">Sportsman score:</label> <input type="number" name="sportsman_score"
+                                                                               value="0" class="form-control" required
+                                                                               id="id_sportsman_score"></p>
+            <p><label for="id_trainer_score">Trainer score:</label> <input type="number" name="trainer_score" value="0"
+                                                                           class="form-control" required
+                                                                           id="id_trainer_score"></p>
+        </div>
+        <input class="btn btn-success ml-5 mb-5" type="submit" value="Add a Row">
+    </form>
+{% endblock %}

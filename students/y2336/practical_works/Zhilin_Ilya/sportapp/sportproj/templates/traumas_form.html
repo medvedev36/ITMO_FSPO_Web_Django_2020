@@ -1,0 +1,21 @@
+{% extends 'nav_base.html' %}
+{% block title %}
+    Traumas Creation
+{% endblock %}
+{% block body %}
+    <form action="{{ trauma.get_absolute_url }}" method="post">
+        {% csrf_token %}
+        <div class="form-group mt-3 ml-5 mr-5">
+            <p><label for="id_trainer_0">Sportsman:</label></p>
+            <div class="custom-control mb-2 c">
+                {% for f in form.sportsman %}
+                    <label class="mr-4">{{ f }}</label>
+                {% endfor %}
+                <p><label for="id_type">Type:</label> <input type="text" name="type" class="form-control"
+                                                             maxlength="100"
+                                                             required id="id_type"></p>
+            </div>
+        </div>
+        <input class="btn btn-success ml-5 mb-5" type="submit" value="Add a Row">
+    </form>
+{% endblock %}

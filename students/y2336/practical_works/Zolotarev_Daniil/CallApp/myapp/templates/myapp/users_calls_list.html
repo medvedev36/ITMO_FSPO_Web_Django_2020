@@ -1,0 +1,39 @@
+{% extends 'myapp/base_list.html' %}
+
+
+{% block title %}
+    Users_Calls list
+{% endblock %}
+
+{% block list %}
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Call</th>
+            <th>Is paid</th>
+            <th>Pay date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user_call in users_calls %}
+            <tr>
+                <td>{{ user_call.user }}</td>
+                <td>{{ user_call.call }}</td>
+                <td>{{ user_call.is_paid }}</td>
+                <td>{{ user_call.pay_date }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>User</th>
+            <th>Call</th>
+            <th>Is paid</th>
+            <th>Pay date</th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

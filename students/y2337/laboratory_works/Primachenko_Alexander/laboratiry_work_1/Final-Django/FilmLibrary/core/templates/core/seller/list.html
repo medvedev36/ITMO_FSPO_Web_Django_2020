@@ -1,0 +1,32 @@
+{% extends 'core/list_template.html' %}
+
+{% block title %}
+   Seller List
+{% endblock %}
+
+{% block page-title %}
+   All Sellers
+{% endblock %}
+
+{% block table-head %}
+   <th scope="col">#</th>
+   <th scope="col">Name</th>
+   <th scope="col">Surname</th>
+   <th scope="col">Address</th>
+   <th scope="col">Actions</th>
+{% endblock %}
+
+{% block table-body %}
+   {% for seller in seller_list %}
+       <tr>
+          <td>{{ seller.id }}</td>
+          <td>{{ seller.name }}</td>
+          <td>{{ seller.surname }}</td>
+          <td>{{ seller.address }}</td>
+          <td>
+             <a href="../edit/{{ seller.id }}">Edit</a>
+             <a href="../delete/{{ seller.id }}">Delete</a>
+          </td>
+       </tr>
+   {% endfor %}
+{% endblock %}

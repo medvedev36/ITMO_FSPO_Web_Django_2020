@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% csrf_token%}
+    <form method="post" >
+
+					<div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>Music<span>Shop</span></div>
+		</div>
+		<br>
+		<div class="login">
+				<input type="text" placeholder="username" name="user"><br>
+				<input type="password" placeholder="password1" name="password"><br>
+            <input type="password" placeholder="password2" name="password"><br>
+            <button style="background: #fff;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border:1px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #000000;
+">Зарегистироваться </button> <br>
+            <br>
+            <a href="/accounts/login/ "
+            style="background: #fff;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border:1px;
+  margin-top: 25px;
+  cursor: pointer;
+  color: #000000;
+">Войти</a>
+		</div>
+    </form>
+
+{% endblock %}

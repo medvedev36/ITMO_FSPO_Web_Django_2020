@@ -1,0 +1,36 @@
+{% extends 'core/edit_template.html' %}
+
+{% block title %}
+   Editing an Arriving
+{% endblock %}
+
+{% block page-title %}
+   Enter new info about an Arriving:
+{% endblock %}
+
+{% block in-the-table %}
+   <tr>
+      <th><label>Cassette ID:</label></th>
+      <td><input type="number" name="cassette" value="{{ item.cassette }}"></td>
+   </tr>
+   <tr>
+      <th><label>Seller ID:</label></th>
+      <td><input type="number" name="seller" value="{{ item.seller }}"></td>
+   </tr>
+   <tr>
+      <th><label>Date:</label></th>
+      <td><input type="text" name="date" value=""></td>
+   </tr>
+   <tr>
+      <th><label>Price:</label></th>
+      <td><input type="number" name="price" value="{{ item.price }}"></td>
+   </tr>
+   <tr>
+      <th><label>Quantity:</label></th>
+      <td><input type="number" name="quantity" value="{{ item.quantity }}"></td>
+   </tr>
+   <tr>
+      <th><label>Provider ID:</label></th>
+      <td><input type="number" name="provider" value="{{ item.provider }}"></td>
+   </tr>
+{% endblock %}

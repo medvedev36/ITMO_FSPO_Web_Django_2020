@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body%}
+
+<div class="container">
+	<section id="content">
+		<form action="" method="post">
+            {% csrf_token %}
+			<h1>Вход</h1>
+			<div>
+				<input type="text" placeholder="Имя" name="username"required="" id="username" />
+			</div>
+			<div>
+				<input type="password" placeholder="Пароль" name="password" required="" id="password" />
+			</div>
+			<div>
+				<input type="submit" value="Войти" />
+				<a href="{% url 'signup_url' %}">Зарегистрироваться</a>
+			</div>
+		</form><!-- form -->
+
+	</section><!-- content -->
+</div><!-- container -->
+
+    {% endblock%}
+
+

@@ -1,0 +1,22 @@
+{% extends "mainApp/wrapper.html" %}
+
+{% block content %}
+
+  {%for val in context%}
+    {% if val.info.type_nomer == "e"%}
+    <div class="row" style="position: relative; margin: 15px;">
+      <div class="col-sm-6">
+        <div class="card">
+            <input disabled class="form-control" value="Номер: {{val.id}}">
+            <h3 class="card-header">{{val.hotel.name_hotel}} ({{val.info.count_customers}} - местный номер)</h3>
+            <div class="card-body">
+                <h5 class="card-title">Адрес: {{val.hotel.address}}</h5>
+                <p class="card-text">Цена: {{val.info.price}} рублей</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+<a  href = "bron" class="btn btn-primary" style="position:relative; margin: 20px 30%; height:40px; width:300px">Зарегистрировать номер</a>
+{% endblock %}

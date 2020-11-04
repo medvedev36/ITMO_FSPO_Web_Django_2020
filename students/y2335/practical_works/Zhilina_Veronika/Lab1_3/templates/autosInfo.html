@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for auto in autos %}
+        Марка: {{ auto.mark }}<br>
+        Модель: {{ auto.model }}<br>
+        Цвет: {{ auto.color }}<br>
+        Номер: {{ auto.state_number }}<br><br>
+    {% endfor %}
+</body>
+</html>

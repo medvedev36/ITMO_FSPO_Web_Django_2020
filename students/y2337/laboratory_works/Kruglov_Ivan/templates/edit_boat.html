@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter boat number</label><br>
+            <input type="number" name="boat_number" value="{{ boat.boat_number }}"/>
+        </p>
+        <p>
+            <label>Enter mark</label><br>
+            <input type="text" name="mark" value="{{ boat.mark }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load extra %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <div class="media-body">
+                <div class="content-block-section media">
+                    <img class="rounded-circle account-img" src="{{ user.img.url }}" width=300 height=300>
+                    <div class="media-body">
+                        <h2 class="account-heading">@{{ user.username }}</h2>
+                        <p class="profile-info">Баланс: {{ user.balance }}руб.</p>
+                    </div>
+                </div>
+                
+                {% for purchase in purchases %}
+                    <div class="content-section">
+                        <h2 class="mar-aba"><a class="article-title" href="{% url 'fuel-detail' purchase.fuel_in_station.fuel.id %}">{{ purchase.fuel_in_station.fuel }}</a></h2>
+
+                        <h4>Дата: {{ purchase.date }}</h4>
+                        <h4>Оплачено {{ purchase.amount }} {{ purchase.fuel_in_station.fuel.metric }} штрафов {{ purchase.fuel_in_station.station }} на общую сумму: </h4>
+                        <h4>{{ purchase.fuel_in_station.price }}(Цена) * {{ purchase.amount }} = {{ purchase.fuel_in_station.price|mul:purchase.amount }}</h>
+
+                    </div>
+                {% endfor %}
+                {% if not purchases %}
+                    <h2 class="mar-aba">Вы еще не успели ничего оплатить.</h2>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'temp.html' %}
+{% block content %}
+<div class="center-column">
+        <h1>Продавцы</h1>
+        <div class="content-block-section-">
+            <div class="column-left">
+                {% for obj in broker_list %}
+                    <div class="border">
+                        <p class="brk">Имя: {{ obj.name_brok }}  </p>
+                        <p class="brk">Телефон: {{ obj.phone_brok }}  </p>
+                        <p class="brk">Дата Рождения: {{ obj.birthday }}  </p>
+                        <p class="brk">Адрес:  {{ obj.address_brok }}  </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock content %} 

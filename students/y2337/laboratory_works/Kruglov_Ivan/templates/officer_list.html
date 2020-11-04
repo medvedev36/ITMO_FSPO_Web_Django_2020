@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Badge Number</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Post</th>
+            <th scope="col">Enrollment</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Boat Number</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for officer in officerlist %}
+        <tr>
+            <th scope="row">{{ officer.badge }}</th>
+            <td>{{ officer.surname }}</td>
+            <td>{{ officer.post }}</td>
+            <td>{{ officer.enrollment }}</td>
+            <td>{{ officer.experience }}</td>
+            <td>{{ officer.birthday }}</td>
+            <td>{{ officer.boat_number }}</td>
+            <td><a href="editofficer/{{officer.badge}}">change</a> | <a href="del/{{officer.badge}}">delete</a> </td>
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

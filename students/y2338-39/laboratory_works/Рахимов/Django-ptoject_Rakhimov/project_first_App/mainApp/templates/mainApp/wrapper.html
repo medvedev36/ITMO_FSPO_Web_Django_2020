@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Точка на карте</title>
+      <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+   <body>
+     <nav class="navbar navbar-inverse" style="position:relative">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Главная</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="contacts">Контакты</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="">
+      <div class="form-group">
+        <input type="text" class="form-control" style="width:300px" placeholder="Поиск  (для красоты)">
+      </div>
+      <button type="submit" class="btn btn-info" style="width:150px">Искать</button>
+    </form>
+    <ul class="nav navbar-nav">
+      <li><a class="nav-link.btn-primary" href="autorisation">Авторизация</a></li>
+      <li><a class="nav-link.btn-success.ml-15" href="registration">Регистрация</a></li>
+      <li><a href="profile">Профиль</a></li>
+      </ul>
+  </div>
+</nav>
+{% block content%}
+{% endblock%}
+</body>
+</html>

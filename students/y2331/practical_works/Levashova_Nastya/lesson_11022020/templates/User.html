@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="main">
+
+        {% for data in dataset %}
+
+            {{ data.first_name }}<br/>
+            {{ data.second_name }}<br/>
+            {{ data.license_number.license_number }}<br/>
+            {{ data.gender }}<br/>
+            {{ data.passport_ID }}<br/>
+            {{ data.server_user.adress }}<br/>
+            {{ data.server_user.nationality }}<br/>
+
+        <hr/>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

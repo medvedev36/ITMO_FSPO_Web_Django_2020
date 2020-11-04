@@ -1,0 +1,33 @@
+{% extends 'nav_base.html' %}
+{% block title %}
+    Workout List
+{% endblock %}
+{% block body %}
+    <div id="m">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>Sportsman</th>
+                <th>Trainer</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for w in workout %}
+                <tr>
+                    <td>{{ w.sportsman }}</td>
+                    <td>{{ w.trainer }}</td>
+                    <td>{{ w.date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Sportsman</th>
+                <th>Trainer</th>
+                <th>Date</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% load crispy_forms_tags %}
+{% block title %}Отзывы{% endblock %}
+{% block content %}
+    <div class="d-flex justify-content-center">
+        <h1>Отзывы</h1>
+    </div>
+    {% if user.is_authenticated %}
+        <div class="content-section">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.text|as_crispy_field }}
+                <div style="width: 150px">
+                    {{ form.score|as_crispy_field }}
+                </div>
+                <button type="submit" class="btn btn-primary">Опубликовать</button>
+            </form>
+            <div class="d-flex justify-content-end">
+                Поля обязательные для заполнения отмечены *
+            </div>
+        </div>
+        <hr>
+    {% endif %}
+    <div class="content-section">
+        {% for feedback in feedback_data %}
+            <div class="content-section">
+                <div class="d-flex justify-content-end">
+                    {{ feedback.date.date }}
+                </div>
+                <h3>{{ feedback.customer.first_name }}</h3>
+                <p style="text-align: justify">
+                    {{ feedback.text }}
+                </p>
+                <div class="d-flex justify-content-end">
+                    <h5>Оценка: {{ feedback.score }} / 10</h5>
+                </div>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

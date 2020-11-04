@@ -1,0 +1,33 @@
+{% extends 'wrapper.html' %}
+{% block body %}
+
+ <div class="container">
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="content-section">
+    <h3 class="text-center">Ваш заказ: </h3>
+    <div class="border-top pt-3">
+    </div>
+    <h4 class="display-block ">Итоговая сумма заказа: </h4>
+    <h4 class="green-text"> {{ total_price }} руб</h4>
+    <br>
+    <h4 class="display-block">Ваш столик под номером</h4>
+    <h4 class="red-text">{{ reservation.table_reservation.table_number }}</h4>
+    <h4 class="display-block">на время:</h4>
+    <h4 class="red-text">{{ reservation.time }}</h4>
+    <br>
+    <br>
+     <a href="{% url 'cancel_order'%}">
+         <button class="btn btn-danger">Отмена заказа</button>
+     </a>
+
+ </div>
+ </div>
+
+{% endblock %}

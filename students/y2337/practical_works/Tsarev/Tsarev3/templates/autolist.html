@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вывод с помощью класса</title>
+</head>
+<body>
+    <table  border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Модель</th>
+                <th>Номер</th>
+                <th>Цвет</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for auto in object_list %}
+            <tr>
+                <td>{{ auto.auto_id }}</td>
+                <td>{{ auto.model }}</td>
+                <td>{{ auto.license_plate }}</td>
+                <td>{{ auto.color }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

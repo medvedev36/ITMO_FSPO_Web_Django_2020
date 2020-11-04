@@ -1,0 +1,10 @@
+<h1>Наши моряки</h1> <br>
+
+{% for sailor in sailors %}
+    Моряк: {{ sailor.sailor_name }} {{ sailor.sailor_lastName }}
+<br>
+{% endfor %}
+<br><br>
+<a href = "/">
+<button>Вернуться на главную</button>
+</a>

@@ -1,0 +1,38 @@
+{% extends 'myapp/base_list.html' %}
+
+
+{% block title %}
+    Calls list
+{% endblock %}
+
+{% block list %}
+    <table id="example" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Rate</th>
+            <th>Duration</th>
+            <th>Date</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for call in calls %}
+            <tr>
+                <td>{{ call.rate }}</td>
+                <td>{{ call.duration }}</td>
+                <td>{{ call.date }}</td>
+                <td>{{ call.price }}</td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Rate</th>
+            <th>Duration</th>
+            <th>Date</th>
+            <th>Price</th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

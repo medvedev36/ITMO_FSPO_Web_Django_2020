@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter Excursion Id</label><br>
+            <input type="number" name="excursion_id" value="{{ exc.excursion_id }}"/>
+        </p>
+{#        <p>#}
+{#            <label>Enter ship_id</label><br>#}
+{#            <input type="number" name="ship_id" value="{{ exc.e_ship_id }}"/>#}
+{#        </p>#}
+{#        <p>#}
+{#            <label>Enter route_id</label><br>#}
+{#            <input type="number" name="route_id" value="{{ exc.e_route_id }}"/>#}
+{#        </p>#}
+        <p>
+            <label>Enter departure</label><br>
+            <input type="datetime-local" name="departure" value="{{ exc.departure }}"/>
+        </p>
+        <p>
+            <label>Enter economy passengers</label><br>
+            <input type="number" name="economy_pass" value="{{ exc.economy_pass }}"/>
+        </p>
+        <p>
+            <label>Enter business passengers</label><br>
+            <input type="number" name="business_pass" value="{{ exc.business_pass }}"/>
+        </p>
+        <p>
+            <label>Enter luxurious passengers</label><br>
+            <input type="number" name="luxurious_pass" value="{{ exc.luxurious_pass }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

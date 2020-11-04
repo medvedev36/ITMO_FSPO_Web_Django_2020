@@ -1,0 +1,36 @@
+{% extends 'core/list_template.html' %}
+
+{% block title %}
+   Cassette List
+{% endblock %}
+
+{% block page-title %}
+   All Cassettes
+{% endblock %}
+
+{% block table-head %}
+   <th scope="col">#</th>
+   <th scope="col">Title</th>
+   <th scope="col">Theme</th>
+   <th scope="col">Director</th>
+   <th scope="col">Release Date</th>
+   <th scope="col">Studio</th>
+   <th scope="col">Actions</th>
+{% endblock %}
+
+{% block table-body %}
+   {% for cassette in cassette_list %}
+       <tr>
+          <td>{{ cassette.id }}</td>
+          <td>{{ cassette.title }}</td>
+          <td>{{ cassette.theme }}</td>
+          <td>{{ cassette.director }}</td>
+          <td>{{ cassette.release_date }}</td>
+          <td>{{ cassette.studio }}</td>
+          <td>
+             <a href="../edit/{{ cassette.id }}">Edit</a>
+             <a href="../delete/{{ cassette.id }}">Delete</a>
+          </td>
+       </tr>
+   {% endfor %}
+{% endblock %}

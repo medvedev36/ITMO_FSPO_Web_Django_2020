@@ -1,0 +1,9 @@
+<b> Вы собираетесь купить билет на тур.</b></b> <br><br>
+Идентификатор: {{ tour.tour_id }} <br>
+Время начала: {{ tour.tour_datetime }} <br>
+
+<form action="" method="post">
+    {% csrf_token  %}
+    {{ form.as_p }}
+   <button type="submit">Купить билет</button>
+</form>

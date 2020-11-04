@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter Id</label><br>
+            <input type="number" name="route_id" value="{{ route.route_id }}"/>
+        </p>
+        <p>
+            <label>Enter name</label><br>
+            <input type="text" name="name" value="{{ route.name }}"/>
+        </p>
+        <p>
+            <label>Enter days</label><br>
+            <input type="number" name="days" value="{{ route.days }}"/>
+        </p>
+        <p>
+            <label>Enter stops</label><br>
+            <input type="number" name="stops" value="{{ route.stops }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

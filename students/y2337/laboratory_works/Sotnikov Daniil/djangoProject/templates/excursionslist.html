@@ -1,0 +1,35 @@
+
+
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Excursion_id</th>
+            <th scope="col">Ship_name</th>
+            <th scope="col">Route_name</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Economy_pass</th>
+            <th scope="col">Business_pass</th>
+            <th scope="col">Luxury_pass</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for exc in exlist %}
+            <tr>
+                <th scope="row">{{ exc.excursion_id }}</th>
+                <td>{{ exc.e_ship_id }}</td>
+                <td>{{ exc.e_route_id }}</td>
+                <td>{{ exc.departure }}</td>
+                <td>{{ exc.economy_pass }}</td>
+                <td>{{ exc.business_pass }}</td>
+                <td>{{ exc.luxurious_pass }}</td>
+                <td><a href="editexc/{{ exc.excursion_id }}">change</a> | <a href="del/{{ exc.excursion_id }}">delete</a></td>
+
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'core/edit_template.html' %}
+
+{% block title %}
+   Editing a Seller
+{% endblock %}
+
+{% block page-title %}
+   Enter new info about a Seller:
+{% endblock %}
+
+{% block in-the-table %}
+   <tr>
+      <th><label>Name:</label></th>
+      <td><input type="text" name="name" maxlength="45" value="{{ item.name }}"></td>
+   </tr>
+   <tr>
+      <th><label>Surname:</label></th>
+      <td><input type="text" name="surname" maxlength="45" value="{{ item.surname }}"></td>
+   </tr>
+   <tr>
+      <th><label>Address:</label></th>
+      <td><input type="text" name="address" maxlength="120" value="{{ item.address }}"></td>
+   </tr>
+{% endblock %}

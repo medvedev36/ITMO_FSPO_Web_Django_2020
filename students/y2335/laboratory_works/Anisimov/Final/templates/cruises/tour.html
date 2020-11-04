@@ -1,0 +1,13 @@
+<h1>Подходящие туры:</h1>
+{% for tour in tours %}
+    <b>Тур #{{ tour.id }}</b> <br>
+    Время начала: {{ tour.tour_datetime }}<br>
+    Название теплохода:  {{ tour.motorship.motorship_name }}<br>
+    <br>
+    <hr>
+    <br><br><br>
+{% endfor %}
+
+<a href = "/">
+<button>Вернуться на главную</button>
+</a>

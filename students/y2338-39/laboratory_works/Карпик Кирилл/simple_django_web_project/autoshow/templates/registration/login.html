@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Логин - Автосервис</title>
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}">
+</head>
+<body>
+  <div class="header">
+    <a href="/">
+      <div class="header__logo">
+        <img class="header__icon" src="{% static 'img/logo.png' %}">
+        <div class="header__name">Автосервис</div>
+      </div>
+    </a>
+    <div class="header__profile">
+      <div class="header__link header__link--active">Логин</div>
+      <a class="header__link" href="/signup"><div>Регистрация</div></a>
+    </div>
+  </div>
+  <div class="content">
+    <div class="form">
+      <form class="form__tag form-group" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="form__title">Логин</div>
+        <input class="form__input form__input--field" required type="text" name="username" placeholder="Логин">
+        <input class="form__input form__input--field" required type="password" name="password" placeholder="Пароль">
+        <button type="submit" class="form__input form__input--submit">Войти</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

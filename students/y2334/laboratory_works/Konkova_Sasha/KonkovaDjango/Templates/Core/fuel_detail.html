@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load extra %}
+{% block content %}
+
+<div class="container">
+    <h1 class="article-title">Правонарушение {{ fuel.name }}</h1>
+    <div class="info">
+        <h4>Тип: {{ fuel.fuel_type|display_type }}</h4>
+    </div>
+    <div class="content-section">
+        {% for station in stations %}
+            <div class="content-section row">
+                <div class="col-5">
+                    <h2 class="mar-aba"><a class="article-title" href="{% url 'fuelstation-detail' station.station.id %}">{{ station.station }}</a></h2>
+                </div>
+                <div class="col-7 info">
+                    <h4>Цена: {{ station.price }}</h4>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock content %}

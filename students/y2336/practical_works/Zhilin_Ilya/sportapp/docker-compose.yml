@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  sport:
+    restart: always
+    build:
+      context: ./
+      dockerfile: DockerFile
+    container_name: Ilya
+    command: python3 manage.py runserver 0.0.0.0:3000
+    volumes:
+      - .:/usr/src/app
+    environment:
+      IN_DOCKER: 1
+    ports:
+      - "3000:3000"

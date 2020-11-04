@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content-wrapper">
+        <h1>Подтвердить права для {{ user }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="number">Номер прав</label>
+            {{ form.number }}
+            <br>
+            <label for="id_date_of_issue">Дата выдачи</label>
+            <input type="date" id="id_date_of_issue" name="date_of_issue" placeholder="Время конца аренды"
+                   required>
+            <br>
+            <label for="type_of_license">Тип прав</label>
+            {{ form.type_of_license }}
+            <br>
+            <button class="btn btn-outline-primary search-button" type="sumbit">Подтвердить права</button>
+        </form>
+    </div>
+{% endblock content %}

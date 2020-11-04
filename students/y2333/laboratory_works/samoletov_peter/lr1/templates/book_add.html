@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block body%}
+<div class="container">
+	<section id="content">
+		<form method="post">
+            {% csrf_token %} -
+			<h1>Зарегистировать книгу</h1>
+			<div>
+				<input type="text" placeholder="Название книги" name="name" required="" id="username" />
+			</div>
+			<div>
+				<input type="text" placeholder="Автор" name="author" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="Название издательства" name="publisher" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="Город издательства" name="city" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="Год издания" name="year" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="Область литературы" name="theme" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="Язык книги" name="language" required="" id="username" />
+			</div>
+            <div>
+				<input type="text" placeholder="ФИО переводчика" name="translate" required="" id="username" />
+			</div>
+			<div>
+				<input type="submit" value="Добавить" />
+			</div>
+		</form><!-- form -->
+
+	</section><!-- content -->
+
+    <a href="{% url 'reader_all_url' %}" style="">Вернуться к списку всех читателей</a>
+</div><!-- container -->
+
+    {% endblock%}

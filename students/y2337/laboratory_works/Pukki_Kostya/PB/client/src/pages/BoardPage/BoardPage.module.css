@@ -1,0 +1,11 @@
+.panels {
+  height: 95vh;
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+.panels > div {
+  margin-left: 8px;
+}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="center-column">
+        <h1>Бренды</h1>
+        <div class="content-block-section">
+            <div class="grid-container">
+                {% for obj in object_list %}
+                    <div class="grid-item"><a class="active" href="{% url 'brand-detail' obj.id %}">{{ obj }}</a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load poll_extras %}
+{% block search %}
+    <div class="separate-line"></div>
+{% endblock search %}
+{% block content %}
+    <div class="menu">
+        <div class="left-block">
+            <div class="user-info">
+                <div class="user-email">{{ user.email }}</div>
+                <div class="profile-link"><a class="" href="#">посмотреть профиль</a></div>
+                <div class="user-bonus">{{ user.points }} баллов</div>
+            </div>
+            <hr>
+            <div class="purchases">Личные заказы</div>
+            <a class="" href="{% url 'ticket-list' %}">покупки</a>
+        </div>
+        <div class="main-block">
+            <div class="info">
+                <h1 class="ticket-title">Билет из {{ object.ride.where_from }} в {{ object.ride.where }}<a class="btn btn-outline-danger btn-confirm-delete" href="{% url 'ticket-delete' object.id %}">Сдать билет?</a></h1>
+                <div class="ticket-info row where-from">
+                    <div class="column col-2 ticket-info-item">Откуда следует</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.where_from }}</div>
+                </div>
+                <div class="ticket-info row where">
+                    <div class="column col-2 ticket-info-item">Kуда следует</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.where }}</div>
+                </div>
+                <div class="ticket-info row departure">
+                    <div class="column col-2 ticket-info-item">Отправление</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.departure_datetime }}</div>
+                </div>
+                <div class="ticket-info row arrival">
+                    <div class="column col-2 ticket-info-item">Прибытие</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.arrival_datetime }}</div>
+                </div>
+                <div class="ticket-info row driver">
+                    <div class="column col-2 ticket-info-item">Водитель</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.driver }}</div>
+                </div>
+                <div class="ticket-info row bus">
+                    <div class="column col-2 ticket-info-item">Автобус</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.bus }}</div>
+                </div>
+                <div class="ticket-info row price">
+                    <div class="column col-2 ticket-info-item">Цена</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.price }}руб.</div>
+                </div>
+                <div class="ticket-info row payment">
+                    <div class="column col-2 ticket-info-item">Тип оплаты</div>
+                    <div class="column col-4 ticket-info-item">{{ object.payment_type|payment_converter }}</div>
+                </div>
+                <div class="ticket-info row bonus">
+                    <div class="column col-2 ticket-info-item">Начисленные бонусы</div>
+                    <div class="column col-4 ticket-info-item">{{ object.ride.price|division:100 }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

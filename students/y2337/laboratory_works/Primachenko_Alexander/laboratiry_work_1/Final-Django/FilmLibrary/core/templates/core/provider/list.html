@@ -1,0 +1,30 @@
+{% extends 'core/list_template.html' %}
+
+{% block title %}
+   Provider List
+{% endblock %}
+
+{% block page-title %}
+   All Providers
+{% endblock %}
+
+{% block table-head %}
+   <th scope="col">#</th>
+   <th scope="col">Title</th>
+   <th scope="col">Address</th>
+   <th scope="col">Actions</th>
+{% endblock %}
+
+{% block table-body %}
+   {% for provider in provider_list %}
+       <tr>
+          <td>{{ provider.id }}</td>
+          <td>{{ provider.title }}</td>
+          <td>{{ provider.address }}</td>
+          <td>
+             <a href="../edit/{{ provider.id }}">Edit</a>
+             <a href="../delete/{{ provider.id }}">Delete</a>
+          </td>
+       </tr>
+   {% endfor %}
+{% endblock %}

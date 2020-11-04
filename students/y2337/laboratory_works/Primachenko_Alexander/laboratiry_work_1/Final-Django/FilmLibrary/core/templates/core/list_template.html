@@ -1,0 +1,34 @@
+{% extends 'core/base_template.html' %}
+
+
+{% block title %}
+   List Template
+{% endblock %}
+
+{% block page-title %}
+    Default list page
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                {% block table-head %}
+                    <th scope="col">#</th>
+                    <th scope="col">Header</th>
+                {% endblock %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block table-body %}
+                <tr>
+                    <td scope="row">1</td>
+                    <td>Datum</td>
+                </tr>
+            {% endblock %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <center><a href="../add/" class="btn btn-primary btn-dark">Add New Record</a></center>
+{% endblock %}

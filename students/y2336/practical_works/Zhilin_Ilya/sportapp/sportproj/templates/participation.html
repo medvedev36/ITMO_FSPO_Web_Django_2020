@@ -1,0 +1,9 @@
+{% extends 'nav_base.html' %}
+{% block body %}
+    <form action="{% url 'participation' %}" class="form-horizontal mt-5 ml-5" method="POST">
+        {% csrf_token %}
+        <label for="id_competition">Competition:</label>
+        <input type="text" name="competition" required id="id_competition"/>
+        <button type="submit" class="btn btn-success ml-3">Participate</button>
+    </form>
+{% endblock %}

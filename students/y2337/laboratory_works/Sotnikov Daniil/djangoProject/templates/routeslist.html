@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Days</th>
+            <th scope="col">Stops</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for route in routeslist %}
+            <tr>
+                <th scope="row">{{ route.route_id }}</th>
+                <td>{{ route.name }}</td>
+                <td>{{ route.days }}</td>
+                <td>{{ route.stops }}</td>
+                <td><a href="editroute/{{route.route_id}}">change</a> | <a href="del/{{route.route_id}}">delete</a></td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

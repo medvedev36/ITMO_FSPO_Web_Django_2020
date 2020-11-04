@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" class="login-form">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend class="border-top mb-4">Вход</legend>
+        <input type="text" id="username" name="username" placeholder="Имя пользователя">
+        <input type="password" id="password" name="password" placeholder="Пароль">
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-primary" type="submit">Войти</button>
+    </div>
+</form>
+<a class="btn btn-outline-primary" href="{% url 'register' %}">Нет аккаунта?</a>
+{% endblock content %}

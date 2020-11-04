@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1 class="article-title">Поставщики топлива</h1>
+    <p>Нас сегодняшний день доступно {{ providers|length}} поставщиков топлива. Будьте внимательны, все они могут поставлять разное топливо.</p>
+    {% for provider in providers %}
+    <div class="content-section row">
+        <div class="col-6">
+            <h2 class="mar-aba"><a class="article-title" href="{% url 'fuelprovider-detail' provider.id %}">"ЗАО" {{ provider.name }}</a></h2>
+        </div>
+
+        <div class="col-6 info">
+            <h4>Адрес: {{ provider.address }}</h4>
+            <h4>Телефон: {{ provider.phone }}</h4>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock content %}

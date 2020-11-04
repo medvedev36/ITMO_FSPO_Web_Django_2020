@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Дата рождения</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for owner in owners_list %}
+                <tr>
+                    <td>{{ owner.owner_id }}</td>
+                    <td>{{ owner.birthday }}</td>
+                    <td>{{ owner.first_name }}</td>
+                    <td>{{ owner.last_name}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

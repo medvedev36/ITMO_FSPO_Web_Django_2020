@@ -1,0 +1,19 @@
+{% extends 'base_main.html' %}
+
+
+{% block title %}
+    Жанры
+{% endblock %}
+
+{% block content %}
+    <h1 class="mb-5">Жанры:</h1><br>
+    {% for genre in genre_list%}
+        <div class="card" style="width: 1000px">
+            <div class="card-body">
+
+                <a href="{% url 'genre_detail_url' genre_id=genre.genre_id %}"><font size="5">{{ genre.genre_name }}</font></a><br>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+

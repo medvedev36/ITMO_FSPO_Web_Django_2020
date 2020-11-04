@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    {% for object in object_list %}
+        {{ object.mark  }}<br/>
+        {{ object.model }}<br/>
+        {{ object.year }}<br/>
+    <hr/>
+    {% empty %}
+    No objects yet.<br/>
+    {% endfor %}
+</body>
+</html>

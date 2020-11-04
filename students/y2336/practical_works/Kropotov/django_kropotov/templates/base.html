@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Project</title>
+    {% endif %}
+</head>
+<body style = "background: rgba(234,175,200,0.66); margin:0; padding:0; font-family: 'Arial',serif; font-size: 14px;">
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

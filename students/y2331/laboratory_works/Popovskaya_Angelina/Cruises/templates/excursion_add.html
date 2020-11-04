@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block stile %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+   table {
+    border:25px solid white; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+   }
+   th {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+   td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+   }
+</style>
+{% endblock %}
+{% block content %}
+     <div id="rectangle"></div>
+ </div>
+ <div class="payment">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+        <p>ID лайнера: </p>{{ form.id_cruise}}
+        <p>Дата отправления: </p>{{ form.date_of_departure}}
+        <p>Дата прибытия: </p>{{ form.date_of_arrival}}
+        <p>Количество кают первого класса: </p>{{ form.quantity_post_of_1}}
+        <p>Количество кают второго класса: </p>{{ form.quantity_post_of_2}}
+        <p>Количество кают третьяего класса:</p>{{ form.quantity_post_of_3}}
+        <p> Информация о круизе: </p>{{ form.information}}
+        <p>Ссылка на фото с круиза</p>{{ form.photo}}
+        <p></p>
+    <input type="submit" value="Создать" class="btn btn-outline-secondary" >
+    </div>
+</form>
+ </div>
+
+
+{% endblock %}
