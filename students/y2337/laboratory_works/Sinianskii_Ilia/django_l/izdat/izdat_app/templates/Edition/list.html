@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+
+
+
+    <h1 class="mb-5">Edition:</h1>
+    {% for object in object_list %}
+    <div class="card mb-4" >
+      <div class="card-body">
+        <h5 class="card-title">ID: {{object.id}}</h5>
+          <table>
+            <tr><td> Numbers of copies: </td><td><p class="card-text">{{object.numbers_of_copies}}</p></td><td>
+            <tr><td> Date: </td><td><p class="card-text">{{object.date}}</p></td><td>
+            <tr><td> Price: </td><td><p class="card-text">{{object.price}}</p></td><td>
+            <tr><td> Title: </td><td><p class="card-text">{{object.book_id.title}}</p></td><td>
+           </table>
+        <a href="{% url 'edition/update/' pk=object.id %}" class="btn btn-light">Update</a>
+        <a href="{% url 'edition_delete' pk=object.id %}" class="btn btn-light">Delete</a>
+
+      </div>
+    </div>
+    {% endfor %}
+    <a href="{% url 'add_edition' %}" class="btn btn-light">Add</a>
+
+{% endblock %}

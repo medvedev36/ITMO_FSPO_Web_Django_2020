@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+
+<h1 class="mb-5">Orders:</h1>
+    {% for object in object_list %}
+    <div class="card mb-4" >
+      <div class="card-body">
+        <h3 class="card-title">ID: {{object.id}}</h3>
+        <p class="card-text">Customer: {{object.id_customer.name}} {{object.id_customer.name}}</p>
+          <h5 class="card-title">Books in order: </h5>
+            {% for book in object.Book_has_Order.all %}
+                <p class="card-text">{{book.title}}</p>
+            {% endfor %}
+
+
+        <a href="{% url 'order/update/' pk=object.id %}" class="btn btn-light">Update</a>
+        <a href="{% url 'order_delete' pk=object.id %}" class="btn btn-light">Delete</a>
+
+      </div>
+    </div>
+{% endfor %}
+        <a href="{% url 'add_order' %}" class="btn btn-light">Add</a>
+{% endblock %}

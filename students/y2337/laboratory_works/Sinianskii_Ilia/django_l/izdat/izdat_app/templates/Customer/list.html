@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+
+<h1 class="mb-5">Customers:</h1>
+    {% for object in object_list %}
+    <div class="card mb-4" >
+      <div class="card-body">
+        <h5 class="card-title">{{object.name}} {{object.surname}}</h5>
+          <table>
+            <tr><td> Address: </td><td><p class="card-text">{{object.address}}</p></td></tr>
+            <tr><td> Phone number: </td><td><p class="card-text">{{object.phone_num}}</p></td></tr>
+           </table>
+
+        <a href="{% url 'customer/update/' pk=object.id %}" class="btn btn-light">Update</a>
+        <a href="{% url 'customer_delete' pk=object.id %}" class="btn btn-light">Delete</a>
+
+      </div>
+    </div>
+{% endfor %}
+    <a href="{% url 'add_customer' %}" class="btn btn-light">Add</a>
+
+
+{% endblock %}

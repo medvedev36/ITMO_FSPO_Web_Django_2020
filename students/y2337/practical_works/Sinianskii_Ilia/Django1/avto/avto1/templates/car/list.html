@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <h1> Список автомобилей </h1>
+    {% for object in object_list %}
+
+    <h3> Автомобиль №{{object.id}} </h3>
+    <ul>
+        <li> Мака:{{object.brand}} </li>
+        <li> Модель: {{object.model}} </li>
+        <li> Цвет: {{object.color}} </li>
+        <li> Номер: {{object.number}} </li>
+    </ul>
+
+    {% endfor %}
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+    <h1> {{ book.title}} </h1>
+
+    <table>
+        <tr><td>Book category: </td><td>{{ book.category_code}}</td></tr>
+        <tr><td>Number of pages:</td><td>{{book.number_of_pages}}</td></tr>
+        <tr><td>Year of publication: </td><td>{{book.year_of_publication}}</td></tr>
+        <tr><td>ISBN:</td><td>{{book.isbn_kode}}</td></tr>
+        <tr><td>Price:</td><td>{{book.price}}</td></tr>
+    </table>
+        Authors:<br>
+        {% for author in book.author_has_book.all %}
+             {{author.name}}
+             {{author.surname}}<br>
+        {% endfor %}
+
+
+{% endblock %}

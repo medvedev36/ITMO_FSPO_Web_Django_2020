@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--<div class="main">
+        {% for data in dataset %}<br/>
+
+        {{data.title}}<br/>
+        {{data.description}}<br/>
+        <hr/>
+        {% endfor %}-->
+    <ul>
+        {% for object in object_list %}
+        <li>{{ object.title }}</li>
+        <li>{{ object.description }}</li>
+
+        <hr/>
+
+        {% empty %}
+        {% endfor %}
+    </ul>
+
+<!--    </div>-->
+</body>
+</html>
