@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href = "https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <title>Магазин меха</title>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+  <a class="navbar-brand" href="{% url 'home' %}">  Магазин меха</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" ></span>
+  </button>
+
+<div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Мех
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'fur_list' %}">Каталог меха</a>
+          <a class="dropdown-item" href="{% url 'fur_create' %}">Добавить новый экземпляр</a>
+
+        </div>
+        </li>
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Фермы
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+          <a class="dropdown-item" href="{% url 'farm_list' %}">Список ферм</a>
+          <a class="dropdown-item" href="{% url 'farm_create' %}">Добавить новый экземпляр</a>
+
+        </div>
+        </li>
+        {% if user.is_authenticated %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profile' %}">Личный кабинет <span class="sr-only">(current)</span></a>
+      </li>
+         {% endif %}
+    </ul>
+
+  </div>
+      <form class="form-inline my-2 my-lg-0">
+      {% if not user.is_authenticated %}
+
+        <a class="nav-link"  href="{% url 'login' %}"> Вход <span class="sr-only">(current)</span></a>
+
+       {% endif %}
+       {% if user.is_authenticated %}
+
+        <a class="nav-link"  href="{% url 'logout' %}"> Выход <span class="sr-only">(current)</span></a>
+
+       {% endif %}
+      {% if not user.is_authenticated %}
+
+        <a class="nav-link"  href="{% url 'register' %}"> Регистрация <span class="sr-only">(current)</span></a>
+         {% endif %}
+    </form>
+</nav>
+
+
+  </div>
+</nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-10">
+
+          <hr class="mt-5 mb-4">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+
+        <small class="d-block mb-3 text-muted">&copy; 2019-2020</small>
+      </div>
+    </div>
+  </footer>
+</div>
+  </body>
+</html>

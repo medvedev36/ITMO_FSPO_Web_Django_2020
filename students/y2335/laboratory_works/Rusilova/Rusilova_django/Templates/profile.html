@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% if user.is_authenticated %}
+{% else %}
+ <head>
+  <meta http-equiv='refresh' content='0; URL=/home/'>
+</head>
+  {% endif %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Ваши покупки</h1>
+<table class="table table-striped table-dark">
+    <thead >
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Сорт</th>
+        <th scope="col">Наименование</th>
+        <th scope="col">Цена</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for purchase in purchases %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ purchase.fur.sort }}</td>
+            <td>{{ purchase.fur.name }}</td>
+            <td>{{ purchase.fur.price}}</td>
+            <td><a href="{% url 'review' purchase.fur_id %}" class=" btn btn-light" >Добавить отзыв</a></td>
+            <td><a href="{% url 'purchase_delete' purchase.purchase_id %}" class=" btn btn-light" >Удалить покупку</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h1>Ваши отзывы</h1>
+<table class="table table-striped table-dark">
+    <thead >
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Название меха</th>
+        <th scope="col">Содержание</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for rv in reviews %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ rv.fur.name }}</td>
+            <td>{{ rv.text }}</td>
+
+            <td><a href="{% url 'review_delete' rv.review_id %}" class=" btn btn-light" >Удалить отзыв</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
