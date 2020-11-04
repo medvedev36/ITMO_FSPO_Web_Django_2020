@@ -1,0 +1,11 @@
+{% extends 'temp.html' %}
+{% block content %}
+    <div class="center-column mt-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="content-section" type="submit">{{ confirm }}</button>
+        </form>
+    </div>
+
+{% endblock content %}
