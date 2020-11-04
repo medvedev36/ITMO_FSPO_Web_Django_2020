@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <h1 align="center">Фермы</h1>
+         <hr>
+      <div class="row">
+    <!-- Iterate over object_list -->
+    {% for farm in farms %}
+    <!-- Display Objects -->
+  <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <p class="card-text">
+    Директор фермы:
+   {{ farm.surname }}<br>
+    Телефон:
+   {{ farm.phone }} <br>
+    Адрес:
+   {{ farm.adress }}<br>
+
+              </p>
+
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+ </div>
+
+{% endblock %}
