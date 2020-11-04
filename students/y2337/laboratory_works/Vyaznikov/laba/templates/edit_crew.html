@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Enter Member Id</label><br>
+            <input type="number" name="member_id" value="{{ crew.member_id }}"/>
+        </p>
+        <p>
+            <label>Enter Trawler Id</label><br>
+            <input type="number" name="trawler_id" value="{{ crew.trawler_id }}"/>
+        </p>
+        <p>
+            <label>Enter Member Name</label><br>
+            <input type="text" name="member_name" value="{{ crew.member_name }}"/>
+        </p>
+        <p>
+            <label>Enter Member Job</label><br>
+            <input type="text" name="member_job" value="{{ crew.member_job }}" />
+        </p>
+        <p>
+            <label>Enter Member Hire Date</label><br>
+            <input type="date" name="hire_date" value="{{ crew.hire_date }}"/>
+        </p>
+        <p>
+            <label>Enter Member Birthday</label><br>
+            <input type="date" name="bday" value="{{ crew.bday }}"/>
+        </p>
+        <p>
+            <label>Enter Date when member goes to pension</label><br>
+            <input type="date" name="to_pension" value="{{ crew.to_pension }}"/>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock %}

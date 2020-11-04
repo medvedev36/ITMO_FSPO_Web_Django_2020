@@ -1,0 +1,35 @@
+
+
+{% extends 'main.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Voyage ID</th>
+            <th scope="col">Trawler ID</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Bank Name</th>
+            <th scope="col">Fish Name</th>
+            <th scope="col">Fish Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for voyage in voyagelist %}
+            <tr>
+                <th scope="row">{{ voyage.voyage_id }}</th>
+                <td>{{ voyage.trawler_id }}</td>
+                <td>{{ voyage.start_date }}</td>
+                <td>{{ voyage.end_date }}</td>
+                <td>{{ voyage.bank_name }}</td>
+                <td>{{ voyage.fish_name }}</td>
+                <td>{{ voyage.fish_quantity }}</td>
+                <td><a href="editvoyage/{{ voyage.voyage_number }}">change</a> | <a href="del/{{ voyage.voyage_number }}">delete</a></td>
+
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

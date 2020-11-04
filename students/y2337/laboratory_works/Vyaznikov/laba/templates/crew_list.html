@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{% block content %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Member ID</th>
+            <th scope="col">Trawler ID</th>
+            <th scope="col">Member Name</th>
+            <th scope="col">Member Job</th>
+            <th scope="col">Hire Date</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Goes to pension on</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for crew in crewlist %}
+            <tr>
+                <th scope="row">{{ crew.member_id }}</th>
+                <td>{{ crew.trawler_id }}</td>
+                <td>{{ crew.member_name }}</td>
+                <td>{{ crew.member_job }}</td>
+                <td>{{ crew.hire_date }}</td>
+                <td>{{ crew.bday }}</td>
+                <td>{{ crew.to_pension }}</td>
+                <td><a href="editcrew/{{crew.member_id}}">change</a> | <a href="del/{{crew.member_id}}">delete</a></td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
