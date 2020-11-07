@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+ server:
+  build: blog_backend/
+  command: python manage.py runserver 0.0.0.0:8000
+  ports:
+   - 8000:8000
+ web:
+  build: blog_frontend/
+  command: npm start
+  ports:
+   - 3000:3000
+  depends_on:
+   - server
+
