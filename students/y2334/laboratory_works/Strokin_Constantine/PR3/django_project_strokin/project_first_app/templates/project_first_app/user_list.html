@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in user_list %}
+    <!-- Display Objects -->
+    <li>Id: {{ object.id }}</li>
+    <li>Mark: {{ object.passport_id }}</li>
+    <li>Model: {{ object.nationality }}</li>
+    <li>Color: {{ object.address }}</li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
